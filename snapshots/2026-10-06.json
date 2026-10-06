@@ -1,0 +1,1516 @@
+[
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq7wAAA",
+  "subject": "LLEVAR ITV FURGO (2494 KPK) CADUCA EL 08/10",
+  "start": "2026-10-05T00:00:00.0000000",
+  "end": "2026-10-06T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:02:39.631Z",
+  "lastModifiedDateTime": "2026-10-05T06:44:22.691Z"
+ },
+ {
+  "id": "AAkBOQAICN8ic5lkwAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABM4Gor0AABA=",
+  "subject": "VACACIONES OBED",
+  "start": "2026-10-05T00:00:00.0000000",
+  "end": "2026-10-06T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "VACACIONES"
+  ],
+  "createdDateTime": "2026-06-08T11:03:54.350Z",
+  "lastModifiedDateTime": "2026-06-08T11:04:31.551Z"
+ },
+ {
+  "id": "AAkBOQAICN8ic5lkwAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRX8rLgAABA=",
+  "subject": "VACACIONES JOSE ALMACÉN",
+  "start": "2026-10-05T00:00:00.0000000",
+  "end": "2026-10-06T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "VACACIONES"
+  ],
+  "createdDateTime": "2026-09-25T10:43:00.643Z",
+  "lastModifiedDateTime": "2026-09-25T10:43:02.103Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq7wwAA",
+  "subject": "LLEVAR ITV FURGO (2494 KPK) CADUCA EL 08/10",
+  "start": "2026-10-06T00:00:00.0000000",
+  "end": "2026-10-07T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:04:16.172Z",
+  "lastModifiedDateTime": "2026-10-05T06:44:37.776Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFHSO2qQAA",
+  "subject": "AUSENCIA ALEXIS POR MÉDICO",
+  "start": "2026-10-06T00:00:00.0000000",
+  "end": "2026-10-07T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "INFORMACION GENERAL"
+  ],
+  "createdDateTime": "2026-10-05T14:39:37.079Z",
+  "lastModifiedDateTime": "2026-10-05T14:39:38.793Z"
+ },
+ {
+  "id": "AAkBOQAICN8jPMPOgAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRX8rLgAABA=",
+  "subject": "VACACIONES JOSE ALMACÉN",
+  "start": "2026-10-06T00:00:00.0000000",
+  "end": "2026-10-07T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "VACACIONES"
+  ],
+  "createdDateTime": "2026-09-25T10:43:00.643Z",
+  "lastModifiedDateTime": "2026-09-25T10:43:02.103Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFCc05RAAA",
+  "subject": "SAT - JEFFERSON | KANGOO 4339HYP",
+  "start": "2026-10-06T09:30:00.0000000",
+  "end": "2026-10-06T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "09:30 – 261288 (MAJADAHONDA) – MANTENIMIENTO DE 2 EQUIPOS DE CONDUCTOS – IP CONSULTORES\r\n11:30H 261330 (MAJADAHONDA) – MANTENIMIENTO DE CONDUCTOS PAOLA VILLORIA\r\n13:00H 261248 (S. SEBASTIAN DE LOS REYES) – MANTENIMIENTO CONDUCTOS FRANCISCO JAVIER MARTIN",
+  "categories": [
+   "AVISOS"
+  ],
+  "createdDateTime": "2026-09-08T10:01:52.271Z",
+  "lastModifiedDateTime": "2026-10-05T14:28:37.237Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFE5G63gAA",
+  "subject": "CONTINUACIÓN OBRA 48H | DAIKIN - ADEAS71A + KIT WIFI + ESC. 2 TRAMOS | DAVID PRIETO SANCHEZ | AHMED + CRISTIAN + RAFA |TRAFIC 0825NLL",
+  "start": "2026-10-06T09:30:00.0000000",
+  "end": "2026-10-06T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/SEVERO OCHOA,,13-1B; 28932 MÓSTOLES",
+  "summary": "PEDIDO: 261416\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-09-21T11:35:31.329Z",
+  "lastModifiedDateTime": "2026-10-05T13:44:30.886Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGsIXigAA",
+  "subject": "CONTINUACIÓN AT SUELO RADIANTE | EHVZ08S23E6V + EKHVCONV4 | CEIM SOLUCIONES INTEGRALES | ANDRES + KIKE + ALEXIS | CUSTOM 7077HZD",
+  "start": "2026-10-06T09:30:00.0000000",
+  "end": "2026-10-06T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "AV. BADAJOZ 14, 6B, 28027 MADRID",
+  "summary": "EL SUELO RADIANTE YA ESTA INSTALADO. LA UD EXTERIOR YA ESTA COLGADA. FALTA UNIDAD INTERIOR, CONEXIONES, CIRCUITO SECUNDARIO, DELTA DORE Y PUESTA EN MARCHA",
+  "categories": [
+   "AEROTERMIA"
+  ],
+  "createdDateTime": "2026-10-01T13:18:38.627Z",
+  "lastModifiedDateTime": "2026-10-05T13:43:50.882Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGsIjjwAA",
+  "subject": "CONTINUACION OBRA 48H | DAIKIN - BASG71A + WIFI + TRABAJOS DE PINTURA AGENDADOS PARA SEMANA SIGUIENTE | JULIO LOPEZ CALERO | EDDY + JOSE + DIEGO | CRAFTER 1004HWM",
+  "start": "2026-10-06T09:30:00.0000000",
+  "end": "2026-10-06T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/SAN JENARO,1-PL,C-1-J; 28021 MADRID",
+  "summary": "PEDIDO: 261450\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-10-01T15:11:26.822Z",
+  "lastModifiedDateTime": "2026-10-06T06:06:53.104Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_hJgAA",
+  "subject": "NAVE: MATIAS ",
+  "start": "2026-10-06T09:30:00.0000000",
+  "end": "2026-10-06T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-10-02T14:09:05.098Z",
+  "lastModifiedDateTime": "2026-10-02T14:09:06.200Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_oyAAA",
+  "subject": "MANTENIMIENTO Y AMPLIACION DE CONDUCTOS PALGRAPHIC  | VITIÑO + JUAN + OBED| CUSTOM 2494KPK",
+  "start": "2026-10-06T09:30:00.0000000",
+  "end": "2026-10-06T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "LLEVAR CESTA ARTESANAL PARA HACER MANTENIMIENTOS!!",
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-10-02T15:59:57.574Z",
+  "lastModifiedDateTime": "2026-10-05T14:18:38.365Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGsIjnwAA",
+  "subject": "INSTALAR 8M TUBERIA MULTICAPA DE 20 (MISMOS TECNICOS DE CEIM)",
+  "start": "2026-10-06T11:00:00.0000000",
+  "end": "2026-10-06T13:00:00.0000000",
+  "isAllDay": false,
+  "location": "AV. BADAJOZ 14, 9A",
+  "summary": "INDICACION DE MERINO TRAS VISITA TECNICA DEL 01/10",
+  "categories": [
+   "AVISOS"
+  ],
+  "createdDateTime": "2026-10-01T15:54:15.718Z",
+  "lastModifiedDateTime": "2026-10-01T15:56:16.185Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq7xQAA",
+  "subject": "LLEVAR ITV FURGO (2494 KPK) CADUCA EL 08/10",
+  "start": "2026-10-07T00:00:00.0000000",
+  "end": "2026-10-08T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:04:45.411Z",
+  "lastModifiedDateTime": "2026-10-05T06:44:54.219Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGPdNyAAA",
+  "subject": "AUSENCIA ANDRÉS POR LA MAÑANA POR MÉDICOS",
+  "start": "2026-10-07T00:00:00.0000000",
+  "end": "2026-10-08T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "INFORMACION GENERAL"
+  ],
+  "createdDateTime": "2026-09-29T06:29:35.230Z",
+  "lastModifiedDateTime": "2026-09-29T06:29:36.432Z"
+ },
+ {
+  "id": "AAkBOQAICN8kBe44QAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRX8rLgAABA=",
+  "subject": "VACACIONES JOSE ALMACÉN",
+  "start": "2026-10-07T00:00:00.0000000",
+  "end": "2026-10-08T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "VACACIONES"
+  ],
+  "createdDateTime": "2026-09-25T10:43:00.643Z",
+  "lastModifiedDateTime": "2026-09-25T10:43:02.103Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFFJQ5cwAA",
+  "subject": "OK-SPLIT 1X1 | MITSUBISHI - MSZ-HR42VF(R32) | FRANCISCO JAVIER CABEZAS RECIO | EDDY + JOSE | TRAFIC 0824NLL",
+  "start": "2026-10-07T09:30:00.0000000",
+  "end": "2026-10-07T15:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/PUENTELARRA,18,IZ-8-C; 28031 MADRID",
+  "summary": "PEDIDO: 261419\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "SPLIT"
+  ],
+  "createdDateTime": "2026-09-22T09:55:04.877Z",
+  "lastModifiedDateTime": "2026-10-06T10:01:22.240Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFFJRe1gAA",
+  "subject": "OK-ACOPLAMIENTO CASSETTE | DAIKIN - MGPLZ-100VEA MITSUBISHI ELECTRIC | CENTRO DENTAL CERANIUM, S.L. | JUAN + ALEXIS | MERCEDES 5020JKD",
+  "start": "2026-10-07T09:30:00.0000000",
+  "end": "2026-10-07T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "C/ CORMORANES, 6-8; 28320 PINTO",
+  "summary": "INDICACIÓN DE ANTONIO PARA MERINO E INSTALADORES: COMPROBAR BIEN LA PREINSTALACIÓN Y ASEGURARSE DE QUE ESTA BIEN\r\n\r\nPEDIDO: 261427\r\nCOMERCIAL: ANTONIO",
+  "categories": [
+   "ACOPLAMIENTO"
+  ],
+  "createdDateTime": "2026-09-22T14:03:21.939Z",
+  "lastModifiedDateTime": "2026-10-06T08:10:02.150Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFF9hh_gAA",
+  "subject": "SAT - | JEFFERSON | KANGOO 4339HYP",
+  "start": "2026-10-07T09:30:00.0000000",
+  "end": "2026-10-07T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "09:30H ASI 802 (LEGANES) – EQUIPO 2X1 NO ARRANCA, YA TUVO UNA ASISTENCIA ESTE VERANO Y SE LE CAMBIARON LOS CABLES DE CONEXIÓN QUE ESTABAN MAL.\r\n\r\n12:30 261438 (MADRID) – INSTALACION BOMBA DE CONDENSADOS MITSUBISHI\r\n\r\n16:00H 261462 (GETAFE) – MANTENIMIENTO",
+  "categories": [
+   "AVISOS"
+  ],
+  "createdDateTime": "2026-09-28T09:30:59.804Z",
+  "lastModifiedDateTime": "2026-10-06T09:07:57.936Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGatGlAAA",
+  "subject": "NINTEC | CONTINUACIÓN OBRA 10 DÍAS | DAIKIN - TXF35F + RZA200D + FCAG71B (X3) + DAIKIN - ACAS100B + RECUPERADOR.- MODELO RCE-1600 | NINTEC ELECTRONICS,S.L | RAFA + DIEGO",
+  "start": "2026-10-07T09:30:00.0000000",
+  "end": "2026-10-07T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "AV/DEMOCRACIA,7-412 28031 MADRID",
+  "summary": "PEDIDO: 260822\r\n\r\nCOMERCIAL: FRAN\r\n06/10 - HACER CONDUCTO CON BIFLEX PARA ABRIR REJILLAS\r\n\r\n\r\n3 cajas de Biflex de 125 y 2 cajas de 100+ rejillas + paneles",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-09-30T10:58:24.521Z",
+  "lastModifiedDateTime": "2026-10-06T08:33:38.751Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFHSO0nwAA",
+  "subject": "11 APARTAMENTOS | PARKING PINTO PARK-IN, APARCAMIENTOS ROBOTIZADOS  | FEDERICO PIAZZA | AHMED + CRISTIAN | TRAFIC 0825NLL",
+  "start": "2026-10-07T09:30:00.0000000",
+  "end": "2026-10-07T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": " 17/9: SE QUEDARÁ A FALTA DE MANDAR CONDUCTERO PARA EMBOQUILLAR TODAS LAS REJILLAS Y CUANDO NOS AVISEN MONTAR REJILLAS, TERMOSTATOS, P. MARCHA Y ENTREGA DE DOC",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR",
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-10-05T13:43:07.930Z",
+  "lastModifiedDateTime": "2026-10-06T07:59:44.748Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFHSO2nwAA",
+  "subject": "CONTINUACIÓN AT SUELO RADIANTE | EHVZ08S23E6V + EKHVCONV4 | CEIM SOLUCIONES INTEGRALES | KIKE | CUSTOM 7077HZD",
+  "start": "2026-10-07T09:30:00.0000000",
+  "end": "2026-10-07T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "AV. BADAJOZ 14, 6B, 28027 MADRID",
+  "summary": "EL SUELO RADIANTE YA ESTA INSTALADO. LA UD EXTERIOR YA ESTA COLGADA. FALTA UNIDAD INTERIOR, CONEXIONES, CIRCUITO SECUNDARIO, DELTA DORE Y PUESTA EN MARCHA",
+  "categories": [
+   "AEROTERMIA"
+  ],
+  "createdDateTime": "2026-10-05T14:20:29.364Z",
+  "lastModifiedDateTime": "2026-10-05T14:31:14.204Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFHSPtcAAA",
+  "subject": "SAT - VITIÑO???? PTE CONFIRMAR OBRA EDDY A MEDIODÍA",
+  "start": "2026-10-07T09:30:00.0000000",
+  "end": "2026-10-07T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "SAT"
+  ],
+  "createdDateTime": "2026-10-06T08:06:15.252Z",
+  "lastModifiedDateTime": "2026-10-06T08:06:22.923Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFF9h3nQAA",
+  "subject": "ASI 769 | INCIDENCIA DE FUGA DE AGUA EN BIBLIOTECA COLEGIO SAGRADO CORAZON | ANDRES",
+  "start": "2026-10-07T15:30:00.0000000",
+  "end": "2026-10-07T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "15:30 ASI 769 (MADRID) – FUGA DE AGUA POR UNA BAJANTE DE URALITA POR LA QUE SE CONECTO EL DESAGUE DEL EQUIPO (LOCALIZACION: BIBLIOTECA)",
+  "categories": [
+   "AVISOS"
+  ],
+  "createdDateTime": "2026-09-28T14:35:21.328Z",
+  "lastModifiedDateTime": "2026-10-06T08:07:30.996Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq7uAAA",
+  "subject": "LLEVAR ITV FURGO POLI (8931 JJT) CADUCA EL MARTES 13",
+  "start": "2026-10-08T00:00:00.0000000",
+  "end": "2026-10-09T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T07:57:47.518Z",
+  "lastModifiedDateTime": "2026-09-10T07:59:08.080Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq7xwAA",
+  "subject": "CADUCA ITV FURGO (2494 KPK) ",
+  "start": "2026-10-08T00:00:00.0000000",
+  "end": "2026-10-09T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:05:35.154Z",
+  "lastModifiedDateTime": "2026-10-05T06:45:22.141Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGPdRtAAA",
+  "subject": "AUSENCIA ANDRÉS POR DENTISTA",
+  "start": "2026-10-08T00:00:00.0000000",
+  "end": "2026-10-09T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "INFORMACION GENERAL"
+  ],
+  "createdDateTime": "2026-09-29T06:30:41.733Z",
+  "lastModifiedDateTime": "2026-09-29T06:30:43.121Z"
+ },
+ {
+  "id": "AAkBOQAICN8kzxiiAAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRX8rLgAABA=",
+  "subject": "VACACIONES JOSE ALMACÉN",
+  "start": "2026-10-08T00:00:00.0000000",
+  "end": "2026-10-09T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "VACACIONES"
+  ],
+  "createdDateTime": "2026-09-25T10:43:00.643Z",
+  "lastModifiedDateTime": "2026-09-25T10:43:02.103Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGatGtAAA",
+  "subject": "SAT -",
+  "start": "2026-10-08T09:30:00.0000000",
+  "end": "2026-10-08T15:00:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "09:30H 261405 (MADRID) – COPNFIGURACION DISPOSITIVO MYS AIR\r\n\r\n11:00H",
+  "categories": [
+   "AVISOS"
+  ],
+  "createdDateTime": "2026-09-30T11:52:30.024Z",
+  "lastModifiedDateTime": "2026-10-06T08:40:02.110Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGsIbfQAA",
+  "subject": "ACOPLAMIENTO SIN TECHO | DAIKIN - ADEAS60A + WIFI | JUDIT TORO MALDONADO",
+  "start": "2026-10-08T09:30:00.0000000",
+  "end": "2026-10-08T15:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/NACIONES UNIDAS,14-CHAL,16; 28909 GETAFE",
+  "summary": "PEDIDO: 261444\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "ACOPLAMIENTO"
+  ],
+  "createdDateTime": "2026-10-01T13:31:59.140Z",
+  "lastModifiedDateTime": "2026-10-02T10:02:33.548Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGatGmAAA",
+  "subject": "NINTEC | CONTINUACIÓN OBRA 10 DÍAS | DAIKIN - TXF35F + RZA200D + FCAG71B (X3) + DAIKIN - ACAS100B + RECUPERADOR.- MODELO RCE-1600 | NINTEC ELECTRONICS,S.L | conductor + DIEGO",
+  "start": "2026-10-08T09:30:00.0000000",
+  "end": "2026-10-08T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "AV/DEMOCRACIA,7-412 28031 MADRID",
+  "summary": "PEDIDO: 260822\r\n\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-09-30T10:58:54.580Z",
+  "lastModifiedDateTime": "2026-10-06T08:23:19.000Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGatGvgAA",
+  "subject": "ACOPLAMIENTO CON TECHO FIJO CLICK | DAIKIN - ADEAS71A + KIT WIFI | CARLOS FORNELL ARIAS",
+  "start": "2026-10-08T09:30:00.0000000",
+  "end": "2026-10-08T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "AV/DE LA UNION EUROPEA,25,3-A, 28939 ARROYOMOLINOS",
+  "summary": "COMERCIAL: FRAN\r\nPEDIDO: 261443",
+  "categories": [
+   "ACOPLAMIENTO"
+  ],
+  "createdDateTime": "2026-09-30T12:04:05.248Z",
+  "lastModifiedDateTime": "2026-09-30T12:09:13.010Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_XCwAA",
+  "subject": "OBRA DE CONDUCTOS + AEROTERMIA | DAIKIN - GAVV823EV | CASPANI S.L. | RAFA",
+  "start": "2026-10-08T09:30:00.0000000",
+  "end": "2026-10-08T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "MAESTRO GUERRERO 2 3-A MADRID (MADRID)",
+  "summary": " 02/10 - HAREMOS LA PARTE DE CONDUCTO, LINEAS Y COLGAR EQUIPOS, CONDUCTO DE IMP Y DE RET., LINEAS Y CABLEADO DE EQUIPO DE CONDUCTOS Y DE AEROTERMIA",
+  "categories": [
+   "INSTALACIONES TERMINADAS Y ENTREGADAS",
+   "(P)",
+   "AEROTERMIA"
+  ],
+  "createdDateTime": "2026-10-02T11:18:50.415Z",
+  "lastModifiedDateTime": "2026-10-06T08:26:09.324Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFHSOuvwAA",
+  "subject": "CONT AMPLIACION SUELO RADIANTE y EQUIPO DE CONDUCTOS | JOSE JUAN OLIVARES",
+  "start": "2026-10-08T09:30:00.0000000",
+  "end": "2026-10-08T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/PRADO DEL REY,101-38 (28223 POZUELO DE ALARCON)",
+  "summary": "24/9 - ALEXIS INDICA QUE EL SALON ES EN ALTURA Y PARA PONER LAS REJILLAS DE RETORNO HAY QUE MONTAR 3 CUERPOS DE ANDAMIO",
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-10-05T08:59:21.416Z",
+  "lastModifiedDateTime": "2026-10-05T09:01:22.420Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFF9h3jwAA",
+  "subject": "ASI 769 |  SUSTITUCION DE CASSETTE EN AULA",
+  "start": "2026-10-08T15:00:00.0000000",
+  "end": "2026-10-08T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "AVISOS"
+  ],
+  "createdDateTime": "2026-09-28T14:21:50.363Z",
+  "lastModifiedDateTime": "2026-09-29T09:44:52.152Z"
+ },
+ {
+  "id": "AAkBOQAICN8lmEMLwAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABJWkeBgAABA=",
+  "subject": "VACACIONES RAÚL COMERCIAL",
+  "start": "2026-10-09T00:00:00.0000000",
+  "end": "2026-10-10T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "VACACIONES"
+  ],
+  "createdDateTime": "2026-03-17T15:39:45.925Z",
+  "lastModifiedDateTime": "2026-09-30T15:48:50.518Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFHSOwwQAA",
+  "subject": "SPLIT 1X1 | MITSUBISHI - MSZ-HR35VF | JONATAN QUEJIDO DOMINGUEZ",
+  "start": "2026-10-09T09:30:00.0000000",
+  "end": "2026-10-09T15:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/HERNAN CORTES,9,3-3; 28004 MADRID",
+  "summary": "PEDIDO: 261461\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "SPLIT"
+  ],
+  "createdDateTime": "2026-10-05T09:37:45.115Z",
+  "lastModifiedDateTime": "2026-10-05T09:39:46.900Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu912gAA",
+  "subject": "RESERVADO SLIT EN CEIM",
+  "start": "2026-10-09T09:30:00.0000000",
+  "end": "2026-10-09T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": null,
+  "categories": [],
+  "createdDateTime": "2026-10-02T06:44:06.989Z",
+  "lastModifiedDateTime": "2026-10-02T06:44:07.862Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_XDgAA",
+  "subject": "OBRA DE CONDUCTOS + AEROTERMIA | DAIKIN - GAVV823EV | CASPANI S.L. | JUAN + ALEXIS | TRAFIC 0824NLL",
+  "start": "2026-10-09T09:30:00.0000000",
+  "end": "2026-10-09T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "MAESTRO GUERRERO 2 3-A MADRID (MADRID)",
+  "summary": " 02/10 - HAREMOS LA PARTE DE CONDUCTO, LINEAS Y COLGAR EQUIPOS",
+  "categories": [
+   "INSTALACIONES TERMINADAS Y ENTREGADAS",
+   "(P)",
+   "AEROTERMIA"
+  ],
+  "createdDateTime": "2026-10-02T11:19:02.598Z",
+  "lastModifiedDateTime": "2026-10-02T11:21:03.985Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFHSOm6gAA",
+  "subject": "SPLIT 1X1 CON ROZA Y EMPRESA DESCUELGUE | DAIKIN - TXM35A | JUAN ECHEVARRIA BUADES",
+  "start": "2026-10-09T09:30:00.0000000",
+  "end": "2026-10-09T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/JORGE JUAN,86,6-D; 28009 MADRID",
+  "summary": "PEDIDO: 261459\r\nCOMERCIAL: RAUL C.\r\n\r\n\r\nCONFIRMADA ASISTENCIA DE LA EMPRESA DE DESCUELGUE A LAS 11 – 11:30 APROX",
+  "categories": [
+   "SPLIT"
+  ],
+  "createdDateTime": "2026-10-05T08:26:22.924Z",
+  "lastModifiedDateTime": "2026-10-05T10:26:25.112Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFHSOuwgAA",
+  "subject": "CONT AMPLIACION SUELO RADIANTE y EQUIPO DE CONDUCTOS | JOSE JUAN OLIVARES",
+  "start": "2026-10-09T09:30:00.0000000",
+  "end": "2026-10-09T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/PRADO DEL REY,101-38 (28223 POZUELO DE ALARCON)",
+  "summary": "24/9 - ALEXIS INDICA QUE EL SALON ES EN ALTURA Y PARA PONER LAS REJILLAS DE RETORNO HAY QUE MONTAR 3 CUERPOS DE ANDAMIO",
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-10-05T08:59:39.729Z",
+  "lastModifiedDateTime": "2026-10-05T09:01:40.041Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFHSO2rQAA",
+  "subject": "SAT - ",
+  "start": "2026-10-09T09:30:00.0000000",
+  "end": "2026-10-09T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "09:30H ASI 818 (FUENLABRADA) – SALTA EL DIFERENCIAL DE LA CASA AUNQ EL AIRE ESTE APAGADO, SOLO LE HA PASADO CUANDO LE HEMOS INSTALADO EL AIRE",
+  "categories": [
+   "AVISOS"
+  ],
+  "createdDateTime": "2026-10-05T14:44:56.861Z",
+  "lastModifiedDateTime": "2026-10-06T09:09:51.957Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGatGwgAA",
+  "subject": "SAT ANDRES - MANTENIMIENTOS",
+  "start": "2026-10-10T08:30:00.0000000",
+  "end": "2026-10-10T15:00:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "09:00H 261327 (PINTO) – MANTENIMIENTO CONDUCTOS MARIA CONSOLACION GALAN",
+  "categories": [
+   "AVISOS"
+  ],
+  "createdDateTime": "2026-09-30T12:05:16.654Z",
+  "lastModifiedDateTime": "2026-09-30T12:07:19.487Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAEV_ZZlwAA",
+  "subject": "FESTIVO",
+  "start": "2026-10-12T09:30:00.0000000",
+  "end": "2026-10-12T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "HORAS DE LIBRE DISPOSICIÓN"
+  ],
+  "createdDateTime": "2025-12-10T18:01:50.381Z",
+  "lastModifiedDateTime": "2025-12-10T18:10:05.569Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFFfysugAA",
+  "subject": "VACACIONES JOSE ALMACÉN",
+  "start": "2026-10-13T00:00:00.0000000",
+  "end": "2026-10-14T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "VACACIONES"
+  ],
+  "createdDateTime": "2026-09-25T10:43:51.248Z",
+  "lastModifiedDateTime": "2026-09-25T10:43:51.662Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFHSO2tAAA",
+  "subject": "FURGO POLI (8931 JJT) CADUCA ITV ",
+  "start": "2026-10-13T00:00:00.0000000",
+  "end": "2026-10-14T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-10-05T14:55:36.763Z",
+  "lastModifiedDateTime": "2026-10-05T14:55:37.769Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFFJRoqAAA",
+  "subject": "SAT",
+  "start": "2026-10-13T09:30:00.0000000",
+  "end": "2026-10-13T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "09:30H – ASI 637 (MADRID) POSIBLE FUGA PASCAL SANZ BOURDA\r\n\r\n\r\n\r\n\r\n\r\n\r\n16:00 261442 (MADRID) SUSTITUCION PLACA EXT. ALBERTO CUENCA",
+  "categories": [
+   "AVISOS"
+  ],
+  "createdDateTime": "2026-09-22T15:59:30.919Z",
+  "lastModifiedDateTime": "2026-10-05T07:48:40.116Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFFfy2lQAA",
+  "subject": "MULTISPLIT 2X1 | DAIKIN - 2MXF50A + CTXF25F (X2) | DESIDERIO MATIAS MARTIN ",
+  "start": "2026-10-13T09:30:00.0000000",
+  "end": "2026-10-13T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/PANAMA,5; 28341 VALDEMORO",
+  "summary": "PEDIDO: 261429\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "SPLIT"
+  ],
+  "createdDateTime": "2026-09-25T14:02:37.166Z",
+  "lastModifiedDateTime": "2026-09-25T14:04:39.823Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFF9h3uAAA",
+  "subject": "OBRA 72H| FANCOIL CONDUCTOS + SPLIT FANCOIL | DAIKIN - FWP10CTV + FWT04HTVD | MANUEL JIMENEZ VENEGAS",
+  "start": "2026-10-13T09:30:00.0000000",
+  "end": "2026-10-13T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/ESTEATITA,22; 28905 GETAFE",
+  "summary": "PEDIDO: 261430\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "AEROTERMIA"
+  ],
+  "createdDateTime": "2026-09-28T14:49:58.533Z",
+  "lastModifiedDateTime": "2026-09-28T14:52:00.026Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_XGgAA",
+  "subject": "TERMINACIONES OBRA | FBA50 (X2) + RZASG50 (X2) + FBA35 (X3) + RZASG35B (X3) | MARIA LORENZO | RAFA",
+  "start": "2026-10-13T09:30:00.0000000",
+  "end": "2026-10-13T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "PADRE DAMIAN,41 2ºA 28036 MADRID",
+  "summary": "HOY SE HARÁ: COQUILLA INTERIORES, ALARGAR ALIMENTACION EXTERIOR, CONEXIONES DE TERMOSTATOS E INTERCONEXIONES DE INTERIORES\r\nQUEDARÁ PENDIENTE DE: 30 REJILLAS A INSTALAR POR PLADURISTAS DE OBRA Y EMBOQUILLAR A CONDUCTOS POR RAFA , POSTERIORMENTE QUEDARÁ CO",
+  "categories": [
+   "INSTALACION SIN TERMINAR"
+  ],
+  "createdDateTime": "2026-10-02T11:27:14.251Z",
+  "lastModifiedDateTime": "2026-10-02T11:29:14.560Z"
+ },
+ {
+  "id": "AAkBOQAICN8ovOyywAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRmrRpAAABA=",
+  "subject": "100MONTADITOS VILLAVERDE (HORARIO DE 6:00 A 16:30H) | 2 CASSETTE + RECUPERADOR Y SUBCONTRATA DE TRABAJOS DE CAMPANA | JUAN + ANDRES + ALEXIS | MERCEDES 0715JGW + MERCEDES 5020JKD",
+  "start": "2026-10-13T09:30:00.0000000",
+  "end": "2026-10-13T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "AUTORIZADOS A ACCEDER: Kike, Juan, Vitiño, Alexis, Andres, Rafa y Cristian",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-09-30T10:55:06.031Z",
+  "lastModifiedDateTime": "2026-09-30T10:57:06.417Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAE_qqj2wAA",
+  "subject": "PRINCESA - ENTREPLANTA TÉCNICA -  DESMONTAJE UNIDAD AA Y ASPIRADORES ESTÁTICOS",
+  "start": "2026-10-14T09:30:00.0000000",
+  "end": "2026-10-14T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "PRINCESA 25, MADRID 28008",
+  "summary": "COMERCIAL: POLI",
+  "categories": [
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-08-14T06:46:29.239Z",
+  "lastModifiedDateTime": "2026-08-14T06:48:30.355Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFF9h7pwAA",
+  "subject": "CONTINUACION OBRA 72H| FANCOIL CONDUCTOS + SPLIT FANCOIL | DAIKIN - FWP10CTV + FWT04HTVD | MANUEL JIMENEZ VENEGAS",
+  "start": "2026-10-14T09:30:00.0000000",
+  "end": "2026-10-14T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/ESTEATITA,22; 28905 GETAFE",
+  "summary": "PEDIDO: 261430\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "AEROTERMIA"
+  ],
+  "createdDateTime": "2026-09-28T14:50:43.420Z",
+  "lastModifiedDateTime": "2026-09-28T14:52:44.998Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_XHwAA",
+  "subject": "TERMINACIONES OBRA | FBA50 (X2) + RZASG50 (X2) + FBA35 (X3) + RZASG35B (X3) | MARIA LORENZO | RAFA",
+  "start": "2026-10-14T09:30:00.0000000",
+  "end": "2026-10-14T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "PADRE DAMIAN,41 2ºA 28036 MADRID",
+  "summary": "HOY SE HARÁ: COQUILLA INTERIORES, ALARGAR ALIMENTACION EXTERIOR, CONEXIONES DE TERMOSTATOS E INTERCONEXIONES DE INTERIORES\r\nQUEDARÁ PENDIENTE DE: 30 REJILLAS A INSTALAR POR PLADURISTAS DE OBRA Y EMBOQUILLAR A CONDUCTOS POR RAFA , POSTERIORMENTE QUEDARÁ CO",
+  "categories": [
+   "INSTALACION SIN TERMINAR"
+  ],
+  "createdDateTime": "2026-10-02T11:27:42.305Z",
+  "lastModifiedDateTime": "2026-10-02T11:29:43.094Z"
+ },
+ {
+  "id": "AAkBOQAICN8phhccgAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRmrRpAAABA=",
+  "subject": "100MONTADITOS VILLAVERDE (HORARIO DE 6:00 A 16:30H) | 2 CASSETTE + RECUPERADOR Y SUBCONTRATA DE TRABAJOS DE CAMPANA | JUAN + ANDRES + ALEXIS | MERCEDES 0715JGW + MERCEDES 5020JKD",
+  "start": "2026-10-14T09:30:00.0000000",
+  "end": "2026-10-14T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "AUTORIZADOS A ACCEDER: Kike, Juan, Vitiño, Alexis, Andres, Rafa y Cristian",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-09-30T10:55:06.031Z",
+  "lastModifiedDateTime": "2026-09-30T10:57:06.417Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAE_qqj4wAA",
+  "subject": "PRINCESA - ENTREPLANTA TÉCNICA -  DESMONTAJE UNIDAD AA Y ASPIRADORES ESTÁTICOS",
+  "start": "2026-10-15T09:30:00.0000000",
+  "end": "2026-10-15T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "PRINCESA 25, MADRID 28008",
+  "summary": "COMERCIAL: POLI",
+  "categories": [
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-08-14T06:47:41.817Z",
+  "lastModifiedDateTime": "2026-08-14T06:49:43.587Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFF9h7qwAA",
+  "subject": "CONTINUACION OBRA 72H| FANCOIL CONDUCTOS + SPLIT FANCOIL | DAIKIN - FWP10CTV + FWT04HTVD | MANUEL JIMENEZ VENEGAS",
+  "start": "2026-10-15T09:30:00.0000000",
+  "end": "2026-10-15T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/ESTEATITA,22; 28905 GETAFE",
+  "summary": "PEDIDO: 261430\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "AEROTERMIA"
+  ],
+  "createdDateTime": "2026-09-28T14:50:45.673Z",
+  "lastModifiedDateTime": "2026-09-28T14:52:47.175Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGatOogAA",
+  "subject": "OBRA 48H | DAIKIN - BASG71A | OSCAR BRAVO",
+  "start": "2026-10-15T09:30:00.0000000",
+  "end": "2026-10-15T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/PEDRO SALINAS,10,4-C; 28320 PINTO",
+  "summary": "PEDIDO: 261447\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-09-30T14:49:04.090Z",
+  "lastModifiedDateTime": "2026-09-30T14:51:06.286Z"
+ },
+ {
+  "id": "AAkBOQAICN8qT0GGQAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRmrRpAAABA=",
+  "subject": "100MONTADITOS VILLAVERDE (HORARIO DE 6:00 A 16:30H) | 2 CASSETTE + RECUPERADOR Y SUBCONTRATA DE TRABAJOS DE CAMPANA | JUAN + ANDRES + ALEXIS | MERCEDES 0715JGW + MERCEDES 5020JKD",
+  "start": "2026-10-15T09:30:00.0000000",
+  "end": "2026-10-15T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "AUTORIZADOS A ACCEDER: Kike, Juan, Vitiño, Alexis, Andres, Rafa y Cristian",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-09-30T10:55:06.031Z",
+  "lastModifiedDateTime": "2026-09-30T10:57:06.417Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDs-OpAAA",
+  "subject": "AUSENCIA ALEXIS A PRIMERA HORA POR ANÁLISIS",
+  "start": "2026-10-16T00:00:00.0000000",
+  "end": "2026-10-17T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "INFORMACION GENERAL"
+  ],
+  "createdDateTime": "2026-09-17T06:11:27.116Z",
+  "lastModifiedDateTime": "2026-09-17T06:11:29.496Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFHSPxMQAA",
+  "subject": null,
+  "start": "2026-10-16T09:30:00.0000000",
+  "end": "2026-10-16T10:00:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "16:00 261464 (MADRID) – MANTENIMIENTO CONDUCTOS CARLOS FERNANDEZ",
+  "categories": [],
+  "createdDateTime": "2026-10-06T09:12:30.987Z",
+  "lastModifiedDateTime": "2026-10-06T09:14:32.089Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAE_qqj5QAA",
+  "subject": "PRINCESA - ENTREPLANTA TÉCNICA -  DESMONTAJE UNIDAD AA Y ASPIRADORES ESTÁTICOS",
+  "start": "2026-10-16T09:30:00.0000000",
+  "end": "2026-10-16T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "PRINCESA 25, MADRID 28008",
+  "summary": "COMERCIAL: POLI",
+  "categories": [
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-08-14T06:47:42.638Z",
+  "lastModifiedDateTime": "2026-08-14T06:49:43.908Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGatOpgAA",
+  "subject": "CONTINUACIÓN OBRA 48H | DAIKIN - BASG71A | OSCAR BRAVO",
+  "start": "2026-10-16T09:30:00.0000000",
+  "end": "2026-10-16T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/PEDRO SALINAS,10,4-C; 28320 PINTO",
+  "summary": "PEDIDO: 261447\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-09-30T14:49:19.066Z",
+  "lastModifiedDateTime": "2026-09-30T14:51:21.220Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGsIjfgAA",
+  "subject": "TRABAJOS DE PINTURA JULIO LOPEZ 261450",
+  "start": "2026-10-16T09:30:00.0000000",
+  "end": "2026-10-16T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/SAN JENARO,1-PL,C-1-J; 28021 MADRID",
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-10-01T14:52:03.723Z",
+  "lastModifiedDateTime": "2026-10-01T15:13:54.543Z"
+ },
+ {
+  "id": "AAkBOQAICN8rGGvwAAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRmrRpAAABA=",
+  "subject": "100MONTADITOS VILLAVERDE (HORARIO DE 6:00 A 16:30H) | 2 CASSETTE + RECUPERADOR Y SUBCONTRATA DE TRABAJOS DE CAMPANA | JUAN + ANDRES + ALEXIS | MERCEDES 0715JGW + MERCEDES 5020JKD",
+  "start": "2026-10-16T09:30:00.0000000",
+  "end": "2026-10-16T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "AUTORIZADOS A ACCEDER: Kike, Juan, Vitiño, Alexis, Andres, Rafa y Cristian",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-09-30T10:55:06.031Z",
+  "lastModifiedDateTime": "2026-09-30T10:57:06.417Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq70wAA",
+  "subject": "LLEVAR ITV 7077 HZD (CADUCA EL 23/10)",
+  "start": "2026-10-19T00:00:00.0000000",
+  "end": "2026-10-20T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:09:54.606Z",
+  "lastModifiedDateTime": "2026-09-10T08:09:55.856Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAE_qqj9gAA",
+  "subject": "PRINCESA - ENTREPLANTA TECNICA - MONTAJE VÁLVULAS Y ASPIRADORES ESTÁTICOS STUDOR",
+  "start": "2026-10-19T09:30:00.0000000",
+  "end": "2026-10-19T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "PRINCESA 25, MADRID 28008",
+  "summary": "COMERCIAL: POLI",
+  "categories": [
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-08-14T06:49:59.862Z",
+  "lastModifiedDateTime": "2026-08-14T06:52:00.309Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_g_gAA",
+  "subject": "OBRA 48H | MITSUBISHI - MGPEZ-71VJA(R32) + KIT WIFI + PREINSTALACIÓN DE AIRZONE | JAVIER GARRIDO MARTIN",
+  "start": "2026-10-19T09:30:00.0000000",
+  "end": "2026-10-19T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/GUARDA CUIDADOSA,2-PT N,3-A; 28906 GETAFE",
+  "summary": "PEDIDO: 261454\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-10-02T13:29:46.295Z",
+  "lastModifiedDateTime": "2026-10-02T13:31:48.160Z"
+ },
+ {
+  "id": "AAkBOQAICN8tc_stQAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRmrRpAAABA=",
+  "subject": "100MONTADITOS VILLAVERDE (HORARIO DE 6:00 A 16:30H) | 2 CASSETTE + RECUPERADOR Y SUBCONTRATA DE TRABAJOS DE CAMPANA | JUAN + ANDRES + ALEXIS | MERCEDES 0715JGW + MERCEDES 5020JKD",
+  "start": "2026-10-19T09:30:00.0000000",
+  "end": "2026-10-19T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "AUTORIZADOS A ACCEDER: Kike, Juan, Vitiño, Alexis, Andres, Rafa y Cristian",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-09-30T10:55:06.031Z",
+  "lastModifiedDateTime": "2026-09-30T10:57:06.417Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq71QAA",
+  "subject": "LLEVAR ITV 7077 HZD (CADUCA EL 23/10)",
+  "start": "2026-10-20T00:00:00.0000000",
+  "end": "2026-10-21T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:09:55.572Z",
+  "lastModifiedDateTime": "2026-09-10T08:09:56.947Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAE_qqj_AAA",
+  "subject": "PRINCESA - ENTREPLANTA TECNICA - MONTAJE VÁLVULAS Y ASPIRADORES ESTÁTICOS STUDOR",
+  "start": "2026-10-20T09:30:00.0000000",
+  "end": "2026-10-20T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "PRINCESA 25, MADRID 28008",
+  "summary": "COMERCIAL: POLI",
+  "categories": [
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-08-14T06:50:37.335Z",
+  "lastModifiedDateTime": "2026-08-14T06:52:37.786Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGas0zAAA",
+  "subject": "SAT - ",
+  "start": "2026-10-20T09:30:00.0000000",
+  "end": "2026-10-20T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "09:30H 261265 (GETAFE) – MANTENIMIENTO PENDIENTE SOLO DEL EQUIPO EXT. YA QUE NO SE PUDO REVISR EN SU FECHA",
+  "categories": [
+   "AVISOS"
+  ],
+  "createdDateTime": "2026-09-30T07:58:56.218Z",
+  "lastModifiedDateTime": "2026-09-30T08:04:48.221Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_g-gAA",
+  "subject": "CONTINUACIÓN  OBRA 48H | MITSUBISHI - MGPEZ-71VJA(R32) + KIT WIFI + PREINSTALACIÓN DE AIRZONE | JAVIER GARRIDO MARTIN",
+  "start": "2026-10-20T09:30:00.0000000",
+  "end": "2026-10-20T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/GUARDA CUIDADOSA,2-PT N,3-A; 28906 GETAFE",
+  "summary": "PEDIDO: 261454\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-10-02T13:29:48.869Z",
+  "lastModifiedDateTime": "2026-10-02T13:31:51.362Z"
+ },
+ {
+  "id": "AAkBOQAICN8uPRWXAAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRmrRpAAABA=",
+  "subject": "100MONTADITOS VILLAVERDE (HORARIO DE 6:00 A 16:30H) | 2 CASSETTE + RECUPERADOR Y SUBCONTRATA DE TRABAJOS DE CAMPANA | JUAN + ANDRES + ALEXIS | MERCEDES 0715JGW + MERCEDES 5020JKD",
+  "start": "2026-10-20T09:30:00.0000000",
+  "end": "2026-10-20T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "AUTORIZADOS A ACCEDER: Kike, Juan, Vitiño, Alexis, Andres, Rafa y Cristian",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-09-30T10:55:06.031Z",
+  "lastModifiedDateTime": "2026-09-30T10:57:06.417Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq71wAA",
+  "subject": "LLEVAR ITV 7077 HZD (CADUCA EL 23/10)",
+  "start": "2026-10-21T00:00:00.0000000",
+  "end": "2026-10-22T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:10:21.754Z",
+  "lastModifiedDateTime": "2026-09-10T08:10:22.756Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAE_qqj_gAA",
+  "subject": "PRINCESA - ENTREPLANTA TECNICA - MONTAJE VÁLVULAS Y ASPIRADORES ESTÁTICOS STUDOR",
+  "start": "2026-10-21T09:30:00.0000000",
+  "end": "2026-10-21T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "PRINCESA 25, MADRID 28008",
+  "summary": "COMERCIAL: POLI",
+  "categories": [
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-08-14T06:50:38.346Z",
+  "lastModifiedDateTime": "2026-08-14T06:52:38.822Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_hFAAA",
+  "subject": "OBRA 72H | DAIKIN - ADEAS125A + KIT WIFI | JUAN CARLOS GOMEZ SASTRE",
+  "start": "2026-10-21T09:30:00.0000000",
+  "end": "2026-10-21T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/HORNO,9; 45114 MAZARAMBROZ",
+  "summary": "PEDIDO: 261455\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-10-02T14:06:50.758Z",
+  "lastModifiedDateTime": "2026-10-02T14:08:51.975Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_m1gAA",
+  "subject": "OBRA 2 DIAS Y MEDIO | DAIKIN - BASG100A | ALEJANDRO GONZALEZ DE SAN EUSTAQUIO",
+  "start": "2026-10-21T09:30:00.0000000",
+  "end": "2026-10-21T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/ANTONIO DE LEYVA,52,A-4-A; 28019 MADRID",
+  "summary": "PEDIDO: 261457\r\nCOMERCIAL: RAUL C",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-10-02T15:20:36.954Z",
+  "lastModifiedDateTime": "2026-10-02T15:22:38.624Z"
+ },
+ {
+  "id": "AAkBOQAICN8vBkAAwAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRmrRpAAABA=",
+  "subject": "100MONTADITOS VILLAVERDE (HORARIO DE 6:00 A 16:30H) | 2 CASSETTE + RECUPERADOR Y SUBCONTRATA DE TRABAJOS DE CAMPANA | JUAN + ANDRES + ALEXIS | MERCEDES 0715JGW + MERCEDES 5020JKD",
+  "start": "2026-10-21T09:30:00.0000000",
+  "end": "2026-10-21T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "AUTORIZADOS A ACCEDER: Kike, Juan, Vitiño, Alexis, Andres, Rafa y Cristian",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-09-30T10:55:06.031Z",
+  "lastModifiedDateTime": "2026-09-30T10:57:06.417Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq72QAA",
+  "subject": "LLEVAR ITV 7077 HZD (CADUCA EL 23/10)",
+  "start": "2026-10-22T00:00:00.0000000",
+  "end": "2026-10-23T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:10:22.713Z",
+  "lastModifiedDateTime": "2026-09-10T08:10:23.682Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAE_qqj-AAA",
+  "subject": "PRINCESA - ENTREPLANTA TECNICA - MONTAJE VÁLVULAS Y ASPIRADORES ESTÁTICOS STUDOR",
+  "start": "2026-10-22T09:30:00.0000000",
+  "end": "2026-10-22T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "PRINCESA 25, MADRID 28008",
+  "summary": "COMERCIAL: POLI",
+  "categories": [
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-08-14T06:50:39.444Z",
+  "lastModifiedDateTime": "2026-08-14T06:52:40.992Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_hGAAA",
+  "subject": "CONTINUACION OBRA 72H | DAIKIN - ADEAS125A + KIT WIFI | JUAN CARLOS GOMEZ SASTRE",
+  "start": "2026-10-22T09:30:00.0000000",
+  "end": "2026-10-22T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/HORNO,9; 45114 MAZARAMBROZ",
+  "summary": "PEDIDO: 261455\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-10-02T14:07:06.011Z",
+  "lastModifiedDateTime": "2026-10-02T14:09:07.155Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_m3QAA",
+  "subject": "CONTINUACION OBRA 2 DIAS Y MEDIO | DAIKIN - BASG100A | ALEJANDRO GONZALEZ DE SAN EUSTAQUIO",
+  "start": "2026-10-22T09:30:00.0000000",
+  "end": "2026-10-22T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/ANTONIO DE LEYVA,52,A-4-A; 28019 MADRID",
+  "summary": "PEDIDO: 261457\r\nCOMERCIAL: RAUL C",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-10-02T15:20:54.417Z",
+  "lastModifiedDateTime": "2026-10-02T15:22:57.266Z"
+ },
+ {
+  "id": "AAkBOQAICN8vz2pqgAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRmrRpAAABA=",
+  "subject": "100MONTADITOS VILLAVERDE (HORARIO DE 6:00 A 16:30H) | 2 CASSETTE + RECUPERADOR Y SUBCONTRATA DE TRABAJOS DE CAMPANA | JUAN + ANDRES + ALEXIS | MERCEDES 0715JGW + MERCEDES 5020JKD",
+  "start": "2026-10-22T09:30:00.0000000",
+  "end": "2026-10-22T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "AUTORIZADOS A ACCEDER: Kike, Juan, Vitiño, Alexis, Andres, Rafa y Cristian",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-09-30T10:55:06.031Z",
+  "lastModifiedDateTime": "2026-09-30T10:57:06.417Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq7vAAA",
+  "subject": "LLEVAR ITV FURGO POLI (8931 JJT) CADUCA EL JUEVES 29",
+  "start": "2026-10-23T00:00:00.0000000",
+  "end": "2026-10-24T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:00:10.891Z",
+  "lastModifiedDateTime": "2026-10-02T10:32:35.864Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq72wAA",
+  "subject": "CADUCA ITV 7077 HZD ",
+  "start": "2026-10-23T00:00:00.0000000",
+  "end": "2026-10-24T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:11:52.991Z",
+  "lastModifiedDateTime": "2026-09-10T08:11:54.032Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq75AAA",
+  "subject": "LLEVAR ITV FURGO FRAN (7916 JJK) CADUCA EL 28/10",
+  "start": "2026-10-23T00:00:00.0000000",
+  "end": "2026-10-24T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:15:05.034Z",
+  "lastModifiedDateTime": "2026-09-10T08:15:06.395Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_m4wAA",
+  "subject": "CONTINUACION OBRA 2 DIAS Y MEDIO | DAIKIN - BASG100A | ALEJANDRO GONZALEZ DE SAN EUSTAQUIO",
+  "start": "2026-10-23T09:30:00.0000000",
+  "end": "2026-10-23T14:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/ANTONIO DE LEYVA,52,A-4-A; 28019 MADRID",
+  "summary": "PEDIDO: 261457\r\nCOMERCIAL: RAUL C",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-10-02T15:21:16.825Z",
+  "lastModifiedDateTime": "2026-10-02T15:24:26.970Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAE_qqlfAAA",
+  "subject": "PRINCESA - ENTREPLANTA TECNICA - MONTAJE VÁLVULAS Y ASPIRADORES ESTÁTICOS STUDOR",
+  "start": "2026-10-23T09:30:00.0000000",
+  "end": "2026-10-23T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "PRINCESA 25, MADRID 28008",
+  "summary": "COMERCIAL: POLI",
+  "categories": [
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-08-14T06:50:40.551Z",
+  "lastModifiedDateTime": "2026-08-14T06:52:42.033Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFGu_hIQAA",
+  "subject": "CONTINUACION OBRA 72H | DAIKIN - ADEAS125A + KIT WIFI | JUAN CARLOS GOMEZ SASTRE",
+  "start": "2026-10-23T09:30:00.0000000",
+  "end": "2026-10-23T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/HORNO,9; 45114 MAZARAMBROZ",
+  "summary": "PEDIDO: 261455\r\nCOMERCIAL: FRAN",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-10-02T14:08:23.373Z",
+  "lastModifiedDateTime": "2026-10-02T14:10:25.013Z"
+ },
+ {
+  "id": "AAkBOQAICN8wmJTUQAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRmrRpAAABA=",
+  "subject": "100MONTADITOS VILLAVERDE (HORARIO DE 6:00 A 16:30H) | 2 CASSETTE + RECUPERADOR Y SUBCONTRATA DE TRABAJOS DE CAMPANA | JUAN + ANDRES + ALEXIS | MERCEDES 0715JGW + MERCEDES 5020JKD",
+  "start": "2026-10-23T09:30:00.0000000",
+  "end": "2026-10-23T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "AUTORIZADOS A ACCEDER: Kike, Juan, Vitiño, Alexis, Andres, Rafa y Cristian",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-09-30T10:55:06.031Z",
+  "lastModifiedDateTime": "2026-09-30T10:57:06.417Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq7yQAA",
+  "subject": "LLEVAR ITV 2662 KPL (CADUCA EL 31/10)",
+  "start": "2026-10-26T00:00:00.0000000",
+  "end": "2026-10-27T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:06:44.364Z",
+  "lastModifiedDateTime": "2026-09-10T08:06:45.032Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq74QAA",
+  "subject": "LLEVAR ITV FURGO FRAN (7916 JJK) CADUCA EL 28/10",
+  "start": "2026-10-26T00:00:00.0000000",
+  "end": "2026-10-27T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:14:21.809Z",
+  "lastModifiedDateTime": "2026-09-10T08:14:22.748Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFHSPzJQAA",
+  "subject": "SPLIT 1X1 | MITSUBISHI - MSZ-HR35VF | ALBERTO SANTACRUZ MARIN",
+  "start": "2026-10-26T09:30:00.0000000",
+  "end": "2026-10-26T15:30:00.0000000",
+  "isAllDay": false,
+  "location": "AV/JORGE OTEIZA,2-B,1-B; TORREJÓN DE ARDOZ",
+  "summary": "PEDIDO: 261468\r\nCOMERCIAL: RAUL C.",
+  "categories": [
+   "SPLIT"
+  ],
+  "createdDateTime": "2026-10-06T10:25:37.790Z",
+  "lastModifiedDateTime": "2026-10-06T10:27:40.031Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFF9h9lwAA",
+  "subject": "MULTIMAX POR CONDUCTOS Y RADIADORES | 5XXM68A + FBA71 + CHVX07S23A4V | ALFONSO ROMAN *** SI LLEGA ANTES, ADELANTAR ***",
+  "start": "2026-10-26T09:30:00.0000000",
+  "end": "2026-10-26T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/TORREMOLINOS,46-BAJO B; ARROYOMOLINOS",
+  "summary": "PEDIDO: 261434\r\nCOMERCIAL: ANTONIO",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-09-28T15:29:38.152Z",
+  "lastModifiedDateTime": "2026-09-28T15:31:41.934Z"
+ },
+ {
+  "id": "AAkBOQAICN8y9BQRgAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRmrRpAAABA=",
+  "subject": "100MONTADITOS VILLAVERDE (HORARIO DE 6:00 A 16:30H) | 2 CASSETTE + RECUPERADOR Y SUBCONTRATA DE TRABAJOS DE CAMPANA | JUAN + ANDRES + ALEXIS | MERCEDES 0715JGW + MERCEDES 5020JKD",
+  "start": "2026-10-26T09:30:00.0000000",
+  "end": "2026-10-26T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "AUTORIZADOS A ACCEDER: Kike, Juan, Vitiño, Alexis, Andres, Rafa y Cristian",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-09-30T10:55:06.031Z",
+  "lastModifiedDateTime": "2026-09-30T10:57:06.417Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq7ywAA",
+  "subject": "LLEVAR ITV 2662 KPL (CADUCA EL 31/10)",
+  "start": "2026-10-27T00:00:00.0000000",
+  "end": "2026-10-28T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:07:47.151Z",
+  "lastModifiedDateTime": "2026-09-10T08:07:48.985Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq74wAA",
+  "subject": "LLEVAR ITV FURGO FRAN (7916 JJK) CADUCA EL 28/10",
+  "start": "2026-10-27T00:00:00.0000000",
+  "end": "2026-10-28T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:15:04.042Z",
+  "lastModifiedDateTime": "2026-09-10T08:15:05.314Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFF9h9nQAA",
+  "subject": "CONTINUACION MULTIMAX POR CONDUCTOS Y RADIADORES | 5XXM68A + FBA71 + CHVX07S23A4V | ALFONSO ROMAN *** SI LLEGA ANTES, ADELANTAR ***",
+  "start": "2026-10-27T09:30:00.0000000",
+  "end": "2026-10-27T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/TORREMOLINOS,46-BAJO B; ARROYOMOLINOS",
+  "summary": "PEDIDO: 261434\r\nCOMERCIAL: ANTONIO",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-09-28T15:30:04.562Z",
+  "lastModifiedDateTime": "2026-09-28T15:32:05.543Z"
+ },
+ {
+  "id": "AAkBOQAICN8zvT57QAAuAAAAAB2EAxGqZhHNm8gAqgAvxFoNADUDUY_o6QdLu5P5xbfyww4ABRmrRpAAABA=",
+  "subject": "100MONTADITOS VILLAVERDE (HORARIO DE 6:00 A 16:30H) | 2 CASSETTE + RECUPERADOR Y SUBCONTRATA DE TRABAJOS DE CAMPANA | JUAN + ANDRES + ALEXIS | MERCEDES 0715JGW + MERCEDES 5020JKD",
+  "start": "2026-10-27T09:30:00.0000000",
+  "end": "2026-10-27T18:30:00.0000000",
+  "isAllDay": false,
+  "location": null,
+  "summary": "AUTORIZADOS A ACCEDER: Kike, Juan, Vitiño, Alexis, Andres, Rafa y Cristian",
+  "categories": [
+   "INSTALACION SIN TERMINAR",
+   "MAYOR"
+  ],
+  "createdDateTime": "2026-09-30T10:55:06.031Z",
+  "lastModifiedDateTime": "2026-09-30T10:57:06.417Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq7zQAA",
+  "subject": "LLEVAR ITV 2662 KPL (CADUCA EL 31/10)",
+  "start": "2026-10-28T00:00:00.0000000",
+  "end": "2026-10-29T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:08:13.115Z",
+  "lastModifiedDateTime": "2026-09-10T08:08:13.787Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq73wAA",
+  "subject": "CADUCA ITV 7916 JJK (FRAN)",
+  "start": "2026-10-28T00:00:00.0000000",
+  "end": "2026-10-29T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:13:06.824Z",
+  "lastModifiedDateTime": "2026-09-10T08:13:07.575Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFF9h9oAAA",
+  "subject": "CONTINUACION MULTIMAX POR CONDUCTOS Y RADIADORES | 5XXM68A + FBA71 + CHVX07S23A4V | ALFONSO ROMAN *** SI LLEGA ANTES, ADELANTAR ***",
+  "start": "2026-10-28T09:30:00.0000000",
+  "end": "2026-10-28T18:30:00.0000000",
+  "isAllDay": false,
+  "location": "CL/TORREMOLINOS,46-BAJO B; ARROYOMOLINOS",
+  "summary": "PEDIDO: 261434\r\nCOMERCIAL: ANTONIO",
+  "categories": [
+   "MONTAJES"
+  ],
+  "createdDateTime": "2026-09-28T15:30:05.855Z",
+  "lastModifiedDateTime": "2026-09-28T15:32:07.561Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq7tgAA",
+  "subject": "CADUCA ITV FURGO POLI (8931 JJT)",
+  "start": "2026-10-29T00:00:00.0000000",
+  "end": "2026-10-30T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T07:57:18.224Z",
+  "lastModifiedDateTime": "2026-10-02T10:32:51.123Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq7zwAA",
+  "subject": "LLEVAR ITV 2662 KPL (CADUCA EL 31/10)",
+  "start": "2026-10-29T00:00:00.0000000",
+  "end": "2026-10-30T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:08:14.018Z",
+  "lastModifiedDateTime": "2026-09-10T08:08:14.937Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAEzgai_gAA",
+  "subject": "VACACIONES ALEXIS",
+  "start": "2026-10-30T00:00:00.0000000",
+  "end": "2026-10-31T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "VACACIONES"
+  ],
+  "createdDateTime": "2026-06-08T11:28:48.256Z",
+  "lastModifiedDateTime": "2026-06-08T11:28:48.637Z"
+ },
+ {
+  "id": "AAkALgAAAAAAHYQDEapmEc2byACqAC-EWg0ANQNRj6jpB0u7k-nFt-LDDgAAFDKq70QAA",
+  "subject": "LLEVAR ITV 2662 KPL (CADUCA EL 31/10)",
+  "start": "2026-10-30T00:00:00.0000000",
+  "end": "2026-10-31T00:00:00.0000000",
+  "isAllDay": true,
+  "location": null,
+  "summary": null,
+  "categories": [
+   "OTROS"
+  ],
+  "createdDateTime": "2026-09-10T08:08:41.721Z",
+  "lastModifiedDateTime": "2026-09-10T08:08:42.892Z"
+ }
+]
