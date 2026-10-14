@@ -192,6 +192,17 @@ a.loc:hover { text-decoration: underline; }
 .b-ausencia { background: var(--abs-bg); border-color: var(--abs-line); color: var(--abs); }
 .b-completo { background: var(--info-bg); border-color: var(--info-line); color: var(--info); }
 .confl { margin: 0; padding: 8px 10px 8px 26px; background: var(--bad-bg); border-radius: 8px; font-size: 13px; color: var(--ink); }
+.fields { display: grid; gap: 6px; }
+.fields .slot-l { margin: 4px 0 0; }
+.fields input, .fields textarea { width: 100%; min-height: 40px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: 15px/1.4 var(--font-body); }
+.fields textarea { resize: vertical; min-height: 64px; overflow: hidden; }
+.fields input:focus, .fields textarea:focus { outline: 2px solid var(--focus); outline-offset: 0; border-color: var(--focus); }
+.f-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px; }
+.f-state { font-size: 12px; color: var(--muted); min-height: 1em; }
+.f-sug { font-size: 13px; }
+.meta { display: grid; gap: 4px; font-size: 14px; }
+.meta .k, .dc-k { font: 700 12px/1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.meta .note { white-space: pre-wrap; overflow-wrap: anywhere; }
 .hints { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 8px 10px; background: var(--info-bg); border-radius: 8px; font-size: 13px; }
 .acts { display: flex; flex-wrap: wrap; gap: 6px; }
 .here { flex-basis: 100%; min-height: 46px; font-weight: 700; }
@@ -275,6 +286,10 @@ body.idle .tv-ctrl { opacity: 0; } body.idle[data-view="tv"] { cursor: none; }
 .dc-loc { font-size: clamp(16px, 1.25vw, 22px); color: var(--tv-muted); font-weight: 600; overflow-wrap: anywhere; }
 .dc-none { font-size: clamp(16px, 1.3vw, 22px); color: #ffcf7a; font-weight: 700; }
 .dense .dc { padding-block: 10px; gap: 6px; } .dense .dc-title { -webkit-line-clamp: 2; line-clamp: 2; }
+.dc-meta { display: grid; gap: 4px; padding-top: 8px; border-top: 1px solid rgba(255, 255, 255, .12); font: 500 clamp(15px, 1.1vw, 20px)/1.35 var(--font-body); color: var(--tv-muted); }
+.dc-meta .dc-k { color: var(--tv-muted); opacity: .8; font-size: clamp(12px, .85vw, 16px); }
+.dc-notes { white-space: pre-line; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.dense .dc-notes { -webkit-line-clamp: 2; line-clamp: 2; }
 .tv-foot { font-size: 13px; color: var(--tv-muted); text-align: right; }
 .tv-empty { font-size: 28px; color: var(--tv-muted); border: 1px dashed rgba(255, 255, 255, .2); border-radius: 14px; padding: 40px; text-align: center; grid-column: 1 / -1; }
 
@@ -298,6 +313,7 @@ body.idle .tv-ctrl { opacity: 0; } body.idle[data-view="tv"] { cursor: none; }
   .kv { grid-template-columns: minmax(0, 1fr); gap: 0; }
   .chip { min-height: 38px; }
   .chip .x { width: 30px; height: 30px; }
+  .fields input, .fields textarea { font-size: 16px; }
 }
 @media (max-width: 460px) { .brand-name { display: none; } }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
@@ -469,7 +485,7 @@ function computeDay() {
   }
   const jobs = {};
   for (const e of events) {
-    const p = plans[e.id] || { techs: [], vans: [], completed: false };
+    const p = plans[e.id] || { techs: [], vans: [], completed: false, notes: '', comercial: '' };
     const conflicts = [];
     for (const [type, k] of [['tech', 'techs'], ['van', 'vans']]) for (const i of p[k]) {
       const w = conflictsFor(type, i, e.id, events, plans).map((o) => o.id);
@@ -504,7 +520,7 @@ const van = (id) => S.res.vans.find((v) => v.id === id);
 const prof = (id) => S.res.profiles.find((p) => p.id === id);
 const vtype = (id) => S.res.vanTypes.find((p) => p.id === id);
 const ev = (id) => S.day.events.find((e) => e.id === id);
-const planOf = (id) => S.plans[id] || { techs: [], vans: [], completed: false };
+const planOf = (id) => S.plans[id] || { techs: [], vans: [], completed: false, notes: '', comercial: '' };
 const editable = () => S.canWrite && !!S.db && S.resLoaded;
 const vanLabel = (v) => `${String(v.model).toUpperCase()} ${v.plate}`;
 const timeLabel = (e) => e.allDay ? (e.multiDay ? 'Todo el día · varios días' : 'Todo el día') : `${e.cutStart ? '← ' : ''}${hhmm(e.start)} – ${hhmm(e.end)}${e.cutEnd ? ' →' : ''}`;
@@ -637,23 +653,26 @@ function watchPlans() {
     for (const d of snap.docs) {
       const x = d.data() || {};
       const id = x.eventId || d.id;
-      plans[id] = { techs: (x.techs || []).map(Number), vans: (x.vans || []).map(Number), completed: !!x.completed };
+      plans[id] = { techs: (x.techs || []).map(Number), vans: (x.vans || []).map(Number), completed: !!x.completed,
+        notes: typeof x.notes === 'string' ? x.notes : '', comercial: typeof x.comercial === 'string' ? x.comercial : '' };
       docs[id] = { key: d.id, title: x.title || '', start: x.start || '', end: x.end || '' };
     }
     S.plans = plans; S.planDocs = docs;
-    computeDay(); render();
+    computeDay(); renderSoon();
   }, (err) => { toast('No se pudo leer la planificación guardada (' + err.code + ').', 'bad'); });
 }
-async function savePlan(eventId, plan) {
+async function savePlan(eventId, plan, { quiet = false } = {}) {
   const e = ev(eventId);
   const ref = S.db.doc(`days/${S.date}/jobs/${keyOf(eventId)}`);
   const prev = S.plans[eventId];
-  const empty = !plan.techs.length && !plan.vans.length && !plan.completed;
+  plan = { ...plan, notes: String(plan.notes || '').slice(0, 1000), comercial: String(plan.comercial || '').trim().slice(0, 60) };
+  const empty = !plan.techs.length && !plan.vans.length && !plan.completed && !plan.notes.trim() && !plan.comercial;
   if (empty) delete S.plans[eventId]; else S.plans[eventId] = plan;
-  computeDay(); render();
+  // Al guardar un campo de texto no se redibuja: así no se pierde el foco al pasar al siguiente campo.
+  computeDay(); if (!quiet) render();
   try {
     if (empty) await ref.delete();
-    else await ref.set({ eventId, techs: plan.techs, vans: plan.vans, completed: !!plan.completed,
+    else await ref.set({ eventId, techs: plan.techs, vans: plan.vans, completed: !!plan.completed, notes: plan.notes, comercial: plan.comercial,
       title: e?.title || S.planDocs[eventId]?.title || '', start: e?.start || '', end: e?.end || '', updatedAt: Date.now() });
     return true;
   } catch (err) {
@@ -825,10 +844,22 @@ function render() {
   document.querySelectorAll('[data-go]').forEach((b) => b.setAttribute('aria-current', b.dataset.go === S.view ? 'page' : 'false'));
   renderSync(); renderNotices();
   if (!S.calc) computeDay();
-  if (S.view === 'board') { renderPanel(); renderJobs(); renderSelbar(); }
+  if (S.view === 'board') {
+    // Mientras se escribe en Observaciones o Comercial no se rehacen las tarjetas (se perdería el foco);
+    // se actualizan en cuanto se sale del campo.
+    if (editingField()) { pendingBoard = true; renderPanel(); renderSelbar(); }
+    else { pendingBoard = false; renderPanel(); renderJobs(); renderSelbar(); }
+  }
   else if (S.view === 'tv') renderTv();
   else renderSettings();
 }
+// Redibujo diferido: deja terminar un cambio de foco (de un campo a otro) antes de redibujar.
+let renderT = null, pendingBoard = false;
+const editingField = () => { const a = document.activeElement; return !!(a && a.matches && a.matches('.fields input, .fields textarea')); };
+document.addEventListener('focusout', (e) => {
+  if (e.target.matches && e.target.matches('.fields input, .fields textarea')) setTimeout(() => { if (pendingBoard && !editingField()) render(); }, 60);
+});
+function renderSoon() { clearTimeout(renderT); renderT = setTimeout(render, 30); }
 function renderSync() {
   const d = S.day;
   $('#sync-dot').className = 'dot' + (d.loading ? ' busy' : d.error ? ' err' : '');
@@ -876,7 +907,61 @@ function renderSelbar() {
     h('span', { class: 'small muted' }, 'Pulsa «Asignar aquí» en un trabajo.'),
     h('button', { class: 'btn', type: 'button', onclick: () => { S.selected = null; render(); } }, 'Cancelar'));
 }
+// Observaciones y comercial (planificación interna)
+const comercialFromCal = (e) => { const m = /COMERCIAL\s*:\s*([^\r\n|]+)/i.exec(e.preview || ''); return m ? m[1].trim().replace(/\s+/g, ' ').slice(0, 60) : ''; };
+function autosize(el) { if (el && el.tagName === 'TEXTAREA') { el.style.setProperty('height', 'auto'); el.style.setProperty('height', Math.max(64, el.scrollHeight + 2) + 'px'); } }
+const saveTimers = {};
+function queueFieldSave(eventId, field, value, stateEl, now) {
+  const k = eventId + ':' + field;
+  clearTimeout(saveTimers[k]?.t);
+  const run = async () => {
+    delete saveTimers[k];
+    const p = planOf(eventId);
+    const v = field === 'comercial' ? value.trim() : value;
+    if ((p[field] || '') === v) return;
+    if (stateEl) stateEl.textContent = 'Guardando…';
+    const ok = await savePlan(eventId, { ...p, [field]: v }, { quiet: true });
+    const st = document.getElementById('fs-' + keyOf(eventId));
+    if (st) st.textContent = ok ? 'Guardado' : 'No guardado';
+  };
+  if (now) run(); else { if (stateEl) stateEl.textContent = 'Escribiendo…'; saveTimers[k] = { t: setTimeout(run, 900), run }; }
+}
+function flushSaves() { for (const x of Object.values(saveTimers)) { clearTimeout(x.t); x.run(); } }
+function fieldsBlock(e) {
+  const p = planOf(e.id); const k = keyOf(e.id);
+  if (!editable()) {
+    if (!p.comercial && !p.notes.trim()) return null;
+    return h('div', { class: 'meta' },
+      p.comercial ? h('div', {}, h('span', { class: 'k' }, 'Comercial'), p.comercial) : null,
+      p.notes.trim() ? h('div', { class: 'note' }, h('span', { class: 'k' }, 'Observaciones'), p.notes) : null);
+  }
+  const state = h('span', { class: 'f-state', id: 'fs-' + k, 'aria-live': 'polite' });
+  const cal = comercialFromCal(e);
+  const com = h('input', { type: 'text', id: 'cm-' + k, value: p.comercial, maxlength: '60', list: 'dl-comerciales', autocomplete: 'off', placeholder: 'Nombre del comercial',
+    oninput: (x) => queueFieldSave(e.id, 'comercial', x.target.value, state), onblur: (x) => queueFieldSave(e.id, 'comercial', x.target.value, state, true) });
+  const obs = h('textarea', { id: 'ob-' + k, rows: '2', maxlength: '1000', placeholder: 'Notas internas: acceso, material, aviso al cliente…',
+    oninput: (x) => { autosize(x.target); queueFieldSave(e.id, 'notes', x.target.value, state); }, onblur: (x) => queueFieldSave(e.id, 'notes', x.target.value, state, true) });
+  obs.value = p.notes;
+  requestAnimationFrame(() => autosize(obs));
+  return h('div', { class: 'slot fields' },
+    h('div', { class: 'f-row' }, h('label', { class: 'slot-l', for: 'cm-' + k }, 'Comercial'),
+      !p.comercial && cal ? h('button', { class: 'btn btn-small f-sug', type: 'button', onclick: () => queueFieldSave(e.id, 'comercial', cal, state, true) }, `Usar «${cal}» del calendario`) : null),
+    com,
+    h('div', { class: 'f-row' }, h('label', { class: 'slot-l', for: 'ob-' + k }, 'Observaciones'), state),
+    obs);
+}
+function updateComercialList() {
+  let dl = document.getElementById('dl-comerciales');
+  if (!dl) { dl = h('datalist', { id: 'dl-comerciales' }); document.body.append(dl); }
+  const names = new Set();
+  Object.values(S.plans).forEach((p) => p.comercial && names.add(p.comercial));
+  S.day.events.forEach((e) => { const c = comercialFromCal(e); if (c) names.add(c); });
+  fill(dl, [...names].sort((a, b) => a.localeCompare(b, 'es')).map((n) => h('option', { value: n })));
+}
+S.openNotes = {};
+
 function renderJobs() {
+  updateComercialList();
   const evs = S.day.events; const s = S.calc.sum;
   const pill = (n, label, cls) => h('span', { class: `pill ${cls || ''}${n ? '' : ' zero'}` }, h('b', {}, String(n)), ' ' + label);
   const pending = editable() ? evs.filter((e) => hintsFor(e).new).length : 0;
@@ -907,6 +992,7 @@ function jobCard(e, compact) {
   const sel = S.selected;
   const selFree = sel && !planOf(e.id)[sel.type === 'tech' ? 'techs' : 'vans'].includes(sel.id);
   const planned = j.techs.length || j.vans.length;
+  const hasMeta = !!(planOf(e.id).comercial || planOf(e.id).notes.trim());
   const showSlots = !compact || planned;
   return h('article', { class: `job s-${main}${j.completed ? ' done' : ''}${compact && !planned ? ' compact' : ''}`, dataset: { dropEvent: e.id }, 'aria-label': `${shortTime(e)} ${e.title}` },
     h('div', { class: 'job-head' }, h('div', { class: 'time' }, timeLabel(e)), h('div', { class: 'badges' }, (compact && !planned ? [] : j.status).map(badge),
@@ -917,6 +1003,7 @@ function jobCard(e, compact) {
       h('div', { class: 'chips' }, team.length ? team : h('span', { class: 'drop-hint' }, editable() ? 'Arrastra técnicos aquí' : 'Sin técnicos'))) : null,
     showSlots ? h('div', { class: 'slot' }, h('div', { class: 'slot-l' }, 'Furgoneta'),
       h('div', { class: 'chips' }, vans.length ? vans : h('span', { class: 'drop-hint' }, editable() ? 'Arrastra una furgoneta aquí' : 'Sin furgoneta'))) : null,
+    (!compact || planned || hasMeta || S.openNotes[e.id]) ? fieldsBlock(e) : null,
     j.conflicts.length ? h('ul', { class: 'confl' }, j.conflicts.map((c) => {
       const n = c.type === 'tech' ? tech(c.id)?.name : van(c.id) && vanLabel(van(c.id));
       return h('li', {}, `${n} también está en: ` + c.with.map((id) => { const o = ev(id); return `«${o?.title}» (${o ? shortTime(o) : ''})`; }).join(', '));
@@ -929,6 +1016,7 @@ function jobCard(e, compact) {
         `Asignar ${sel.type === 'tech' ? tech(sel.id)?.name : vanLabel(van(sel.id))} aquí`) : null,
       editable() ? h('button', { class: 'btn', type: 'button', onclick: () => openPicker(e.id) }, 'Asignar…') : null,
       h('button', { class: 'btn', type: 'button', onclick: () => openDetail(e.id) }, 'Detalles'),
+      editable() && compact && !planned && !hasMeta && !S.openNotes[e.id] ? h('button', { class: 'btn', type: 'button', onclick: () => { S.openNotes[e.id] = true; render(); document.getElementById('ob-' + keyOf(e.id))?.focus(); } }, 'Añadir nota') : null,
       editable() && !(compact && !planned) ? h('button', { class: 'btn ' + (j.completed ? 'btn-ok' : ''), type: 'button', 'aria-pressed': String(j.completed), onclick: () => toggleDone(e.id) }, j.completed ? '✓ Grupo completo' : 'Marcar completo') : null));
 }
 
@@ -954,6 +1042,8 @@ async function openDetail(id) {
       row('Ubicación', e.location ? h('a', { href: mapsUrl(e.location), target: '_blank', rel: 'noopener noreferrer' }, e.location) : null),
       row('Equipo', j.techs.length ? h('div', { class: 'chips' }, j.techs.map((i) => tech(i) && techChip(tech(i), { from: '-' }))) : 'Sin asignar'),
       row('Furgoneta', j.vans.length ? h('div', { class: 'chips' }, j.vans.map((i) => van(i) && vanChip(van(i), { from: '-' }))) : 'Sin furgoneta'),
+      row('Comercial', planOf(id).comercial || null),
+      row('Observaciones', planOf(id).notes.trim() ? h('span', { class: 'meta' }, h('span', { class: 'note' }, planOf(id).notes)) : null),
       row('Categorías', e.categories.length ? e.categories.join(', ') : null)),
     h('h3', {}, 'Descripción'), desc,
     h('p', { class: 'small muted' }, 'Datos leídos del calendario de info@ en modo solo lectura. Para cambiar el evento, edítalo en Outlook.'),
@@ -1010,7 +1100,7 @@ function renderTv() {
   fill($('#tv-sum'), h('span', {}, `${s.total} trabajos`), s.un ? h('span', { class: 'un' }, `${s.un} sin asignar`) : null,
     s.nd ? h('span', { class: 'nd' }, `${s.nd} sin conductor`) : null, s.cf ? h('span', { class: 'cf' }, `${s.cf} con conflicto`) : null);
   const err = $('#tv-err'); err.hidden = !S.day.error; err.textContent = S.day.error ? S.day.error.message : '';
-  const notes = evs.filter((e) => e.allDay && !S.calc.jobs[e.id].techs.length && !S.calc.jobs[e.id].vans.length);
+  const notes = evs.filter((e) => e.allDay && !S.calc.jobs[e.id].techs.length && !S.calc.jobs[e.id].vans.length && !planOf(e.id).comercial && !planOf(e.id).notes.trim());
   const cards = evs.filter((e) => !notes.includes(e));
   fill($('#tv-notes'), notes.map((e) => h('span', {}, e.title))); $('#tv-notes').hidden = !notes.length;
   $('#v-tv').classList.toggle('dense', cards.length > 8);
@@ -1021,9 +1111,17 @@ function renderTv() {
       h('h3', { class: 'dc-title' }, e.title), e.location ? h('div', { class: 'dc-loc' }, '📍 ' + e.location) : null,
       h('div', { class: 'chips' }, j.techs.length ? j.techs.map((i) => tech(i) && techChip(tech(i), { from: '-', big: true })) : h('span', { class: 'dc-none' }, 'Sin técnicos'),
         j.vans.map((i) => van(i) && vanChip(van(i), { from: '-', big: true }))),
-      h('div', { class: 'badges' }, j.status.filter((x) => x !== 'asignado').map(badge)));
+      h('div', { class: 'badges' }, j.status.filter((x) => x !== 'asignado').map(badge)),
+      tvMeta(planOf(e.id)));
   }) : h('div', { class: 'tv-empty' }, S.day.loading ? 'Leyendo el calendario…' : 'No hay trabajos para este día'));
   tick();
+}
+function tvMeta(p) {
+  const com = p.comercial, obs = p.notes.trim();
+  if (!com && !obs) return null;
+  return h('div', { class: 'dc-meta' },
+    com ? h('div', {}, h('span', { class: 'dc-k' }, 'Comercial'), com) : null,
+    obs ? h('div', { class: 'dc-notes' }, h('span', { class: 'dc-k' }, 'Obs.'), obs) : null);
 }
 function tick() { $('#tv-clock').textContent = dfClock.format(new Date()); }
 setInterval(tick, 1000);
@@ -1170,6 +1268,7 @@ function renderSettings() {
 const VIEWS = { '': 'board', tablero: 'board', pantalla: 'tv', ajustes: 'settings' };
 const HASH = { board: '', tv: 'pantalla', settings: 'ajustes' };
 function go(view) {
+  flushSaves();
   S.view = view; S.selected = null;
   try { history.replaceState(null, '', HASH[view] ? '#' + HASH[view] : location.pathname + location.search); } catch {}
   if (view === 'tv') wakeLock();
@@ -1177,7 +1276,7 @@ function go(view) {
 }
 let lock = null;
 async function wakeLock() { try { lock = await navigator.wakeLock?.request('screen'); } catch { lock = null; } }
-function setDate(d) { if (!d || d === S.date) return; S.date = d; S.selected = null; S.day = { events: [], syncedAt: null, error: null, loading: true }; computeDay(); watchPlans(); render(); loadDay(); }
+function setDate(d) { if (!d || d === S.date) return; flushSaves(); S.date = d; S.selected = null; S.day = { events: [], syncedAt: null, error: null, loading: true }; computeDay(); watchPlans(); render(); loadDay(); }
 document.querySelectorAll('[data-go]').forEach((b) => b.addEventListener('click', () => go(b.dataset.go)));
 $('#prev').addEventListener('click', () => setDate(addDays(S.date, -1)));
 $('#next').addEventListener('click', () => setDate(addDays(S.date, 1)));
@@ -1193,7 +1292,7 @@ $('#fs').addEventListener('click', () => {
 let idleT;
 document.addEventListener('pointermove', () => { document.body.classList.remove('idle'); clearTimeout(idleT); idleT = setTimeout(() => document.body.classList.add('idle'), 4000); });
 addEventListener('hashchange', () => { const v = VIEWS[location.hash.slice(1)]; if (v && v !== S.view) go(v); });
-document.addEventListener('visibilitychange', () => { if (!document.hidden) { loadDay(); if (S.view === 'tv') wakeLock(); } });
+document.addEventListener('visibilitychange', () => { if (document.hidden) flushSaves(); if (!document.hidden) { loadDay(); if (S.view === 'tv') wakeLock(); } });
 setInterval(() => {
   // A medianoche, si se estaba viendo "hoy", pasa al nuevo día.
   const t = todayStr();
@@ -1220,7 +1319,7 @@ computeDay(); render();
         S.res = { profiles: x.profiles || [], techs: (x.techs || []).map((t) => ({ ...t, id: Number(t.id) })), vanTypes: x.vanTypes || [], vans: (x.vans || []).map((v) => ({ ...v, id: Number(v.id) })) };
         S.resLoaded = true;
       }
-      computeDay(); render();
+      computeDay(); renderSoon();
     }, () => {});
     watchPlans();
   }
