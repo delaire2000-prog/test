@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b3d6b">
+  <title>Planificación · Delaire 2000</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/app.css">
+  <script type="module" src="/js/app.js"></script>
+</head>
+<body data-view="board">
+  <header class="topbar">
+    <div class="brand"><span class="logo" aria-hidden="true">D2</span><span class="brand-text">Delaire 2000 <small>Planificación</small></span></div>
+    <nav class="datenav" aria-label="Día">
+      <button id="btn-prev" class="btn btn-icon" type="button" aria-label="Día anterior" title="Día anterior (Alt+←)">‹</button>
+      <button id="date-label" class="date-label" type="button" title="Elegir fecha"></button>
+      <input id="date-input" type="date" class="visually-hidden" aria-label="Elegir fecha">
+      <button id="btn-next" class="btn btn-icon" type="button" aria-label="Día siguiente" title="Día siguiente (Alt+→)">›</button>
+      <button id="btn-today" class="btn" type="button">Hoy</button>
+    </nav>
+    <div class="sync-wrap">
+      <span id="sync" class="sync" aria-live="polite"></span>
+      <button id="btn-refresh" class="btn btn-icon" type="button" aria-label="Actualizar ahora" title="Actualizar ahora">⟳</button>
+    </div>
+    <nav class="views" aria-label="Vistas">
+      <button class="btn editor-only" type="button" data-nav="board">Tablero</button>
+      <button class="btn" type="button" data-nav="display">Pantalla</button>
+      <button class="btn editor-only" type="button" data-nav="settings">Ajustes</button>
+      <button id="btn-logout" class="btn btn-ghost" type="button">Salir</button>
+    </nav>
+  </header>
+
+  <div id="banner"></div>
+
+  <main id="board" class="board">
+    <aside id="resources" class="resources" data-drop-remove aria-label="Técnicos y furgonetas">
+      <div class="sheet-handle"><button id="btn-sheet" class="btn btn-primary" type="button">Técnicos y furgonetas</button></div>
+      <div id="resources-body" class="resources-body"></div>
+      <div class="remove-zone" aria-hidden="true">Suelta aquí para quitar del trabajo</div>
+    </aside>
+    <section id="jobs" class="jobs" data-scroll-root aria-label="Trabajos del día"></section>
+  </main>
+
+  <main id="display" class="display">
+    <div class="display-head">
+      <div>
+        <div id="display-date" class="display-date"></div>
+        <div id="display-summary" class="display-summary"></div>
+      </div>
+      <div class="display-right">
+        <div id="display-clock" class="display-clock"></div>
+        <div id="display-sync" class="display-sync"></div>
+        <div class="display-ctrl">
+          <button id="btn-fullscreen" class="btn" type="button">Pantalla completa</button>
+          <button id="btn-exit-display" class="btn editor-only" type="button">Volver al tablero</button>
+        </div>
+      </div>
+    </div>
+    <div id="display-notes" class="display-notes" hidden></div>
+    <div id="display-grid" class="display-grid"></div>
+    <div class="display-foot">Planificación interna · no modifica el calendario</div>
+  </main>
+
+  <main id="settings" class="settings"></main>
+
+  <div id="selection-bar" class="selection-bar" hidden></div>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <dialog id="dlg-detail" class="dlg"></dialog>
+  <dialog id="dlg-picker" class="dlg"></dialog>
+  <dialog id="dlg-confirm" class="dlg dlg-small"></dialog>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "delaire2000-planificacion",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Planificación diaria de técnicos y furgonetas de Delaire 2000 a partir del calendario (solo lectura).",
+  "type": "module",
+  "engines": { "node": ">=22.9" },
+  "scripts": {
+    "start": "node --disable-warning=ExperimentalWarning --env-file-if-exists=.env server/index.js",
+    "dev": "node --disable-warning=ExperimentalWarning --env-file-if-exists=.env --watch server/index.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
