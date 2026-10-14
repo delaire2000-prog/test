@@ -1,0 +1,1231 @@
+<title>Planificación Delaire 2000</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&display=swap">
+<style>
+/* Layout: tablero de taller — panel de fichas a la izquierda, tarjetas de trabajo en rejilla; vista TV oscura a pantalla completa. */
+:root {
+  --bg: #edf1f5; --surface: #ffffff; --surface-2: #f4f6f9; --line: #d3dbe4; --ink: #14202c; --muted: #586979;
+  --brand: #133b5f; --brand-ink: #ffffff; --accent: #1f6fb2; --accent-ink: #ffffff; --focus: #4d9be0;
+  --ok: #1b7a3a; --ok-bg: #e2f3e7; --ok-line: #b3dcbf;
+  --warn: #8f5300; --warn-bg: #fff0d4; --warn-line: #efcd8c;
+  --bad: #b02a20; --bad-bg: #fde3e0; --bad-line: #f0b7b1;
+  --info: #1d5c9e; --info-bg: #e1edfa; --info-line: #b5d0ef;
+  --mute-bg: #e9edf1; --mute-line: #cdd5dd;
+  --abs: #6a2a8c; --abs-bg: #f2e6f7; --abs-line: #d9bde6;
+  --chip-line: rgba(20, 35, 60, .45); --shadow: 0 1px 2px rgba(16, 30, 50, .06), 0 2px 6px rgba(16, 30, 50, .06);
+  --tv-bg: #0c1824; --tv-card: #15283a; --tv-ink: #eef4f9; --tv-muted: #a9bccd; --tv-time: #9fd0ff;
+  --font-body: "Barlow", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Barlow Condensed", "Arial Narrow", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0e151c; --surface: #16202b; --surface-2: #1c2834; --line: #2c3a48; --ink: #e5ecf3; --muted: #95a6b7;
+    --brand: #0b2236; --brand-ink: #ffffff; --accent: #5aa6ec; --accent-ink: #08131e; --focus: #7cb9f0;
+    --ok: #6fd18f; --ok-bg: #133222; --ok-line: #24573a;
+    --warn: #f3b955; --warn-bg: #3a2a0d; --warn-line: #6a4c14;
+    --bad: #ff8a80; --bad-bg: #3d1916; --bad-line: #6d2a24;
+    --info: #8cc0f2; --info-bg: #13283f; --info-line: #24476b;
+    --mute-bg: #222e3a; --mute-line: #33424f;
+    --abs: #d7a6ee; --abs-bg: #2e1b38; --abs-line: #503262;
+    --chip-line: rgba(0, 0, 0, .55); --shadow: 0 1px 2px rgba(0, 0, 0, .3);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0e151c; --surface: #16202b; --surface-2: #1c2834; --line: #2c3a48; --ink: #e5ecf3; --muted: #95a6b7;
+  --brand: #0b2236; --brand-ink: #ffffff; --accent: #5aa6ec; --accent-ink: #08131e; --focus: #7cb9f0;
+  --ok: #6fd18f; --ok-bg: #133222; --ok-line: #24573a;
+  --warn: #f3b955; --warn-bg: #3a2a0d; --warn-line: #6a4c14;
+  --bad: #ff8a80; --bad-bg: #3d1916; --bad-line: #6d2a24;
+  --info: #8cc0f2; --info-bg: #13283f; --info-line: #24476b;
+  --mute-bg: #222e3a; --mute-line: #33424f;
+  --abs: #d7a6ee; --abs-bg: #2e1b38; --abs-line: #503262;
+  --chip-line: rgba(0, 0, 0, .55); --shadow: 0 1px 2px rgba(0, 0, 0, .3);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--ink); font: 15px/1.4 var(--font-body); }
+button, input, select { font: inherit; color: inherit; }
+a { color: var(--accent); }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+
+/* Botones */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 40px; padding: 0 14px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; text-decoration: none; white-space: nowrap; font-weight: 500; }
+.btn:hover { background: var(--surface-2); }
+.btn:focus-visible, .chip:focus-visible, .linkish:focus-visible, .tab:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+.btn:disabled { opacity: .5; cursor: default; }
+.btn-primary { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent); filter: brightness(1.08); }
+.btn-danger { background: var(--bad); border-color: var(--bad); color: var(--surface); }
+.btn-ok { background: var(--ok-bg); border-color: var(--ok-line); color: var(--ok); font-weight: 700; }
+.btn-small { min-height: 32px; padding: 0 10px; font-size: 13px; }
+.btn-icon { width: 40px; padding: 0; font-size: 20px; }
+
+/* Cabecera */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--brand); color: var(--brand-ink); }
+.top-in { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; padding-block: 10px; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.mark { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 9px; background: var(--brand-ink); color: var(--brand); font: 800 18px/1 var(--font-display); letter-spacing: .02em; }
+.brand-name { font: 700 19px/1.05 var(--font-display); letter-spacing: .02em; text-transform: uppercase; }
+.brand-name small { display: block; font: 500 12px/1.2 var(--font-body); text-transform: none; letter-spacing: 0; opacity: .8; }
+.datenav { display: flex; align-items: center; gap: 6px; }
+.top .btn { background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .25); color: var(--brand-ink); }
+.top .btn:hover { background: rgba(255, 255, 255, .2); }
+.date-btn { min-height: 40px; padding: 0 10px; border: 0; border-radius: 8px; background: transparent; color: var(--brand-ink); cursor: pointer;
+  font: 700 21px/1 var(--font-display); letter-spacing: .01em; position: relative; }
+.date-btn:hover { background: rgba(255, 255, 255, .1); }
+.date-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; }
+.sync { display: flex; align-items: center; gap: 6px; margin-left: auto; font-size: 13px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; background: #6ee08f; flex: none; }
+.dot.err { background: #ff8a80; } .dot.busy { background: #ffd54f; }
+.tabs { display: flex; gap: 4px; background: rgba(255, 255, 255, .1); border-radius: 10px; padding: 3px; }
+.tab { border: 0; background: transparent; color: var(--brand-ink); padding: 0 12px; min-height: 34px; border-radius: 7px; cursor: pointer; font-weight: 600; }
+.tab[aria-current="page"] { background: var(--brand-ink); color: var(--brand); }
+
+/* Avisos */
+.notices { display: grid; gap: 8px; padding-block: 10px 0; }
+.notices:empty { display: none; }
+.notice { padding: 10px 14px; border-radius: 10px; border: 1px solid; display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.notice.bad { background: var(--bad-bg); border-color: var(--bad-line); color: var(--ink); }
+.notice.warn { background: var(--warn-bg); border-color: var(--warn-line); color: var(--ink); }
+.notice.info { background: var(--info-bg); border-color: var(--info-line); color: var(--ink); }
+.notice strong { font-weight: 700; }
+
+/* Vistas */
+.view { display: none; }
+body[data-view="board"] #v-board { display: grid; }
+body[data-view="tv"] #v-tv { display: flex; }
+body[data-view="settings"] #v-settings { display: block; }
+body.ro .ed { display: none !important; }
+
+/* Tablero */
+#v-board { grid-template-columns: 300px minmax(0, 1fr); gap: 16px; padding-block: 16px 40px; align-items: start; }
+.panel { position: sticky; top: 84px; max-height: calc(100dvh - 100px); overflow: auto; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 12px; padding: 12px; box-shadow: var(--shadow); }
+.panel h3 { font: 700 13px/1 var(--font-display); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin: 16px 0 8px; }
+.panel .hint { margin: 0; font-size: 13px; color: var(--muted); }
+.sheet-btn { display: none; }
+.drop-out { display: none; }
+body.dragging .panel .drop-out { display: block; position: sticky; bottom: 0; margin-top: 10px; padding: 14px; text-align: center; border: 2px dashed var(--bad);
+  border-radius: 10px; background: var(--bad-bg); color: var(--bad); font-weight: 700; }
+.panel.over .drop-out { background: var(--bad); color: var(--surface); }
+.legend { margin-top: 14px; font-size: 13px; }
+.legend summary { cursor: pointer; color: var(--muted); }
+.legend ul { list-style: none; margin: 8px 0; padding: 0; display: grid; gap: 4px; }
+.sw { display: inline-block; width: 16px; height: 16px; border-radius: 4px; border: 1px solid var(--chip-line); vertical-align: -3px; margin-right: 6px; }
+.sw.pend { border-style: dashed; }
+
+/* Fichas */
+.chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.chip { position: relative; display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 12px; border-radius: 3px;
+  background: var(--cb); color: var(--cf); border: 1px solid var(--chip-line); font: 700 15px/1 var(--font-display); letter-spacing: .04em;
+  white-space: nowrap; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;
+  clip-path: polygon(9px 0, calc(100% - 9px) 0, 100% 9px, 100% calc(100% - 9px), calc(100% - 9px) 100%, 9px 100%, 0 calc(100% - 9px), 0 9px); }
+.chip[data-drag] { cursor: grab; touch-action: manipulation; }
+.chip.pend { border: 2px dashed #4f5f6f; clip-path: none; border-radius: 8px; }
+.chip.sel { clip-path: none; border-radius: 8px; outline: 3px solid var(--accent); outline-offset: 2px; }
+.chip.off { opacity: .45; }
+.chip.abs { text-decoration: line-through; text-decoration-thickness: 2px; }
+.chip.confl { box-shadow: inset 0 0 0 3px #c62828; }
+.chip .flag { display: inline-grid; place-items: center; width: 17px; height: 17px; border-radius: 50%; background: #14202c; color: #fff; font: 700 11px/1 var(--font-body); }
+.chip .flag.w { background: #c62828; }
+.chip .n { display: inline-grid; place-items: center; min-width: 19px; height: 19px; padding: 0 5px; border-radius: 10px; background: rgba(0, 0, 0, .72); color: #fff; font: 700 11px/1 var(--font-body); }
+.chip .x { display: inline-grid; place-items: center; width: 26px; height: 26px; margin-right: -6px; padding: 0; border: 0; border-radius: 50%;
+  background: rgba(0, 0, 0, .15); color: inherit; font: 400 19px/1 var(--font-body); cursor: pointer; }
+.chip .x:hover { background: rgba(0, 0, 0, .3); }
+.chip.van { clip-path: polygon(13px 0, calc(100% - 13px) 0, 100% 50%, calc(100% - 13px) 100%, 13px 100%, 0 50%); padding: 0 19px; border: 0; }
+.chip.van.pend { clip-path: none; border: 2px dashed #4f5f6f; }
+.chip .typ { font: 600 11px/1 var(--font-body); text-transform: uppercase; opacity: .78; letter-spacing: .03em; }
+.chip.big { min-height: 46px; font-size: 21px; padding: 0 16px; }
+.chip.van.big { padding: 0 24px; }
+.ghost { position: fixed; left: 0; top: 0; z-index: 1000; pointer-events: none; clip-path: none !important; border-radius: 8px; box-shadow: 0 12px 26px rgba(0, 0, 0, .3); }
+.src { opacity: .35; }
+body.dragging, body.dragging * { cursor: grabbing !important; }
+
+/* Trabajos */
+.jobs { min-width: 0; display: grid; gap: 12px; align-content: start; }
+.summary { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pill { padding: 5px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 14px; font-variant-numeric: tabular-nums; }
+.pill b { font-weight: 700; }
+.pill.zero { opacity: .5; }
+.pill.st-un { background: var(--mute-bg); border-color: var(--mute-line); }
+.pill.st-nd { background: var(--warn-bg); border-color: var(--warn-line); color: var(--warn); }
+.pill.st-cf { background: var(--bad-bg); border-color: var(--bad-line); color: var(--bad); }
+.pill.st-ok { background: var(--info-bg); border-color: var(--info-line); color: var(--info); }
+.internal { margin: 0; font-size: 13px; color: var(--muted); }
+.sec { font: 700 14px/1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 10px 0 0; }
+.grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 400px), 1fr)); }
+.empty { padding: 36px 16px; text-align: center; color: var(--muted); background: var(--surface); border: 1px dashed var(--line); border-radius: 12px; }
+
+.job { display: flex; flex-direction: column; gap: 10px; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 14px; box-shadow: var(--shadow); position: relative; }
+.job::before { content: ""; position: absolute; left: 0; top: 10px; bottom: 10px; width: 5px; border-radius: 0 4px 4px 0; background: var(--mute-line); }
+.job.s-sin-conductor::before { background: #e08a00; }
+.job.s-asignado::before { background: #2e9d52; }
+.job.s-conflicto::before { background: #d32f2f; }
+.job.done { background: linear-gradient(var(--ok-bg), var(--ok-bg)) top / 100% 3px no-repeat, var(--surface); }
+.job.over { box-shadow: 0 0 0 3px var(--accent), var(--shadow); }
+.job.over.warn { box-shadow: 0 0 0 3px #d32f2f, var(--shadow); }
+.job-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+.time { font: 800 24px/1 var(--font-display); color: var(--accent); font-variant-numeric: tabular-nums; letter-spacing: .01em; }
+.job h4 { margin: 0; font: 600 16px/1.3 var(--font-body); overflow-wrap: anywhere; }
+.linkish { all: unset; cursor: pointer; }
+.linkish:hover { text-decoration: underline; }
+.loc { font-weight: 600; font-size: 14px; color: var(--ink); text-decoration: none; overflow-wrap: anywhere; }
+a.loc:hover { text-decoration: underline; }
+.loc.none { font-weight: 400; color: var(--muted); }
+.slot { background: var(--surface-2); border: 1px dashed var(--line); border-radius: 8px; padding: 8px; }
+.slot-l { font: 700 12px/1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+.slot-l .w { color: var(--warn); text-transform: none; letter-spacing: 0; font: 600 12px/1 var(--font-body); }
+.drop-hint { font-size: 13px; font-style: italic; color: var(--muted); min-height: 34px; display: inline-flex; align-items: center; }
+.badges { display: flex; flex-wrap: wrap; gap: 4px; }
+.b { padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; border: 1px solid; }
+.b-sin-asignar { background: var(--mute-bg); border-color: var(--mute-line); color: var(--ink); }
+.b-sin-conductor { background: var(--warn-bg); border-color: var(--warn-line); color: var(--warn); }
+.b-asignado { background: var(--ok-bg); border-color: var(--ok-line); color: var(--ok); }
+.b-conflicto { background: var(--bad-bg); border-color: var(--bad-line); color: var(--bad); }
+.b-ausencia { background: var(--abs-bg); border-color: var(--abs-line); color: var(--abs); }
+.b-completo { background: var(--info-bg); border-color: var(--info-line); color: var(--info); }
+.confl { margin: 0; padding: 8px 10px 8px 26px; background: var(--bad-bg); border-radius: 8px; font-size: 13px; color: var(--ink); }
+.hints { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 8px 10px; background: var(--info-bg); border-radius: 8px; font-size: 13px; }
+.acts { display: flex; flex-wrap: wrap; gap: 6px; }
+.here { flex-basis: 100%; min-height: 46px; font-weight: 700; }
+.job.compact { gap: 6px; }
+.job.compact .time { font-size: 17px; }
+.orph { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+
+.selbar { position: fixed; z-index: 40; left: 50%; transform: translateX(-50%); bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px; max-width: calc(100% - 24px); background: var(--surface); border: 2px solid var(--accent);
+  border-radius: 14px; padding: 8px 12px; box-shadow: 0 8px 24px rgba(0, 0, 0, .2); }
+.toast { position: fixed; z-index: 60; left: 50%; transform: translateX(-50%); bottom: calc(86px + env(safe-area-inset-bottom, 0px)); max-width: calc(100% - 24px);
+  display: flex; gap: 12px; align-items: center; padding: 10px 14px; border-radius: 10px; background: var(--ink); color: var(--bg); box-shadow: 0 8px 24px rgba(0, 0, 0, .25); }
+.toast.warn { background: var(--warn); color: var(--surface); }
+.toast.bad { background: var(--bad); color: var(--surface); }
+.toast button { background: transparent; border: 1px solid currentColor; color: inherit; border-radius: 6px; padding: 4px 10px; cursor: pointer; }
+
+/* Diálogos (los propios del navegador no funcionan dentro del artefacto) */
+dialog { border: 0; border-radius: 14px; padding: 0; width: min(680px, calc(100% - 24px)); max-height: calc(100dvh - 24px); background: var(--surface); color: var(--ink);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, .35); }
+dialog.sm { width: min(480px, calc(100% - 24px)); }
+dialog::backdrop { background: rgba(8, 16, 26, .55); }
+.dlg { padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+.dlg h2 { margin: 0; font: 700 22px/1.15 var(--font-display); text-wrap: balance; }
+.dlg p { margin: 0; }
+.dlg-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.close { border: 0; background: var(--surface-2); color: var(--ink); width: 40px; height: 40px; border-radius: 50%; font-size: 22px; cursor: pointer; flex: none; }
+.dlg-acts { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+.dlg-acts.stick { position: sticky; bottom: -18px; background: var(--surface); padding: 10px 0 4px; border-top: 1px solid var(--line); }
+.kv { display: grid; grid-template-columns: 140px minmax(0, 1fr); gap: 8px; }
+.kv dt { color: var(--muted); } .kv dd { margin: 0; overflow-wrap: anywhere; }
+dl { margin: 0; display: grid; gap: 6px; }
+.desc { white-space: pre-wrap; overflow-wrap: anywhere; background: var(--surface-2); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; max-height: 42vh; overflow: auto; }
+fieldset { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; margin: 0; }
+legend { font-weight: 700; padding: 0 4px; }
+.pick { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 5px 4px; border-radius: 8px; cursor: pointer; }
+.pick:hover { background: var(--surface-2); }
+.pick input { width: 22px; height: 22px; flex: none; }
+.pw { font-size: 12px; font-weight: 600; color: var(--bad); }
+.pi { font-size: 12px; color: var(--muted); }
+.pst { font-weight: 600; } .pst.w { color: var(--warn); }
+
+/* Ajustes */
+#v-settings { padding-block: 16px 40px; max-width: 1100px; margin: 0 auto; }
+#v-settings h1 { font: 700 28px/1.1 var(--font-display); margin: 4px 0 14px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; margin-bottom: 14px; }
+.card h2 { font: 700 20px/1.1 var(--font-display); margin: 0 0 8px; }
+.tw { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { font: 700 12px/1 var(--font-display); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+td input[type="text"], td select { min-height: 36px; padding: 0 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); width: 100%; min-width: 110px; }
+td input[type="checkbox"] { width: 22px; height: 22px; }
+td input[type="color"] { width: 48px; height: 36px; border: 1px solid var(--line); border-radius: 6px; padding: 2px; background: var(--surface); }
+tr.off td { opacity: .55; }
+tr.new td { background: var(--surface-2); }
+
+/* Pantalla TV — aspecto oscuro deliberado en ambos temas */
+#v-tv { flex-direction: column; gap: 14px; min-height: 100dvh; padding-block: 18px; background: var(--tv-bg); color: var(--tv-ink); }
+body[data-view="tv"] { background: var(--tv-bg); }
+body[data-view="tv"] .top, body[data-view="tv"] #notices { display: none; }
+.tv-head { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px; }
+.tv-date { font: 800 clamp(30px, 3.4vw, 58px)/1 var(--font-display); letter-spacing: .01em; text-wrap: balance; }
+.tv-sum { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; font: 600 clamp(16px, 1.5vw, 24px)/1.2 var(--font-body); }
+.tv-sum span { padding: 3px 12px; border-radius: 999px; background: rgba(255, 255, 255, .1); }
+.tv-sum .un { background: #3a4a5c; } .tv-sum .nd { background: #ffb020; color: #1b1300; } .tv-sum .cf { background: #ff5a50; color: #fff; }
+.tv-r { text-align: right; }
+.tv-clock { font: 800 clamp(40px, 4.6vw, 76px)/1 var(--font-display); font-variant-numeric: tabular-nums; }
+.tv-sync { color: var(--tv-muted); font-size: 15px; margin-top: 4px; }
+.tv-ctrl { display: flex; gap: 8px; justify-content: flex-end; margin-top: 8px; transition: opacity .3s; }
+.tv-ctrl .btn { background: rgba(255, 255, 255, .1); color: var(--tv-ink); border-color: rgba(255, 255, 255, .25); }
+body.idle .tv-ctrl { opacity: 0; } body.idle[data-view="tv"] { cursor: none; }
+.tv-notes { display: flex; flex-wrap: wrap; gap: 8px; }
+.tv-notes span { background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .16); border-radius: 8px; padding: 4px 12px; font-size: clamp(14px, 1.2vw, 20px); }
+.tv-err { background: #5a1d18; color: #fff; padding: 10px 14px; border-radius: 10px; font-size: 18px; }
+.tv-grid { flex: 1; display: grid; gap: 16px; align-content: start; overflow: auto; grid-template-columns: repeat(auto-fill, minmax(min(100%, 430px), 1fr)); }
+.dc { background: var(--tv-card); border-radius: 14px; padding: 16px 18px 16px 24px; display: flex; flex-direction: column; gap: 10px; position: relative; min-width: 0; }
+.dc::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 9px; border-radius: 14px 0 0 14px; background: #6b7a89; }
+.dc.s-asignado::before { background: #3ccf6e; } .dc.s-sin-conductor::before { background: #ffb020; } .dc.s-conflicto::before { background: #ff5a50; }
+.dc-time { font: 800 clamp(28px, 2.5vw, 44px)/1 var(--font-display); color: var(--tv-time); font-variant-numeric: tabular-nums; }
+.dc-title { margin: 0; font: 600 clamp(19px, 1.5vw, 27px)/1.25 var(--font-body); overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.dc-loc { font-size: clamp(16px, 1.25vw, 22px); color: var(--tv-muted); font-weight: 600; overflow-wrap: anywhere; }
+.dc-none { font-size: clamp(16px, 1.3vw, 22px); color: #ffcf7a; font-weight: 700; }
+.dense .dc { padding-block: 10px; gap: 6px; } .dense .dc-title { -webkit-line-clamp: 2; line-clamp: 2; }
+.tv-foot { font-size: 13px; color: var(--tv-muted); text-align: right; }
+.tv-empty { font-size: 28px; color: var(--tv-muted); border: 1px dashed rgba(255, 255, 255, .2); border-radius: 14px; padding: 40px; text-align: center; grid-column: 1 / -1; }
+
+/* Móvil */
+@media (max-width: 900px) {
+  .brand-name small { display: none; }
+  .datenav { order: 3; flex-basis: 100%; justify-content: space-between; }
+  .date-btn { flex: 1; font-size: 18px; }
+  .sync-txt { display: none; }
+  #v-board { grid-template-columns: minmax(0, 1fr); padding-bottom: 96px; }
+  .panel { position: fixed; z-index: 35; left: 0; right: 0; bottom: 0; top: auto; max-height: 72dvh; border-radius: 16px 16px 0 0;
+    padding: 0 max(12px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+    transform: translateY(calc(100% - 66px - env(safe-area-inset-bottom, 0px))); transition: transform .2s; box-shadow: 0 -8px 24px rgba(0, 0, 0, .2); }
+  body.sheet .panel { transform: none; }
+  body.dragging .panel { transform: translateY(calc(100% - 66px - env(safe-area-inset-bottom, 0px))); }
+  .sheet-btn { display: block; position: sticky; top: 0; z-index: 1; background: var(--surface); padding: 10px 0; }
+  .sheet-btn .btn { width: 100%; min-height: 46px; }
+  body.dragging .panel .drop-out { position: absolute; inset: 0 0 auto 0; height: 66px; margin: 0; display: grid; place-items: center; border-radius: 16px 16px 0 0; }
+  .selbar { left: 12px; right: 12px; transform: none; max-width: none; bottom: calc(76px + env(safe-area-inset-bottom, 0px)); }
+  .toast { bottom: calc(150px + env(safe-area-inset-bottom, 0px)); }
+  .kv { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .chip { min-height: 38px; }
+  .chip .x { width: 30px; height: 30px; }
+}
+@media (max-width: 460px) { .brand-name { display: none; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+<header class="top">
+  <div class="top-in wrap">
+    <div class="brand"><span class="mark" aria-hidden="true">D2</span><span class="brand-name">Delaire 2000<small>Planificación de técnicos</small></span></div>
+    <nav class="datenav" aria-label="Día">
+      <button id="prev" class="btn btn-icon" type="button" aria-label="Día anterior">‹</button>
+      <label class="date-btn"><span id="date-label">—</span><input id="date-input" type="date" aria-label="Elegir fecha"></label>
+      <button id="next" class="btn btn-icon" type="button" aria-label="Día siguiente">›</button>
+      <button id="today" class="btn" type="button">Hoy</button>
+    </nav>
+    <div class="sync"><span id="sync-dot" class="dot busy"></span><span id="sync-txt" class="sync-txt">Conectando…</span>
+      <button id="refresh" class="btn btn-icon" type="button" aria-label="Actualizar ahora" title="Actualizar ahora">⟳</button></div>
+    <nav class="tabs" aria-label="Vistas">
+      <button class="tab" type="button" data-go="board">Tablero</button>
+      <button class="tab" type="button" data-go="tv">Pantalla</button>
+      <button class="tab ed" type="button" data-go="settings">Ajustes</button>
+    </nav>
+  </div>
+</header>
+<div id="notices" class="notices wrap"></div>
+
+<main id="v-board" class="view wrap">
+  <aside id="panel" class="panel" data-drop-out aria-label="Técnicos y furgonetas">
+    <div class="sheet-btn"><button id="sheet" class="btn btn-primary" type="button">Técnicos y furgonetas</button></div>
+    <div id="panel-body"></div>
+    <div class="drop-out" aria-hidden="true">Suelta aquí para quitar del trabajo</div>
+  </aside>
+  <section id="jobs" class="jobs" aria-label="Trabajos del día"></section>
+</main>
+
+<main id="v-tv" class="view wrap">
+  <div class="tv-head">
+    <div><div id="tv-date" class="tv-date"></div><div id="tv-sum" class="tv-sum"></div></div>
+    <div class="tv-r"><div id="tv-clock" class="tv-clock"></div><div id="tv-sync" class="tv-sync"></div>
+      <div class="tv-ctrl"><button id="fs" class="btn" type="button">Pantalla completa</button><button id="tv-exit" class="btn" type="button">Volver al tablero</button></div></div>
+  </div>
+  <div id="tv-err" class="tv-err" hidden></div>
+  <div id="tv-notes" class="tv-notes" hidden></div>
+  <div id="tv-grid" class="tv-grid"></div>
+  <div class="tv-foot">Planificación interna · no modifica el calendario de Outlook</div>
+</main>
+
+<main id="v-settings" class="view wrap"></main>
+
+<div id="selbar" class="selbar" hidden></div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+<dialog id="d-detail"></dialog>
+<dialog id="d-pick"></dialog>
+<dialog id="d-confirm" class="sm"></dialog>
+
+<script>
+(() => {
+'use strict';
+// ===== Configuración =====
+const SERVER = 'Microsoft 365';                 // conector de claude.ai (solo se usan herramientas de LECTURA)
+const CAL_OWNER = 'info@delaire-2000.com';      // calendario compartido de la empresa
+const TZ = 'Europe/Madrid';
+const POLL_MS = 60000;
+
+// ===== Utilidades =====
+function h(tag, attrs, ...kids) {
+  const el = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs || {})) {
+    if (v == null || v === false) continue;
+    if (k === 'class') el.className = v;
+    else if (k === 'dataset') Object.assign(el.dataset, v);
+    else if (k === 'style') for (const [p, val] of Object.entries(v)) el.style.setProperty(p, val);
+    else if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+    else if (v === true) el.setAttribute(k, '');
+    else el.setAttribute(k, v);
+  }
+  for (const c of kids.flat(Infinity)) if (c != null && c !== false) el.append(c instanceof Node ? c : String(c));
+  return el;
+}
+const $ = (s) => document.querySelector(s);
+const fill = (el, ...kids) => el.replaceChildren(...kids.flat(Infinity).filter((k) => k != null && k !== false));
+const norm = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toUpperCase().replace(/\s+/g, ' ').trim();
+const escRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+const dfDay = new Intl.DateTimeFormat('en-CA', { timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit' });
+const dfLong = new Intl.DateTimeFormat('es-ES', { timeZone: 'UTC', weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+const dfClock = new Intl.DateTimeFormat('es-ES', { timeZone: TZ, hour: '2-digit', minute: '2-digit' });
+const dfStamp = new Intl.DateTimeFormat('es-ES', { timeZone: TZ, day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' });
+const todayStr = () => dfDay.format(new Date());
+const dObj = (d) => new Date(d + 'T12:00:00Z');
+const addDays = (d, n) => { const x = dObj(d); x.setUTCDate(x.getUTCDate() + n); return x.toISOString().slice(0, 10); };
+const longDate = (d) => { const s = dfLong.format(dObj(d)); return s[0].toUpperCase() + s.slice(1); };
+function rel(ms) {
+  if (!ms) return 'sin datos';
+  const s = Math.round((Date.now() - ms) / 1000);
+  if (s < 15) return 'ahora mismo';
+  if (s < 60) return `hace ${s} s`;
+  if (s < 3600) return `hace ${Math.round(s / 60)} min`;
+  return dfStamp.format(ms);
+}
+const mapsUrl = (q) => 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(q);
+
+// Hora "de pared" de Outlook -> "YYYY-MM-DDTHH:MM" en hora de Madrid.
+function wall(dt) {
+  if (!dt || !dt.dateTime) return null;
+  const s = String(dt.dateTime);
+  if (/utc|coordinated/i.test(dt.timeZone || '') || /Z$/.test(s)) {
+    const ms = Date.parse(s.replace(/(\.\d{3})\d*/, '$1').replace(/Z?$/, 'Z'));
+    const p = Object.fromEntries(new Intl.DateTimeFormat('en-CA', { timeZone: TZ, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' })
+      .formatToParts(new Date(ms)).map((x) => [x.type, x.value]));
+    return `${p.year}-${p.month}-${p.day}T${p.hour}:${p.minute}`;
+  }
+  return s.slice(0, 16);
+}
+const wallMs = (w) => Date.UTC(+w.slice(0, 4), +w.slice(5, 7) - 1, +w.slice(8, 10), +w.slice(11, 13), +w.slice(14, 16));
+const hhmm = (w) => w.slice(11, 16);
+
+// Claves válidas para la base de datos a partir del id de Outlook.
+const keyOf = (id) => String(id).replace(/=/g, '~').replace(/\//g, '.').replace(/[^A-Za-z0-9_\-.~:@+]/g, '_').slice(0, 190);
+
+// ===== Reglas de planificación =====
+const overlaps = (a, b) => a.span[0] < b.span[1] && b.span[0] < a.span[1];
+function conflictsFor(type, id, eventId, events, plans) {
+  const t = events.find((e) => e.id === eventId);
+  if (!t) return [];
+  const k = type === 'tech' ? 'techs' : 'vans';
+  return events.filter((e) => e.id !== eventId && plans[e.id]?.[k]?.includes(id) && overlaps(e, t));
+}
+function detectAbsences(events, techs) {
+  const out = {};
+  const byLen = [...techs].sort((a, b) => b.name.length - a.name.length);
+  for (const e of events) {
+    let t = norm(e.title);
+    if (!/\b(VACACIONES|AUSENCIA|BAJA|MEDICO|PERMISO|DIA LIBRE|ASUNTOS PROPIOS)\b/.test(t)) continue;
+    for (const tech of byLen) {
+      const re = new RegExp(`\\b${escRe(norm(tech.name))}\\w*`);
+      if (re.test(t)) { (out[tech.id] ||= []).push(e.id); t = t.replace(re, ' '); }
+    }
+  }
+  return out;
+}
+function titleHints(title, techs, vans) {
+  const t = norm(title);
+  const names = techs.map((x) => ({ id: x.id, n: norm(x.name), multi: norm(x.name).includes(' ') }));
+  const found = new Set();
+  for (const seg of t.split('|')) {
+    const toks = seg.split(/\s*(?:\+|,|\/|&|\bY\b)\s*/).map((x) => x.trim()).filter(Boolean);
+    if (!toks.length) continue;
+    const ids = [];
+    let all = true;
+    for (const tok of toks) {
+      const m = names.find((n) => n.n === tok) || names.find((n) => n.multi && tok.startsWith(n.n));
+      if (m) ids.push(m.id); else { all = false; break; }
+    }
+    if (all) ids.forEach((i) => found.add(i));
+  }
+  const compact = t.replace(/[\s-]/g, '');
+  return { techs: [...found], vans: vans.filter((v) => v.plate && compact.includes(norm(v.plate).replace(/[\s-]/g, ''))).map((v) => v.id) };
+}
+function computeDay() {
+  const { events } = S.day; const plans = S.plans;
+  const techs = S.res.techs;
+  const byId = Object.fromEntries(techs.map((t) => [t.id, t]));
+  const absences = detectAbsences(events, techs);
+  const use = { tech: {}, van: {} };
+  for (const e of events) {
+    const p = plans[e.id]; if (!p) continue;
+    p.techs.forEach((i) => (use.tech[i] ||= []).push(e.id));
+    p.vans.forEach((i) => (use.van[i] ||= []).push(e.id));
+  }
+  const jobs = {};
+  for (const e of events) {
+    const p = plans[e.id] || { techs: [], vans: [], completed: false };
+    const conflicts = [];
+    for (const [type, k] of [['tech', 'techs'], ['van', 'vans']]) for (const i of p[k]) {
+      const w = conflictsFor(type, i, e.id, events, plans).map((o) => o.id);
+      if (w.length) conflicts.push({ type, id: i, with: w });
+    }
+    const hasDriver = p.techs.some((i) => byId[i]?.license);
+    const absent = p.techs.filter((i) => absences[i] && !absences[i].includes(e.id));
+    const st = [];
+    st.push(!p.techs.length ? 'sin-asignar' : hasDriver ? 'asignado' : 'sin-conductor');
+    if (conflicts.length) st.push('conflicto');
+    if (absent.length) st.push('ausencia');
+    if (p.completed) st.push('completo');
+    jobs[e.id] = { techs: p.techs, vans: p.vans, completed: !!p.completed, hasDriver, conflicts, absent, status: st };
+  }
+  const J = Object.values(jobs);
+  S.calc = { jobs, use, absences, sum: {
+    total: events.length, un: J.filter((j) => j.status.includes('sin-asignar')).length,
+    nd: J.filter((j) => j.status.includes('sin-conductor')).length, cf: J.filter((j) => j.status.includes('conflicto')).length,
+    ok: J.filter((j) => j.completed).length } };
+}
+
+// ===== Estado =====
+const S = {
+  date: todayStr(), view: 'board',
+  res: { profiles: [], techs: [], vanTypes: [], vans: [] }, resLoaded: false, resVersion: null,
+  day: { events: [], syncedAt: null, error: null, loading: true },
+  plans: {}, planDocs: {}, calc: null, selected: null,
+  canWrite: true, mcp: null, db: null, user: null, booting: true,
+};
+const tech = (id) => S.res.techs.find((t) => t.id === id);
+const van = (id) => S.res.vans.find((v) => v.id === id);
+const prof = (id) => S.res.profiles.find((p) => p.id === id);
+const vtype = (id) => S.res.vanTypes.find((p) => p.id === id);
+const ev = (id) => S.day.events.find((e) => e.id === id);
+const planOf = (id) => S.plans[id] || { techs: [], vans: [], completed: false };
+const editable = () => S.canWrite && !!S.db && S.resLoaded;
+const vanLabel = (v) => `${String(v.model).toUpperCase()} ${v.plate}`;
+const timeLabel = (e) => e.allDay ? (e.multiDay ? 'Todo el día · varios días' : 'Todo el día') : `${e.cutStart ? '← ' : ''}${hhmm(e.start)} – ${hhmm(e.end)}${e.cutEnd ? ' →' : ''}`;
+const shortTime = (e) => e.allDay ? 'todo el día' : `${hhmm(e.start)}–${hhmm(e.end)}`;
+
+// ===== Calendario (Outlook, solo lectura, con la conexión Microsoft 365 de quien mira) =====
+function jsonValues(text) {
+  try { return [JSON.parse(text)]; } catch { /* varios objetos seguidos */ }
+  const out = []; let depth = 0, start = -1, inStr = false, esc = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inStr) { if (esc) esc = false; else if (c === '\\') esc = true; else if (c === '"') inStr = false; continue; }
+    if (c === '"') inStr = true;
+    else if (c === '{' || c === '[') { if (!depth) start = i; depth++; }
+    else if (c === '}' || c === ']') { depth--; if (!depth && start >= 0) { try { out.push(JSON.parse(text.slice(start, i + 1))); } catch {} start = -1; } }
+  }
+  return out;
+}
+function collect(res) {
+  const out = [];
+  const push = (v) => {
+    if (Array.isArray(v)) return v.forEach(push);
+    if (!v || typeof v !== 'object') return;
+    for (const k of ['events', 'value', 'items', 'results']) if (Array.isArray(v[k])) return v[k].forEach(push);
+    out.push(v);
+  };
+  if (res.structuredContent) push(res.structuredContent);
+  else for (const b of res.content || []) if (b.type === 'text') jsonValues(b.text).forEach(push);
+  if (!out.length && res.payload) push(res.payload);
+  return out;
+}
+function normalizeEvent(o, date) {
+  const s = wall(o.start), f = wall(o.end);
+  if (!s || !f) return null;
+  const allDay = !!o.isAllDay;
+  const day0 = Date.UTC(+date.slice(0, 4), +date.slice(5, 7) - 1, +date.slice(8, 10));
+  let span;
+  const startDate = s.slice(0, 10), endDate = f.slice(0, 10);
+  if (allDay) {
+    const end = endDate > startDate ? endDate : addDays(startDate, 1);
+    if (!(startDate <= date && date < end)) return null;
+    span = [0, 1440];
+  } else {
+    const a = (wallMs(s) - day0) / 60000, b = (wallMs(f) - day0) / 60000;
+    if (b <= 0 && !(a === b && a === 0)) return null;
+    if (a >= 1440) return null;
+    span = [Math.max(0, a), Math.min(1440, Math.max(b, a + 1))];
+  }
+  const loc = typeof o.location === 'string' ? o.location : (o.location?.displayName || '');
+  return {
+    id: String(o.id), title: (o.subject || '').trim() || '(Sin título)', preview: o.summary || o.bodyPreview || '',
+    location: loc || '', allDay, start: s, end: f, startDate, endDate, span,
+    multiDay: allDay ? (endDate > addDays(startDate, 1)) : (startDate !== endDate),
+    cutStart: !allDay && s.slice(0, 10) < date, cutEnd: !allDay && f.slice(0, 10) > date && f.slice(11, 16) !== '00:00',
+    categories: o.categories || [], link: o.webLink || '', uri: o.uri || `calendar:///events/${encodeURIComponent(o.id)}?owner=${encodeURIComponent(CAL_OWNER)}`,
+    organizer: typeof o.organizer === 'string' ? o.organizer : (o.organizer?.name || o.organizer?.emailAddress?.name || ''),
+  };
+}
+async function fetchDay(date, fresh) {
+  const all = new Map(); let offset = 0; let storedAt = null;
+  for (let page = 0; page < 10; page++) {
+    const res = await S.mcp.callTool(SERVER, 'outlook_calendar_search', {
+      query: '*', calendarOwnerEmail: CAL_OWNER,
+      afterDateTime: addDays(date, -1) + 'T12:00:00', beforeDateTime: addDays(date, 1) + 'T12:00:00',
+      limit: 25, offset, order: 'oldest',
+    }, { cache: fresh ? { refresh: true, staleTime: 0, gcTime: 600000 } : { staleTime: 30000, gcTime: 600000 } });
+    if (res.cache && res.cache.storedAt) storedAt = Math.min(storedAt ?? Infinity, res.cache.storedAt);
+    const objs = collect(res);
+    let next = null, n = 0;
+    for (const o of objs) {
+      if (o.nextOffset != null) next = o.nextOffset;
+      if (o.id && (o.subject !== undefined || o.start)) { n++; if (!o.isCancelled) { const e = normalizeEvent(o, date); if (e) all.set(e.id, e); } }
+    }
+    if (next == null || !n || next <= offset) break;
+    offset = next;
+  }
+  const events = [...all.values()].sort((a, b) => (a.allDay === b.allDay ? 0 : a.allDay ? -1 : 1) || a.span[0] - b.span[0] || a.span[1] - b.span[1] || a.title.localeCompare(b.title, 'es'));
+  return { events, syncedAt: storedAt ?? Date.now() };
+}
+
+const CAL_ERR = {
+  server_not_connected: 'Añade el conector Microsoft 365 en claude.ai → Ajustes → Conectores y vuelve a abrir esta página.',
+  needs_reauth: 'La conexión con Microsoft 365 ha caducado. Vuelve a conectarla en claude.ai → Ajustes → Conectores.',
+  selection_required: 'Tienes varias conexiones de Microsoft 365. Elige cuál usar en el aviso de claude.ai.',
+  not_in_manifest: 'Has desactivado el acceso a Microsoft 365 para esta página. Actívalo en el menú Permisos del artefacto.',
+  blocked_by_policy: 'La política de tu organización no permite leer el calendario desde esta página.',
+  approval_required: 'Falta tu permiso para leer el calendario.',
+  tool_error: 'Outlook no ha devuelto el calendario de info@. Comprueba que tu cuenta tiene acceso a ese calendario.',
+  not_granted: 'Esta vista no puede usar conectores. Abre el artefacto en claude.ai con tu cuenta.',
+  capability_disabled: 'Esta vista no puede usar conectores. Abre el artefacto en claude.ai con tu cuenta.',
+};
+
+let loadSeq = 0, retried = false;
+async function loadDay(fresh = false) {
+  if (S.booting) return;
+  if (!S.mcp) { S.day = { events: [], syncedAt: null, loading: false, error: { code: 'no_mcp', message: 'Esta vista no puede leer el calendario. Abre el artefacto en claude.ai con tu cuenta de Delaire 2000.' } }; render(); return; }
+  const seq = ++loadSeq; const date = S.date;
+  S.day.loading = true; renderSync();
+  try {
+    const r = await fetchDay(date, fresh);
+    if (seq !== loadSeq) return;
+    S.day = { events: r.events, syncedAt: r.syncedAt, error: null, loading: false };
+    retried = false;
+  } catch (e) {
+    if (seq !== loadSeq) return;
+    if (e && e.retryable && !retried) {
+      retried = true;
+      setTimeout(() => loadDay(fresh), Math.min(e.retryAfterMs || 0, 60000) + 1500 + Math.random() * 2000);
+      return;
+    }
+    const code = e?.code || 'upstream_error';
+    const keep = S.day.events.length && S.day.date === date && !['needs_reauth', 'server_not_connected', 'blocked_by_policy', 'approval_required', 'not_in_manifest'].includes(code);
+    S.day = { events: keep ? S.day.events : [], syncedAt: keep ? S.day.syncedAt : null, loading: false,
+      error: { code, message: CAL_ERR[code] || `No se pudo leer el calendario (${e?.message || code}).`, detail: e?.message } };
+  }
+  S.day.date = date;
+  computeDay(); render();
+}
+
+// ===== Planificación guardada (base de datos del artefacto) =====
+let unsubJobs = null;
+function watchPlans() {
+  unsubJobs?.(); unsubJobs = null;
+  S.plans = {}; S.planDocs = {};
+  if (!S.db) return;
+  const date = S.date;
+  unsubJobs = S.db.collection(`days/${date}/jobs`).onSnapshot((snap) => {
+    if (date !== S.date) return;
+    const plans = {}, docs = {};
+    for (const d of snap.docs) {
+      const x = d.data() || {};
+      const id = x.eventId || d.id;
+      plans[id] = { techs: (x.techs || []).map(Number), vans: (x.vans || []).map(Number), completed: !!x.completed };
+      docs[id] = { key: d.id, title: x.title || '', start: x.start || '', end: x.end || '' };
+    }
+    S.plans = plans; S.planDocs = docs;
+    computeDay(); render();
+  }, (err) => { toast('No se pudo leer la planificación guardada (' + err.code + ').', 'bad'); });
+}
+async function savePlan(eventId, plan) {
+  const e = ev(eventId);
+  const ref = S.db.doc(`days/${S.date}/jobs/${keyOf(eventId)}`);
+  const prev = S.plans[eventId];
+  const empty = !plan.techs.length && !plan.vans.length && !plan.completed;
+  if (empty) delete S.plans[eventId]; else S.plans[eventId] = plan;
+  computeDay(); render();
+  try {
+    if (empty) await ref.delete();
+    else await ref.set({ eventId, techs: plan.techs, vans: plan.vans, completed: !!plan.completed,
+      title: e?.title || S.planDocs[eventId]?.title || '', start: e?.start || '', end: e?.end || '', updatedAt: Date.now() });
+    return true;
+  } catch (err) {
+    if (prev) S.plans[eventId] = prev; else delete S.plans[eventId];
+    computeDay(); render();
+    if (err.code === 'invalid_argument') { S.canWrite = false; render(); toast('Tu acceso a esta página es de solo lectura: no puedes cambiar la planificación.', 'bad'); }
+    else toast('No se pudo guardar: ' + (err.message || err.code), 'bad');
+    return false;
+  }
+}
+
+// ===== Fichas =====
+function techStyle(t) {
+  const p = t.profile && prof(t.profile);
+  return p ? { bg: p.color, fg: p.text || '#111111', label: p.name, pend: false } : { bg: '#FFFFFF', fg: '#111111', label: 'Perfil pendiente de confirmar', pend: true };
+}
+function vanStyle(v) {
+  const p = v.type && vtype(v.type);
+  return p ? { bg: p.color, fg: p.text || '#111111', label: p.name, pend: false } : { bg: '#FFFFFF', fg: '#111111', label: 'Tipo pendiente de confirmar', pend: true };
+}
+const useCount = (type, id) => S.calc?.use?.[type]?.[id]?.length || 0;
+function chipBase(kind, r, { from = '', removable = false, count = 0, big = false } = {}) {
+  const isTech = kind === 'tech';
+  const st = isTech ? techStyle(r) : vanStyle(r);
+  const absent = isTech && S.calc?.absences?.[r.id];
+  const pool = from === '';
+  const sel = pool && S.selected?.type === kind && S.selected.id === r.id;
+  const drag = editable() && from !== '-';
+  const label = isTech ? `${r.license ? '*' : ''}${r.name.toUpperCase()}` : vanLabel(r);
+  const title = isTech
+    ? [r.name, st.label, r.license ? 'Con carnet de conducir (*)' : 'Sin carnet de conducir', absent ? 'Posible ausencia hoy según el calendario' : ''].filter(Boolean).join(' · ')
+    : `${vanLabel(r)} · Furgoneta ${st.label.toLowerCase()}`;
+  return h('span', {
+    class: `chip${isTech ? '' : ' van'}${st.pend ? ' pend' : ''}${absent ? ' abs' : ''}${sel ? ' sel' : ''}${big ? ' big' : ''}${r.active === false ? ' off' : ''}`,
+    style: { '--cb': st.bg, '--cf': st.fg }, title,
+    role: pool && editable() ? 'button' : null, tabindex: pool && editable() ? '0' : null, 'aria-pressed': pool && editable() ? String(!!sel) : null,
+    dataset: drag ? { drag: kind, id: String(r.id), from } : {},
+    onclick: pool && editable() ? () => toggleSelect(kind, r.id) : null,
+    onkeydown: pool && editable() ? (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleSelect(kind, r.id); } } : null,
+  },
+  h('span', {}, label),
+  !isTech ? h('span', { class: 'typ' }, st.label) : null,
+  st.pend ? h('span', { class: 'flag', 'aria-label': 'pendiente de confirmar' }, '?') : null,
+  absent ? h('span', { class: 'flag w', 'aria-label': 'posible ausencia' }, '!') : null,
+  count ? h('span', { class: 'n', 'aria-label': `${count} trabajos` }, String(count)) : null,
+  removable && editable() ? h('button', { class: 'x', type: 'button', 'aria-label': `Quitar ${isTech ? r.name : vanLabel(r)}`, title: 'Quitar',
+    onclick: (e) => { e.stopPropagation(); unassign(kind, r.id, from); } }, '×') : null);
+}
+const techChip = (t, o) => chipBase('tech', t, o);
+const vanChip = (v, o) => chipBase('van', v, o);
+const STATUS = { 'sin-asignar': 'Sin asignar', 'sin-conductor': 'Sin conductor', asignado: 'Asignado', conflicto: 'Conflicto de horario', ausencia: 'Posible ausencia', completo: 'Grupo completo' };
+const badge = (s) => h('span', { class: 'b b-' + s }, STATUS[s]);
+
+// ===== Avisos y confirmaciones =====
+let toastT;
+function toast(msg, kind = '', action) {
+  const t = $('#toast');
+  fill(t, h('span', {}, msg), action ? h('button', { type: 'button', onclick: () => { t.hidden = true; action.fn(); } }, action.label) : null);
+  t.className = 'toast ' + kind; t.hidden = false;
+  clearTimeout(toastT); toastT = setTimeout(() => (t.hidden = true), action ? 7000 : 4500);
+}
+function ask({ title, lines, ok = 'Continuar', danger = false, alertOnly = false }) {
+  return new Promise((resolve) => {
+    const d = $('#d-confirm');
+    fill(d, h('form', { method: 'dialog', class: 'dlg' }, h('h2', {}, title), lines.map((l) => h('p', {}, l)),
+      h('div', { class: 'dlg-acts' }, alertOnly ? null : h('button', { class: 'btn', value: 'cancel' }, 'Cancelar'),
+        h('button', { class: 'btn ' + (danger ? 'btn-danger' : 'btn-primary'), value: 'ok', autofocus: true }, alertOnly ? 'Entendido' : ok))));
+    d.returnValue = '';
+    d.onclose = () => resolve(d.returnValue === 'ok' && !alertOnly);
+    d.showModal();
+  });
+}
+
+// ===== Acciones =====
+function loseDriver(eventId, techId) {
+  const rest = planOf(eventId).techs.filter((i) => i !== techId);
+  return rest.length > 0 && tech(techId)?.license && !rest.some((i) => tech(i)?.license);
+}
+async function assign(type, id, eventId, from = '') {
+  if (!editable() || from === eventId) return false;
+  const e = ev(eventId); if (!e) return false;
+  const k = type === 'tech' ? 'techs' : 'vans';
+  const p = planOf(eventId);
+  if (p[k].includes(id)) { toast('Ya estaba en este trabajo.'); return false; }
+  const r = type === 'tech' ? tech(id) : van(id);
+  const name = type === 'tech' ? r.name : vanLabel(r);
+  const lines = [];
+  const plans = { ...S.plans };
+  if (from && plans[from]) plans[from] = { ...plans[from], [k]: plans[from][k].filter((x) => x !== id) };
+  const cf = conflictsFor(type, id, eventId, S.day.events, plans);
+  cf.forEach((o) => lines.push(`⚠ Conflicto de horario: ${name} ya está en «${o.title}» (${shortTime(o)}).`));
+  if (type === 'tech' && S.calc.absences[id]) lines.push(`⚠ Posible ausencia: el calendario dice «${S.calc.absences[id].map((x) => ev(x)?.title).join('», «')}».`);
+  if (type === 'tech' && from && loseDriver(from, id)) lines.push(`⚠ «${ev(from)?.title || 'El trabajo de origen'}» se quedará sin nadie con carnet de conducir.`);
+  let replace = false;
+  if (type === 'van' && p.vans.length) { replace = true; lines.push(`Se cambiará ${p.vans.map((v) => vanLabel(van(v))).join(', ')} por ${name}. Para llevar dos furgonetas usa «Asignar…».`); }
+  if (lines.length && !(await ask({ title: `Asignar ${name}`, lines: [...lines, `Trabajo: «${e.title}» (${shortTime(e)}).`], ok: 'Asignar igualmente' }))) return false;
+  if (from && S.plans[from]) {
+    const src = { ...S.plans[from], [k]: S.plans[from][k].filter((x) => x !== id) };
+    if (type === 'tech' && !src.techs.some((i) => tech(i)?.license)) src.completed = false;
+    await savePlan(from, src);
+  }
+  const ok = await savePlan(eventId, { ...p, [k]: replace ? [id] : [...p[k], id] });
+  if (ok && cf.length) toast(`${name} asignado con conflicto de horario.`, 'warn');
+  return ok;
+}
+async function unassign(type, id, eventId, quiet) {
+  if (!editable()) return;
+  const k = type === 'tech' ? 'techs' : 'vans';
+  const r = type === 'tech' ? tech(id) : van(id);
+  const name = type === 'tech' ? r?.name : r && vanLabel(r);
+  if (type === 'tech' && loseDriver(eventId, id)) {
+    if (!(await ask({ title: 'El grupo se quedará sin conductor', danger: true, ok: 'Quitar igualmente',
+      lines: [`Si quitas a ${name}, nadie del grupo de «${ev(eventId)?.title || S.planDocs[eventId]?.title || ''}» tendrá carnet de conducir (*).`, 'Cada grupo necesita al menos un técnico con carnet.'] }))) return;
+  }
+  const p = planOf(eventId);
+  const next = { ...p, [k]: p[k].filter((x) => x !== id) };
+  if (type === 'tech' && !next.techs.some((i) => tech(i)?.license)) next.completed = false;
+  if (await savePlan(eventId, next) && !quiet) toast(`${name} quitado del trabajo.`, '', { label: 'Deshacer', fn: () => assign(type, id, eventId) });
+}
+async function toggleDone(eventId) {
+  const p = planOf(eventId);
+  if (!p.completed && !p.techs.some((i) => tech(i)?.license)) {
+    await ask({ title: 'Grupo sin conductor', alertOnly: true, lines: ['No se puede marcar como completo: nadie del grupo tiene carnet de conducir (*).', 'Asigna al menos un técnico con asterisco.'] });
+    return;
+  }
+  await savePlan(eventId, { ...p, completed: !p.completed });
+}
+async function setPlanChecked(eventId, techs, vans) {
+  const lines = [];
+  const plans = { ...S.plans, [eventId]: { ...planOf(eventId), techs, vans } };
+  techs.forEach((i) => conflictsFor('tech', i, eventId, S.day.events, plans).forEach((o) => lines.push(`⚠ ${tech(i).name} también está en «${o.title}» (${shortTime(o)}).`)));
+  vans.forEach((i) => conflictsFor('van', i, eventId, S.day.events, plans).forEach((o) => lines.push(`⚠ ${vanLabel(van(i))} también está en «${o.title}» (${shortTime(o)}).`)));
+  techs.forEach((i) => { if (S.calc.absences[i]) lines.push(`⚠ Posible ausencia de ${tech(i).name} según el calendario.`); });
+  if (techs.length && !techs.some((i) => tech(i)?.license)) lines.push('⚠ Nadie del grupo tiene carnet de conducir (*).');
+  if (lines.length && !(await ask({ title: 'Revisa la asignación', lines, ok: 'Guardar igualmente' }))) return;
+  const p = planOf(eventId);
+  await savePlan(eventId, { ...p, techs, vans, completed: p.completed && techs.some((i) => tech(i)?.license) });
+}
+async function importAllHints() {
+  const todo = S.day.events.map((e) => ({ e, hs: hintsFor(e) })).filter((x) => x.hs.new);
+  if (!todo.length) return;
+  if (!(await ask({ title: 'Añadir equipos del calendario', ok: `Añadir a ${todo.length} trabajo${todo.length > 1 ? 's' : ''}`,
+    lines: ['Se añadirán a la planificación los técnicos y furgonetas que aparecen escritos en el título de cada evento.', 'Revisa después los avisos de conflicto o falta de conductor. El calendario no se modifica.'] }))) return;
+  for (const { e, hs } of todo) {
+    const p = planOf(e.id);
+    await savePlan(e.id, { ...p, techs: [...new Set([...p.techs, ...hs.techs])], vans: [...new Set([...p.vans, ...hs.vans])] });
+  }
+  toast(`Equipos añadidos en ${todo.length} trabajo${todo.length > 1 ? 's' : ''}.`);
+}
+function hintsFor(e) {
+  const hs = titleHints(e.title, S.res.techs.filter((t) => t.active !== false), S.res.vans.filter((v) => v.active !== false));
+  const p = planOf(e.id);
+  hs.new = hs.techs.some((i) => !p.techs.includes(i)) || hs.vans.some((i) => !p.vans.includes(i));
+  return hs;
+}
+function toggleSelect(type, id) {
+  S.selected = S.selected?.type === type && S.selected.id === id ? null : { type, id };
+  if (S.selected) document.body.classList.remove('sheet');
+  render();
+}
+
+// ===== Render =====
+function render() {
+  document.body.dataset.view = S.view;
+  document.body.classList.toggle('ro', !editable());
+  $('#date-label').textContent = longDate(S.date);
+  $('#date-input').value = S.date;
+  $('#today').disabled = S.date === todayStr();
+  document.querySelectorAll('[data-go]').forEach((b) => b.setAttribute('aria-current', b.dataset.go === S.view ? 'page' : 'false'));
+  renderSync(); renderNotices();
+  if (!S.calc) computeDay();
+  if (S.view === 'board') { renderPanel(); renderJobs(); renderSelbar(); }
+  else if (S.view === 'tv') renderTv();
+  else renderSettings();
+}
+function renderSync() {
+  const d = S.day;
+  $('#sync-dot').className = 'dot' + (d.loading ? ' busy' : d.error ? ' err' : '');
+  $('#sync-txt').textContent = d.loading ? 'Leyendo calendario…' : d.error ? `Sin conexión · ${d.syncedAt ? 'datos de ' + rel(d.syncedAt) : 'sin datos'}` : `Sincronizado ${rel(d.syncedAt)}`;
+  $('#tv-sync').textContent = d.error ? 'Sin conexión con el calendario' : `Actualizado ${rel(d.syncedAt)}`;
+}
+function renderNotices() {
+  const n = [];
+  const e = S.day.error;
+  if (e && !S.booting) n.push(h('div', { class: 'notice bad' }, h('span', {}, h('strong', {}, 'No se puede leer el calendario de info@. '), e.message),
+    e.code === 'approval_required' ? h('button', { class: 'btn btn-small btn-primary', type: 'button', onclick: () => loadDay(true) }, 'Permitir y leer calendario') : null,
+    ['server_unavailable', 'upstream_error', 'tool_error', 'rate_limited'].includes(e.code) ? h('button', { class: 'btn btn-small', type: 'button', onclick: () => loadDay(true) }, 'Reintentar') : null));
+  if (S.booting) { /* aún conectando */ }
+  else if (!S.db) n.push(h('div', { class: 'notice warn' }, h('strong', {}, 'Planificación no disponible en esta vista. '), 'Abre el artefacto en claude.ai con tu cuenta para ver y guardar asignaciones.'));
+  else if (!S.resLoaded) n.push(h('div', { class: 'notice warn' }, h('strong', {}, 'Cargando técnicos y furgonetas… '), 'Si este aviso no desaparece, la lista de técnicos aún no se ha configurado.'));
+  else if (!S.canWrite) n.push(h('div', { class: 'notice info' }, h('strong', {}, 'Solo lectura. '), 'Tu acceso a esta página permite ver la planificación, no cambiarla.'));
+  fill($('#notices'), n);
+}
+function renderPanel() {
+  const techs = S.res.techs.filter((t) => t.active !== false);
+  const groups = [['almacen', 'Personal almacén'], ['tecnico', 'Personal técnico']];
+  const free = techs.filter((t) => !useCount('tech', t.id) && !S.calc?.absences?.[t.id]);
+  fill($('#panel-body'),
+    editable() ? h('p', { class: 'hint' }, 'Arrastra una ficha a un trabajo (en el móvil, mantén pulsado y arrastra) o tócala y pulsa «Asignar aquí».') : null,
+    !S.resLoaded ? h('p', { class: 'hint' }, 'Sin lista de técnicos todavía.') : null,
+    groups.map(([a, l]) => {
+      const list = techs.filter((t) => t.area === a);
+      return list.length ? h('section', {}, h('h3', {}, l), h('div', { class: 'chips' }, list.map((t) => techChip(t, { count: useCount('tech', t.id) })))) : null;
+    }),
+    S.res.vans.length ? h('section', {}, h('h3', {}, 'Furgonetas'), h('div', { class: 'chips' }, S.res.vans.filter((v) => v.active !== false).map((v) => vanChip(v, { count: useCount('van', v.id) })))) : null,
+    S.resLoaded ? h('section', {}, h('h3', {}, `Sin trabajo este día (${free.length})`), h('p', { class: 'hint' }, free.length ? free.map((t) => t.name).join(', ') : 'Todos tienen trabajo o ausencia.')) : null,
+    S.resLoaded ? h('details', { class: 'legend' }, h('summary', {}, 'Leyenda'),
+      h('ul', {}, S.res.profiles.map((p) => h('li', {}, h('span', { class: 'sw', style: { background: p.color } }), p.name)),
+        h('li', {}, h('span', { class: 'sw pend', style: { background: '#ffffff' } }), 'Pendiente de confirmar'),
+        h('li', {}, h('b', {}, '* '), 'Tiene carnet de conducir')),
+      h('ul', {}, S.res.vanTypes.map((p) => h('li', {}, h('span', { class: 'sw', style: { background: p.color } }), 'Furgoneta ' + p.name.toLowerCase())))) : null);
+}
+function renderSelbar() {
+  const b = $('#selbar'); const s = S.selected;
+  if (!s || !editable()) { b.hidden = true; return; }
+  const r = s.type === 'tech' ? tech(s.id) : van(s.id);
+  if (!r) { S.selected = null; b.hidden = true; return; }
+  b.hidden = false;
+  fill(b, h('span', {}, 'Seleccionado:'), s.type === 'tech' ? techChip(r, { from: '-' }) : vanChip(r, { from: '-' }),
+    h('span', { class: 'small muted' }, 'Pulsa «Asignar aquí» en un trabajo.'),
+    h('button', { class: 'btn', type: 'button', onclick: () => { S.selected = null; render(); } }, 'Cancelar'));
+}
+function renderJobs() {
+  const evs = S.day.events; const s = S.calc.sum;
+  const pill = (n, label, cls) => h('span', { class: `pill ${cls || ''}${n ? '' : ' zero'}` }, h('b', {}, String(n)), ' ' + label);
+  const pending = editable() ? evs.filter((e) => hintsFor(e).new).length : 0;
+  const out = [
+    h('div', { class: 'summary', role: 'status' }, pill(s.total, s.total === 1 ? 'trabajo' : 'trabajos'), pill(s.un, 'sin asignar', 'st-un'), pill(s.nd, 'sin conductor', 'st-nd'), pill(s.cf, 'con conflicto', 'st-cf'), pill(s.ok, 'completos', 'st-ok'),
+      pending ? h('button', { class: 'btn btn-small', type: 'button', onclick: importAllHints }, `Añadir equipos escritos en el calendario (${pending})`) : null),
+    h('p', { class: 'internal' }, 'Las asignaciones son planificación interna de Delaire 2000: no crean, cambian ni borran nada en el calendario de Outlook.'),
+  ];
+  if (!evs.length) out.push(h('div', { class: 'empty' }, S.day.loading ? 'Leyendo el calendario de info@…' : S.day.error ? 'Sin datos del calendario para este día.' : 'No hay trabajos en el calendario este día.'));
+  const allDay = evs.filter((e) => e.allDay), timed = evs.filter((e) => !e.allDay);
+  if (timed.length) out.push(h('h2', { class: 'sec' }, `Trabajos con horario · ${timed.length}`), h('div', { class: 'grid' }, timed.map((e) => jobCard(e, false))));
+  if (allDay.length) out.push(h('h2', { class: 'sec' }, `Todo el día · avisos y ausencias · ${allDay.length}`), h('div', { class: 'grid' }, allDay.map((e) => jobCard(e, true))));
+  const orphans = (!S.day.error && !S.day.loading) ? Object.keys(S.plans).filter((id) => !ev(id)) : [];
+  if (orphans.length) out.push(h('h2', { class: 'sec' }, 'Planificación de trabajos que ya no están este día en el calendario'),
+    h('p', { class: 'internal' }, 'El evento se ha movido o borrado en Outlook. Revisa y vuelve a asignar si hace falta.'),
+    orphans.map((id) => h('div', { class: 'orph' }, h('b', {}, S.planDocs[id]?.title || 'Trabajo sin título'),
+      h('div', { class: 'chips' }, planOf(id).techs.map((i) => tech(i) && techChip(tech(i), { from: '-' })), planOf(id).vans.map((i) => van(i) && vanChip(van(i), { from: '-' }))),
+      editable() ? h('button', { class: 'btn btn-small', type: 'button', onclick: () => savePlan(id, { techs: [], vans: [], completed: false }) }, 'Descartar') : null)));
+  fill($('#jobs'), out);
+}
+function jobCard(e, compact) {
+  const j = S.calc.jobs[e.id];
+  const main = j.status.includes('conflicto') ? 'conflicto' : j.status[0];
+  const cids = new Set(j.conflicts.map((c) => c.type + ':' + c.id));
+  const team = j.techs.map((i) => { const t = tech(i); if (!t) return null; const c = techChip(t, { from: e.id, removable: true }); if (cids.has('tech:' + i)) c.classList.add('confl'); return c; });
+  const vans = j.vans.map((i) => { const v = van(i); if (!v) return null; const c = vanChip(v, { from: e.id, removable: true }); if (cids.has('van:' + i)) c.classList.add('confl'); return c; });
+  const hs = editable() ? hintsFor(e) : { new: false, techs: [], vans: [] };
+  const sel = S.selected;
+  const selFree = sel && !planOf(e.id)[sel.type === 'tech' ? 'techs' : 'vans'].includes(sel.id);
+  const planned = j.techs.length || j.vans.length;
+  const showSlots = !compact || planned;
+  return h('article', { class: `job s-${main}${j.completed ? ' done' : ''}${compact && !planned ? ' compact' : ''}`, dataset: { dropEvent: e.id }, 'aria-label': `${shortTime(e)} ${e.title}` },
+    h('div', { class: 'job-head' }, h('div', { class: 'time' }, timeLabel(e)), h('div', { class: 'badges' }, (compact && !planned ? [] : j.status).map(badge),
+      compact && !planned ? e.categories.map((c) => h('span', { class: 'b b-sin-asignar' }, c)) : null)),
+    h('h4', {}, h('button', { class: 'linkish', type: 'button', onclick: () => openDetail(e.id) }, e.title)),
+    compact && !planned ? null : (e.location ? h('a', { class: 'loc', href: mapsUrl(e.location), target: '_blank', rel: 'noopener noreferrer', 'data-nodrag': '' }, '📍 ' + e.location) : h('div', { class: 'loc none' }, 'Sin ubicación')),
+    showSlots ? h('div', { class: 'slot' }, h('div', { class: 'slot-l' }, 'Equipo', j.techs.length ? ` (${j.techs.length})` : '', j.techs.length && !j.hasDriver ? h('span', { class: 'w' }, ' · falta conductor (*)') : null),
+      h('div', { class: 'chips' }, team.length ? team : h('span', { class: 'drop-hint' }, editable() ? 'Arrastra técnicos aquí' : 'Sin técnicos'))) : null,
+    showSlots ? h('div', { class: 'slot' }, h('div', { class: 'slot-l' }, 'Furgoneta'),
+      h('div', { class: 'chips' }, vans.length ? vans : h('span', { class: 'drop-hint' }, editable() ? 'Arrastra una furgoneta aquí' : 'Sin furgoneta'))) : null,
+    j.conflicts.length ? h('ul', { class: 'confl' }, j.conflicts.map((c) => {
+      const n = c.type === 'tech' ? tech(c.id)?.name : van(c.id) && vanLabel(van(c.id));
+      return h('li', {}, `${n} también está en: ` + c.with.map((id) => { const o = ev(id); return `«${o?.title}» (${o ? shortTime(o) : ''})`; }).join(', '));
+    })) : null,
+    hs.new && (hs.techs.length || hs.vans.length) ? h('div', { class: 'hints' },
+      h('span', {}, 'El calendario indica: ' + [...hs.techs.map((i) => tech(i)?.name), ...hs.vans.map((i) => vanLabel(van(i)))].join(', ')),
+      h('button', { class: 'btn btn-small', type: 'button', onclick: () => { const p = planOf(e.id); setPlanChecked(e.id, [...new Set([...p.techs, ...hs.techs])], [...new Set([...p.vans, ...hs.vans])]); } }, 'Añadir')) : null,
+    h('div', { class: 'acts' },
+      editable() && selFree ? h('button', { class: 'btn btn-primary here', type: 'button', onclick: async () => { const s = S.selected; if (await assign(s.type, s.id, e.id)) { S.selected = null; render(); } } },
+        `Asignar ${sel.type === 'tech' ? tech(sel.id)?.name : vanLabel(van(sel.id))} aquí`) : null,
+      editable() ? h('button', { class: 'btn', type: 'button', onclick: () => openPicker(e.id) }, 'Asignar…') : null,
+      h('button', { class: 'btn', type: 'button', onclick: () => openDetail(e.id) }, 'Detalles'),
+      editable() && !(compact && !planned) ? h('button', { class: 'btn ' + (j.completed ? 'btn-ok' : ''), type: 'button', 'aria-pressed': String(j.completed), onclick: () => toggleDone(e.id) }, j.completed ? '✓ Grupo completo' : 'Marcar completo') : null));
+}
+
+// Detalle del evento (descripción completa leída de Outlook, en modo lectura)
+function htmlText(html) {
+  const doc = new DOMParser().parseFromString(String(html || ''), 'text/html');
+  doc.querySelectorAll('style,script,head').forEach((n) => n.remove());
+  doc.querySelectorAll('br').forEach((n) => n.replaceWith('\n'));
+  doc.querySelectorAll('p,div,li,tr,h1,h2,h3,h4').forEach((n) => n.append('\n'));
+  return (doc.body?.textContent || '').replace(/ /g, ' ').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+}
+async function openDetail(id) {
+  const e = ev(id); if (!e) return;
+  const j = S.calc.jobs[id];
+  const d = $('#d-detail');
+  const desc = h('div', { class: 'desc' }, e.preview || 'Cargando descripción…');
+  const row = (k, v) => v ? h('div', { class: 'kv' }, h('dt', {}, k), h('dd', {}, v)) : null;
+  fill(d, h('form', { method: 'dialog', class: 'dlg' },
+    h('div', { class: 'dlg-top' }, h('h2', {}, e.title), h('button', { class: 'close', value: 'x', 'aria-label': 'Cerrar' }, '×')),
+    h('div', { class: 'badges' }, j.status.map(badge)),
+    h('dl', {}, row('Fecha', longDate(S.date)),
+      row('Horario', e.allDay ? 'Todo el día' + (e.multiDay ? ` (del ${e.startDate} al ${addDays(e.endDate, -1)})` : '') : `${e.start.replace('T', ' ')} – ${e.end.replace('T', ' ')}`),
+      row('Ubicación', e.location ? h('a', { href: mapsUrl(e.location), target: '_blank', rel: 'noopener noreferrer' }, e.location) : null),
+      row('Equipo', j.techs.length ? h('div', { class: 'chips' }, j.techs.map((i) => tech(i) && techChip(tech(i), { from: '-' }))) : 'Sin asignar'),
+      row('Furgoneta', j.vans.length ? h('div', { class: 'chips' }, j.vans.map((i) => van(i) && vanChip(van(i), { from: '-' }))) : 'Sin furgoneta'),
+      row('Categorías', e.categories.length ? e.categories.join(', ') : null)),
+    h('h3', {}, 'Descripción'), desc,
+    h('p', { class: 'small muted' }, 'Datos leídos del calendario de info@ en modo solo lectura. Para cambiar el evento, edítalo en Outlook.'),
+    h('div', { class: 'dlg-acts' }, e.link ? h('a', { class: 'btn', href: e.link, target: '_blank', rel: 'noopener noreferrer' }, 'Abrir en Outlook') : null,
+      editable() ? h('button', { class: 'btn', type: 'button', onclick: () => { d.close(); openPicker(id); } }, 'Asignar…') : null,
+      h('button', { class: 'btn btn-primary', value: 'x' }, 'Cerrar'))));
+  d.showModal();
+  try {
+    const r = await S.mcp.callTool(SERVER, 'read_resource', { uri: e.uri }, { cache: { staleTime: 60000, gcTime: 600000 } });
+    const o = collect(r).find((x) => x && (x.body || x.bodyPreview)) || {};
+    const text = o.body?.contentType === 'html' ? htmlText(o.body.content) : (o.body?.content || o.bodyPreview || '');
+    desc.textContent = text.trim() || 'Sin descripción.';
+  } catch (err) {
+    desc.textContent = (e.preview || 'Sin descripción.') + (e.preview ? '\n\n(Vista previa: no se pudo cargar el texto completo.)' : '');
+  }
+}
+
+// Selector accesible (móvil y teclado)
+function openPicker(id) {
+  const e = ev(id); if (!e || !editable()) return;
+  const p = planOf(id); const selT = new Set(p.techs), selV = new Set(p.vans);
+  const d = $('#d-pick');
+  const st = h('p', { class: 'pst', role: 'status' });
+  const upd = () => {
+    const t = [...selT]; const drv = t.some((i) => tech(i)?.license);
+    st.textContent = !t.length ? 'Sin técnicos.' : drv ? `${t.length} técnico(s), con conductor.` : `⚠ ${t.length} técnico(s), pero nadie tiene carnet (*).`;
+    st.className = 'pst' + (t.length && !drv ? ' w' : '');
+  };
+  const item = (type, r, set) => {
+    const busy = conflictsFor(type, r.id, id, S.day.events, S.plans);
+    const absent = type === 'tech' && S.calc.absences[r.id];
+    return h('label', { class: 'pick' }, h('input', { type: 'checkbox', id: `pk-${type}-${r.id}`, checked: set.has(r.id), onchange: (x) => { x.target.checked ? set.add(r.id) : set.delete(r.id); upd(); } }),
+      type === 'tech' ? techChip(r, { from: '-' }) : vanChip(r, { from: '-' }),
+      busy.length ? h('span', { class: 'pw' }, 'Ocupado ' + busy.map(shortTime).join(', ')) : null,
+      absent ? h('span', { class: 'pw' }, 'Posible ausencia') : null,
+      !busy.length && !absent && useCount(type, r.id) && !set.has(r.id) ? h('span', { class: 'pi' }, `${useCount(type, r.id)} trabajo(s) este día`) : null);
+  };
+  upd();
+  fill(d, h('form', { method: 'dialog', class: 'dlg' },
+    h('div', { class: 'dlg-top' }, h('h2', {}, 'Asignar al trabajo'), h('button', { class: 'close', value: 'cancel', 'aria-label': 'Cerrar' }, '×')),
+    h('p', { class: 'muted' }, `${shortTime(e)} · ${e.title}`),
+    h('fieldset', {}, h('legend', {}, 'Técnicos'), S.res.techs.filter((t) => t.active !== false || selT.has(t.id)).map((t) => item('tech', t, selT))),
+    h('fieldset', {}, h('legend', {}, 'Furgonetas'), S.res.vans.filter((v) => v.active !== false || selV.has(v.id)).map((v) => item('van', v, selV))),
+    st, h('div', { class: 'dlg-acts stick' }, h('button', { class: 'btn', value: 'cancel' }, 'Cancelar'), h('button', { class: 'btn btn-primary', value: 'ok' }, 'Guardar'))));
+  d.returnValue = '';
+  d.onclose = () => { if (d.returnValue === 'ok') setPlanChecked(id, [...selT], [...selV]); };
+  d.showModal();
+}
+
+// Pantalla TV
+function renderTv() {
+  const evs = S.day.events; const s = S.calc.sum;
+  $('#tv-date').textContent = longDate(S.date);
+  fill($('#tv-sum'), h('span', {}, `${s.total} trabajos`), s.un ? h('span', { class: 'un' }, `${s.un} sin asignar`) : null,
+    s.nd ? h('span', { class: 'nd' }, `${s.nd} sin conductor`) : null, s.cf ? h('span', { class: 'cf' }, `${s.cf} con conflicto`) : null);
+  const err = $('#tv-err'); err.hidden = !S.day.error; err.textContent = S.day.error ? S.day.error.message : '';
+  const notes = evs.filter((e) => e.allDay && !S.calc.jobs[e.id].techs.length && !S.calc.jobs[e.id].vans.length);
+  const cards = evs.filter((e) => !notes.includes(e));
+  fill($('#tv-notes'), notes.map((e) => h('span', {}, e.title))); $('#tv-notes').hidden = !notes.length;
+  $('#v-tv').classList.toggle('dense', cards.length > 8);
+  fill($('#tv-grid'), cards.length ? cards.map((e) => {
+    const j = S.calc.jobs[e.id]; const main = j.status.includes('conflicto') ? 'conflicto' : j.status[0];
+    return h('article', { class: 'dc s-' + main },
+      h('div', { class: 'dc-time' }, e.allDay ? 'Todo el día' : `${hhmm(e.start)} – ${hhmm(e.end)}`),
+      h('h3', { class: 'dc-title' }, e.title), e.location ? h('div', { class: 'dc-loc' }, '📍 ' + e.location) : null,
+      h('div', { class: 'chips' }, j.techs.length ? j.techs.map((i) => tech(i) && techChip(tech(i), { from: '-', big: true })) : h('span', { class: 'dc-none' }, 'Sin técnicos'),
+        j.vans.map((i) => van(i) && vanChip(van(i), { from: '-', big: true }))),
+      h('div', { class: 'badges' }, j.status.filter((x) => x !== 'asignado').map(badge)));
+  }) : h('div', { class: 'tv-empty' }, S.day.loading ? 'Leyendo el calendario…' : 'No hay trabajos para este día'));
+  tick();
+}
+function tick() { $('#tv-clock').textContent = dfClock.format(new Date()); }
+setInterval(tick, 1000);
+let sDir = 1, sPause = 0;
+setInterval(() => {
+  if (S.view !== 'tv') return;
+  const g = $('#tv-grid'); if (g.scrollHeight <= g.clientHeight + 4) return;
+  if (sPause > 0) { sPause--; return; }
+  g.scrollTop += sDir;
+  if (g.scrollTop + g.clientHeight >= g.scrollHeight - 1) { sDir = -1; sPause = 80; } else if (g.scrollTop <= 0) { sDir = 1; sPause = 80; }
+}, 50);
+
+// Ajustes
+async function saveRes(mut) {
+  if (!editable()) return;
+  const next = JSON.parse(JSON.stringify(S.res));
+  mut(next);
+  const prev = S.res; S.res = next; computeDay(); render();
+  try { await S.db.doc('config/resources').set({ ...next, updatedAt: Date.now() }); toast('Guardado.'); }
+  catch (err) { S.res = prev; computeDay(); render(); toast('No se pudo guardar: ' + (err.message || err.code), 'bad'); }
+}
+function renderSettings() {
+  const root = $('#v-settings');
+  if (!editable()) { fill(root, h('h1', {}, 'Ajustes'), h('p', {}, 'Solo quien puede editar la planificación puede cambiar los ajustes.')); return; }
+  const pOpts = (cur) => [h('option', { value: '', selected: !cur }, '⚠ Pendiente de confirmar'), ...S.res.profiles.map((p) => h('option', { value: p.id, selected: p.id === cur }, p.name))];
+  const tOpts = (cur) => [h('option', { value: '', selected: !cur }, '⚠ Pendiente de confirmar'), ...S.res.vanTypes.map((p) => h('option', { value: p.id, selected: p.id === cur }, p.name))];
+  const colorRows = (listKey) => S.res[listKey].map((p, i) => h('tr', {},
+    h('td', {}, h('span', { class: 'chip', style: { '--cb': p.color, '--cf': p.text || '#111111' } }, 'MUESTRA')),
+    h('td', {}, h('input', { type: 'text', id: `${listKey}-n-${p.id}`, value: p.name, maxlength: '40', 'aria-label': 'Nombre', onchange: (x) => saveRes((r) => { r[listKey][i].name = x.target.value.trim() || p.name; }) })),
+    h('td', {}, h('input', { type: 'color', id: `${listKey}-c-${p.id}`, value: p.color, 'aria-label': 'Color de fondo', onchange: (x) => saveRes((r) => { r[listKey][i].color = x.target.value; }) })),
+    h('td', {}, h('input', { type: 'color', id: `${listKey}-t-${p.id}`, value: p.text || '#111111', 'aria-label': 'Color del texto', onchange: (x) => saveRes((r) => { r[listKey][i].text = x.target.value; }) }))));
+  const nt = { name: '', area: 'tecnico', profile: '', license: false };
+  const nv = { model: '', plate: '', type: '' };
+  const nextId = (list, base) => Math.max(base, ...list.map((x) => x.id)) + 1;
+  fill(root,
+    h('h1', {}, 'Ajustes'),
+    h('section', { class: 'card' }, h('h2', {}, 'Calendario'),
+      h('p', {}, 'Se lee el calendario de ', h('b', {}, CAL_OWNER), ' a través del conector ', h('b', {}, SERVER), ' de cada persona que abre esta página. Solo se usan las funciones de lectura (buscar eventos y leer su detalle); la página no tiene acceso a ninguna función que cree, cambie o borre eventos.'),
+      h('p', { class: 'small muted' }, `Se actualiza solo cada minuto mientras la página está abierta. Última lectura: ${S.day.syncedAt ? dfStamp.format(S.day.syncedAt) : 'sin datos'}.`)),
+    h('section', { class: 'card' }, h('h2', {}, 'Perfiles de técnicos'), h('p', { class: 'small muted' }, 'Los colores tienen significado operativo.'),
+      h('div', { class: 'tw' }, h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Vista'), h('th', {}, 'Perfil'), h('th', {}, 'Fondo'), h('th', {}, 'Texto'))), h('tbody', {}, colorRows('profiles'))))),
+    h('section', { class: 'card' }, h('h2', {}, 'Técnicos'), h('p', { class: 'small muted' }, 'Carnet = asterisco (*) del organigrama. «Pendiente de confirmar» se muestra en blanco con «?».'),
+      h('div', { class: 'tw' }, h('table', {},
+        h('thead', {}, h('tr', {}, h('th', {}, 'Ficha'), h('th', {}, 'Nombre'), h('th', {}, 'Área'), h('th', {}, 'Perfil'), h('th', {}, 'Carnet'), h('th', {}, 'Activo'))),
+        h('tbody', {}, S.res.techs.map((t, i) => h('tr', { class: t.active === false ? 'off' : '' },
+          h('td', {}, techChip(t, { from: '-' })),
+          h('td', {}, h('input', { type: 'text', id: `t-n-${t.id}`, value: t.name, maxlength: '40', 'aria-label': 'Nombre', onchange: (x) => saveRes((r) => { r.techs[i].name = x.target.value.trim() || t.name; }) })),
+          h('td', {}, h('select', { id: `t-a-${t.id}`, 'aria-label': 'Área', onchange: (x) => saveRes((r) => { r.techs[i].area = x.target.value; }) },
+            h('option', { value: 'almacen', selected: t.area === 'almacen' }, 'Almacén'), h('option', { value: 'tecnico', selected: t.area === 'tecnico' }, 'Técnico'))),
+          h('td', {}, h('select', { id: `t-p-${t.id}`, 'aria-label': 'Perfil', onchange: (x) => saveRes((r) => { r.techs[i].profile = x.target.value || null; }) }, pOpts(t.profile))),
+          h('td', {}, h('input', { type: 'checkbox', id: `t-l-${t.id}`, checked: !!t.license, 'aria-label': 'Carnet', onchange: (x) => saveRes((r) => { r.techs[i].license = x.target.checked; }) })),
+          h('td', {}, h('input', { type: 'checkbox', id: `t-o-${t.id}`, checked: t.active !== false, 'aria-label': 'Activo', onchange: (x) => saveRes((r) => { r.techs[i].active = x.target.checked; }) })))),
+          h('tr', { class: 'new' }, h('td', {}, 'Nuevo'),
+            h('td', {}, h('input', { type: 'text', id: 'nt-n', placeholder: 'Nombre', maxlength: '40', oninput: (x) => (nt.name = x.target.value) })),
+            h('td', {}, h('select', { id: 'nt-a', onchange: (x) => (nt.area = x.target.value) }, h('option', { value: 'tecnico' }, 'Técnico'), h('option', { value: 'almacen' }, 'Almacén'))),
+            h('td', {}, h('select', { id: 'nt-p', onchange: (x) => (nt.profile = x.target.value) }, pOpts(''))),
+            h('td', {}, h('input', { type: 'checkbox', id: 'nt-l', 'aria-label': 'Carnet', onchange: (x) => (nt.license = x.target.checked) })),
+            h('td', {}, h('button', { class: 'btn btn-small btn-primary', type: 'button', onclick: () => { if (!nt.name.trim()) return toast('Escribe un nombre.', 'warn');
+              saveRes((r) => r.techs.push({ id: nextId(r.techs, 0), name: nt.name.trim(), area: nt.area, profile: nt.profile || null, license: nt.license, active: true })); } }, 'Añadir'))))))),
+    h('section', { class: 'card' }, h('h2', {}, 'Tipos de furgoneta'),
+      h('div', { class: 'tw' }, h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Vista'), h('th', {}, 'Tipo'), h('th', {}, 'Fondo'), h('th', {}, 'Texto'))), h('tbody', {}, colorRows('vanTypes'))))),
+    h('section', { class: 'card' }, h('h2', {}, 'Furgonetas'),
+      h('div', { class: 'tw' }, h('table', {},
+        h('thead', {}, h('tr', {}, h('th', {}, 'Ficha'), h('th', {}, 'Modelo'), h('th', {}, 'Matrícula'), h('th', {}, 'Tipo'), h('th', {}, 'Activa'))),
+        h('tbody', {}, S.res.vans.map((v, i) => h('tr', { class: v.active === false ? 'off' : '' },
+          h('td', {}, vanChip(v, { from: '-' })),
+          h('td', {}, h('input', { type: 'text', id: `v-m-${v.id}`, value: v.model, maxlength: '30', 'aria-label': 'Modelo', onchange: (x) => saveRes((r) => { r.vans[i].model = x.target.value.trim() || v.model; }) })),
+          h('td', {}, h('input', { type: 'text', id: `v-p-${v.id}`, value: v.plate, maxlength: '12', 'aria-label': 'Matrícula', onchange: (x) => saveRes((r) => { r.vans[i].plate = x.target.value.toUpperCase().replace(/\s+/g, '') || v.plate; }) })),
+          h('td', {}, h('select', { id: `v-t-${v.id}`, 'aria-label': 'Tipo', onchange: (x) => saveRes((r) => { r.vans[i].type = x.target.value || null; }) }, tOpts(v.type))),
+          h('td', {}, h('input', { type: 'checkbox', id: `v-o-${v.id}`, checked: v.active !== false, 'aria-label': 'Activa', onchange: (x) => saveRes((r) => { r.vans[i].active = x.target.checked; }) })))),
+          h('tr', { class: 'new' }, h('td', {}, 'Nueva'),
+            h('td', {}, h('input', { type: 'text', id: 'nv-m', placeholder: 'Modelo', maxlength: '30', oninput: (x) => (nv.model = x.target.value) })),
+            h('td', {}, h('input', { type: 'text', id: 'nv-p', placeholder: 'Matrícula', maxlength: '12', oninput: (x) => (nv.plate = x.target.value) })),
+            h('td', {}, h('select', { id: 'nv-t', onchange: (x) => (nv.type = x.target.value) }, tOpts(''))),
+            h('td', {}, h('button', { class: 'btn btn-small btn-primary', type: 'button', onclick: () => { if (!nv.model.trim() || !nv.plate.trim()) return toast('Escribe modelo y matrícula.', 'warn');
+              saveRes((r) => r.vans.push({ id: nextId(r.vans, 100), model: nv.model.trim(), plate: nv.plate.toUpperCase().replace(/\s+/g, ''), type: nv.type || null, active: true })); } }, 'Añadir'))))))),
+    h('section', { class: 'card' }, h('h2', {}, 'Pantalla para la TV'),
+      h('p', {}, 'Abre esta página en el monitor, pulsa «Pantalla» y después «Pantalla completa». Añade ', h('b', {}, '#pantalla'), ' al final del enlace para que abra directamente en esa vista.'),
+      h('p', { class: 'small muted' }, 'La TV necesita una sesión de claude.ai con una cuenta que tenga Microsoft 365 conectado y acceso al calendario de info@.')));
+}
+
+// ===== Arrastrar y soltar (ratón y táctil) =====
+(function dnd() {
+  let pend = null, drag = null, suppress = false, scrollT = null;
+  function start() {
+    const { el, data } = pend; clearTimeout(pend.timer);
+    const x = pend.x, y = pend.y; pend = null;
+    const r = el.getBoundingClientRect();
+    const g = el.cloneNode(true); g.classList.add('ghost'); g.style.setProperty('width', r.width + 'px');
+    document.body.append(g);
+    drag = { data, g, el, t: null, ox: Math.min(r.width / 2, 60), oy: r.height / 2 };
+    el.classList.add('src'); document.body.classList.add('dragging'); document.body.classList.remove('sheet');
+    navigator.vibrate?.(15);
+    move(x, y);
+  }
+  function move(x, y) {
+    drag.g.style.setProperty('transform', `translate(${x - drag.ox}px, ${y - drag.oy}px)`);
+    const t = document.elementFromPoint(x, y)?.closest('[data-drop-event], [data-drop-out]') || null;
+    if (t !== drag.t) {
+      drag.t?.classList.remove('over', 'warn');
+      drag.t = t;
+      if (t) {
+        t.classList.add('over');
+        if (t.dataset.dropEvent && conflictsFor(drag.data.type, drag.data.id, t.dataset.dropEvent, S.day.events, S.plans).length) t.classList.add('warn');
+      }
+    }
+    clearInterval(scrollT);
+    const dy = y < 70 ? -12 : y > innerHeight - 70 ? 12 : 0;
+    if (dy) scrollT = setInterval(() => scrollBy(0, dy), 16);
+  }
+  function end(cancel) {
+    clearInterval(scrollT);
+    if (!drag) return;
+    const { data, t, g, el } = drag; drag = null;
+    g.remove(); el.classList.remove('src'); t?.classList.remove('over', 'warn'); document.body.classList.remove('dragging');
+    suppress = true; setTimeout(() => (suppress = false), 60);
+    if (cancel || !t) return;
+    if (t.dataset.dropOut != null) { if (data.from) unassign(data.type, data.id, data.from); }
+    else assign(data.type, data.id, t.dataset.dropEvent, data.from);
+  }
+  document.addEventListener('pointerdown', (e) => {
+    if (!editable() || S.view !== 'board' || e.button > 0) return;
+    if (e.target.closest('.x, [data-nodrag]')) return;
+    const el = e.target.closest('[data-drag]'); if (!el) return;
+    pend = { el, data: { type: el.dataset.drag, id: Number(el.dataset.id), from: el.dataset.from || '' }, x: e.clientX, y: e.clientY, pid: e.pointerId, touch: e.pointerType === 'touch' };
+    if (pend.touch) pend.timer = setTimeout(() => pend && start(), 250);
+  });
+  document.addEventListener('pointermove', (e) => {
+    if (drag) { e.preventDefault(); move(e.clientX, e.clientY); return; }
+    if (!pend || e.pointerId !== pend.pid) return;
+    const dist = Math.hypot(e.clientX - pend.x, e.clientY - pend.y);
+    if (pend.touch) { if (dist > 10) { clearTimeout(pend.timer); pend = null; } }
+    else if (dist > 5) { pend.x = e.clientX; pend.y = e.clientY; start(); }
+  }, { passive: false });
+  document.addEventListener('pointerup', () => { if (pend) { clearTimeout(pend.timer); pend = null; } if (drag) end(false); });
+  document.addEventListener('pointercancel', () => { if (pend) { clearTimeout(pend.timer); pend = null; } if (drag) end(true); });
+  document.addEventListener('touchmove', (e) => { if (drag) e.preventDefault(); }, { passive: false });
+  document.addEventListener('contextmenu', (e) => { if (e.target.closest('[data-drag]')) e.preventDefault(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') { if (drag) end(true); else if (S.selected) { S.selected = null; render(); } } });
+  document.addEventListener('click', (e) => { if (suppress) { e.preventDefault(); e.stopPropagation(); } }, true);
+})();
+
+// ===== Navegación =====
+const VIEWS = { '': 'board', tablero: 'board', pantalla: 'tv', ajustes: 'settings' };
+const HASH = { board: '', tv: 'pantalla', settings: 'ajustes' };
+function go(view) {
+  S.view = view; S.selected = null;
+  try { history.replaceState(null, '', HASH[view] ? '#' + HASH[view] : location.pathname + location.search); } catch {}
+  if (view === 'tv') wakeLock();
+  render();
+}
+let lock = null;
+async function wakeLock() { try { lock = await navigator.wakeLock?.request('screen'); } catch { lock = null; } }
+function setDate(d) { if (!d || d === S.date) return; S.date = d; S.selected = null; S.day = { events: [], syncedAt: null, error: null, loading: true }; computeDay(); watchPlans(); render(); loadDay(); }
+document.querySelectorAll('[data-go]').forEach((b) => b.addEventListener('click', () => go(b.dataset.go)));
+$('#prev').addEventListener('click', () => setDate(addDays(S.date, -1)));
+$('#next').addEventListener('click', () => setDate(addDays(S.date, 1)));
+$('#today').addEventListener('click', () => setDate(todayStr()));
+$('#date-input').addEventListener('change', (e) => setDate(e.target.value));
+$('#refresh').addEventListener('click', () => { retried = false; loadDay(true); });
+$('#sheet').addEventListener('click', () => document.body.classList.toggle('sheet'));
+$('#tv-exit').addEventListener('click', () => { if (document.fullscreenElement) document.exitFullscreen?.().catch(() => {}); go('board'); });
+$('#fs').addEventListener('click', () => {
+  if (document.fullscreenElement) document.exitFullscreen?.().catch(() => {});
+  else document.documentElement.requestFullscreen?.().catch(() => toast('Este navegador no permite pantalla completa aquí. Usa la tecla F11 o el modo de presentación de la TV.', 'warn'));
+});
+let idleT;
+document.addEventListener('pointermove', () => { document.body.classList.remove('idle'); clearTimeout(idleT); idleT = setTimeout(() => document.body.classList.add('idle'), 4000); });
+addEventListener('hashchange', () => { const v = VIEWS[location.hash.slice(1)]; if (v && v !== S.view) go(v); });
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { loadDay(); if (S.view === 'tv') wakeLock(); } });
+setInterval(() => {
+  // A medianoche, si se estaba viendo "hoy", pasa al nuevo día.
+  const t = todayStr();
+  if (S.lastToday && S.lastToday !== t && S.date === S.lastToday) setDate(t);
+  S.lastToday = t;
+  if (!document.hidden) loadDay();
+}, POLL_MS);
+setInterval(renderSync, 15000);
+
+// ===== Arranque =====
+S.lastToday = todayStr();
+S.view = VIEWS[location.hash.slice(1)] || 'board';
+computeDay(); render();
+(async () => {
+  const use = (n) => (window.claude && window.claude.use ? window.claude.use(n).catch(() => null) : Promise.resolve(null));
+  const [mcp, db, user] = await Promise.all([use('mcp'), use('db'), use('user')]);
+  S.booting = false;
+  S.mcp = mcp; S.db = db; S.user = user;
+  if (user) { try { const c = await user.can('data.write'); if (c === false) S.canWrite = false; } catch {} }
+  if (db) {
+    db.doc('config/resources').onSnapshot((snap) => {
+      const x = snap.exists ? snap.data() : null;
+      if (x) {
+        S.res = { profiles: x.profiles || [], techs: (x.techs || []).map((t) => ({ ...t, id: Number(t.id) })), vanTypes: x.vanTypes || [], vans: (x.vans || []).map((v) => ({ ...v, id: Number(v.id) })) };
+        S.resLoaded = true;
+      }
+      computeDay(); render();
+    }, () => {});
+    watchPlans();
+  }
+  render();
+  loadDay();
+})();
+})();
+</script>
