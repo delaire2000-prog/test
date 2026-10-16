@@ -292,6 +292,17 @@ legend { font-weight: 650; padding: 0 6px; font-size: 13px; text-transform: uppe
 .pw { font-size: 12px; font-weight: 600; color: var(--bad); }
 .pi { font-size: 12px; color: var(--muted); }
 .pst { font-weight: 600; } .pst.w { color: var(--warn); }
+.sx { display: grid; gap: 8px; }
+.sx-row { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; align-items: start; padding: 10px 12px; border: 1px solid var(--line); border-radius: var(--r); cursor: pointer; }
+.sx-row:has(input:checked) { border-color: var(--accent); background: var(--accent-soft); }
+.sx-row input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--accent); }
+.sx-meta { font-size: 12px; color: var(--muted); }
+.sx-old { font-size: 13px; color: var(--muted); text-decoration: line-through; overflow-wrap: anywhere; }
+.sx-new { font-size: 14px; font-weight: 600; overflow-wrap: anywhere; }
+.sx-new mark { background: color-mix(in srgb, var(--accent) 22%, transparent); color: inherit; border-radius: 3px; padding: 0 2px; }
+.sx-st { grid-column: 2; font-size: 12.5px; font-weight: 600; }
+.sx-st.ok { color: var(--ok); } .sx-st.bad { color: var(--bad); } .sx-st.busy { color: var(--muted); }
+.sx-warn { font-size: 12.5px; color: var(--warn); grid-column: 2; }
 
 /* Ajustes */
 #v-settings { padding-block: 24px 48px; max-width: 1120px; margin: 0 auto; }
@@ -444,7 +455,7 @@ body.idle .tv-ctrl { opacity: 0; } body.idle[data-view="tv"] { cursor: none; }
   <div id="tv-err" class="tv-err" hidden></div>
   <div id="tv-notes" class="tv-notes" hidden></div>
   <div id="tv-grid" class="tv-grid"></div>
-  <div class="tv-foot">Planificación interna · no modifica el calendario de Outlook</div>
+  <div class="tv-foot">Planificación interna de Delaire 2000</div>
 </main>
 
 <main id="v-settings" class="view wrap"></main>
@@ -923,6 +934,110 @@ async function importAllHints() {
   }
   toast(`Equipos añadidos en ${todo.length} trabajo${todo.length > 1 ? 's' : ''}.`);
 }
+// ===== Volcar la planificación al TÍTULO de los eventos de Outlook =====
+// Formato acordado: «TÍTULO ORIGINAL | TÉCNICOS | FURGONETA». Si el título ya tenía un bloque de técnicos o de
+// furgonetas (puesto a mano o en un envío anterior), ese bloque se sustituye en lugar de duplicarse.
+const PLATE_RE = /\b\d{4}\s?[A-Z]{3}\b/;
+function isVanSeg(seg) {
+  const toks = norm(seg).split(/\s*\+\s*/).filter(Boolean);
+  return toks.length > 0 && toks.every((t) => PLATE_RE.test(t) && t.replace(PLATE_RE, '').trim().split(' ').filter(Boolean).length <= 2);
+}
+function isTeamSeg(seg) {
+  const n = norm(seg);
+  if (!n || /\d/.test(n)) return false;
+  const toks = n.split(/\s*(?:\+|,|\/|&|\bY\b)\s*/).map((x) => x.trim()).filter(Boolean);
+  if (!toks.length || toks.some((t) => t.split(' ').length > 2)) return false;
+  const names = S.res.techs.map((t) => norm(t.name));
+  const known = toks.filter((t) => names.some((nm) => t === nm || (nm.includes(' ') && t.startsWith(nm)))).length;
+  // Es bloque de equipo si al menos la mitad de los nombres son técnicos conocidos (admite alguno nuevo, p. ej. un refuerzo).
+  return known > 0 && known * 2 >= toks.length;
+}
+function buildTitle(e) {
+  const p = planOf(e.id);
+  if (!p.techs.length && !p.vans.length) return null;
+  const segs = e.title.split('|').map((x) => x.trim());
+  let lead = segs.filter((x, i) => !(i > 0 && ((p.techs.length && isTeamSeg(x)) || (p.vans.length && isVanSeg(x)))));
+  // Si el título original solo tenía el bloque (p. ej. «SAT | JEFFERSON»), el primer segmento se conserva.
+  lead = lead.filter((x, i) => x || i === 0);
+  const team = p.techs.map((i) => tech(i)?.name.toUpperCase()).filter(Boolean).join(' + ');
+  const vans = p.vans.map((i) => van(i) && vanLabel(van(i))).filter(Boolean).join(' + ');
+  const keptTeam = !p.techs.length ? segs.slice(1).filter(isTeamSeg) : [];
+  const keptVan = !p.vans.length ? segs.slice(1).filter(isVanSeg) : [];
+  const base = lead.filter((x) => !keptTeam.includes(x) && !keptVan.includes(x));
+  const parts = [...base, ...(team ? [team] : keptTeam), ...(vans ? [vans] : keptVan)].filter((x, i) => x || i === 0);
+  return parts.join(' | ').replace(/\s+\|\s*$/, '').trim();
+}
+function titleChanges() {
+  return S.day.events.map((e) => ({ e, next: buildTitle(e) })).filter((x) => x.next && x.next !== e2t(x.e));
+}
+const e2t = (e) => e.title.split('|').map((x) => x.trim()).join(' | ');
+function markNew(oldT, newT) {
+  const old = new Set(oldT.split('|').map((x) => norm(x)));
+  return newT.split(' | ').flatMap((seg, i) => [i ? ' | ' : '', old.has(norm(seg)) ? seg : h('mark', {}, seg)]);
+}
+const WRITE_ERR = {
+  tool_error: 'Outlook no ha aceptado el cambio. Si dice «no encontrado», Microsoft 365 no está conectado con la cuenta info@ en claude.ai.',
+  not_in_manifest: 'Has desactivado la escritura en Microsoft 365 para esta página (menú Permisos del artefacto).',
+  approval_required: 'Hace falta tu permiso para modificar el calendario.',
+  needs_reauth: 'La conexión con Microsoft 365 ha caducado. Vuelve a conectarla en claude.ai → Ajustes → Conectores.',
+  server_not_connected: 'Microsoft 365 no está conectado en claude.ai.',
+  server_unavailable: 'Outlook no respondió a tiempo: el cambio puede haberse aplicado o no. Pulsa ⟳ para comprobarlo.',
+  upstream_error: 'Outlook no respondió como se esperaba: el cambio puede haberse aplicado o no. Pulsa ⟳ para comprobarlo.',
+};
+async function openSync() {
+  if (!editable() || !S.mcp) return;
+  toast('Comprobando los títulos actuales en Outlook…');
+  await loadDay(true); // parte siempre del título que hay ahora mismo en el calendario
+  if (S.day.error) { toast('No se pudo leer el calendario; no se envía nada.', 'bad'); return; }
+  const list = titleChanges();
+  if (!list.length) { toast('Los títulos de Outlook ya coinciden con la planificación.'); return; }
+  const d = $('#d-confirm');
+  const rows = list.map(({ e, next }) => {
+    const cb = h('input', { type: 'checkbox', id: 'sx-' + keyOf(e.id), checked: next.length <= 255 });
+    const st = h('span', { class: 'sx-st' });
+    const row = h('label', { class: 'sx-row', for: 'sx-' + keyOf(e.id) }, cb,
+      h('div', {}, h('div', { class: 'sx-meta' }, shortTime(e)), h('div', { class: 'sx-old' }, e.title), h('div', { class: 'sx-new' }, markNew(e.title, next))),
+      next.length > 255 ? h('span', { class: 'sx-warn' }, `Demasiado largo para Outlook (${next.length} de 255 caracteres). Acorta el título en Outlook o desmarca este trabajo.`) : null, st);
+    return { e, next, cb, st, row };
+  });
+  const go = h('button', { class: 'btn btn-primary', type: 'button' }, 'Escribir en Outlook');
+  const cancel = h('button', { class: 'btn', type: 'button', onclick: () => d.close() }, 'Cancelar');
+  fill(d, h('div', { class: 'dlg' },
+    h('div', { class: 'dlg-top' }, h('h2', {}, 'Enviar al calendario'), h('button', { class: 'close', type: 'button', 'aria-label': 'Cerrar', onclick: () => d.close() }, '×')),
+    h('p', { class: 'muted' }, `Se cambiará solo el título de estos eventos de ${CAL_OWNER}. Lo resaltado es lo que se añade o sustituye; el resto del evento no se toca.`),
+    h('div', { class: 'sx' }, rows.map((r) => r.row)),
+    h('div', { class: 'dlg-acts stick' }, cancel, go)));
+  d.classList.remove('sm');
+  d.onclose = () => { d.classList.add('sm'); };
+  go.onclick = async () => {
+    const todo = rows.filter((r) => r.cb.checked && r.next.length <= 255);
+    if (!todo.length) { toast('No hay ningún trabajo marcado.', 'warn'); return; }
+    go.disabled = true; cancel.disabled = true; rows.forEach((r) => (r.cb.disabled = true));
+    let ok = 0, fail = 0, stop = false;
+    for (const r of todo) {
+      if (stop) { r.st.className = 'sx-st'; r.st.textContent = 'No enviado'; continue; }
+      r.st.className = 'sx-st busy'; r.st.textContent = 'Enviando…';
+      try {
+        await S.mcp.callTool(SERVER, 'outlook_update_event', { eventId: r.e.id, subject: r.next }, { cache: false });
+        r.st.className = 'sx-st ok'; r.st.textContent = '✓ Título actualizado'; ok++;
+      } catch (err) {
+        fail++;
+        const code = err?.code || 'upstream_error';
+        r.st.className = 'sx-st bad'; r.st.textContent = '✗ ' + (WRITE_ERR[code] || err?.message || code);
+        // Si falta conexión o permiso, los demás fallarán igual: se detiene.
+        if (['tool_error', 'not_in_manifest', 'approval_required', 'needs_reauth', 'server_not_connected', 'blocked_by_policy'].includes(code)) stop = true;
+      }
+      await new Promise((res) => setTimeout(res, 350));
+    }
+    cancel.disabled = false; cancel.textContent = 'Cerrar';
+    go.textContent = fail ? `${ok} enviados · ${fail} con error` : `${ok} títulos actualizados`;
+    try { await S.mcp.invalidate(SERVER, 'outlook_calendar_search'); } catch {}
+    loadDay(true);
+  };
+  d.returnValue = '';
+  d.showModal();
+}
+
 function hintsFor(e) {
   const hs = titleHints(e.title, S.res.techs.filter((t) => t.active !== false), S.res.vans.filter((v) => v.active !== false));
   const p = planOf(e.id);
@@ -1068,8 +1183,10 @@ function renderJobs() {
   const pending = editable() ? evs.filter((e) => hintsFor(e).new).length : 0;
   const out = [
     h('div', { class: 'sumrow' }, h('div', { class: 'summary', role: 'status' }, pill(s.total, s.total === 1 ? 'trabajo' : 'trabajos'), pill(s.un, 'sin asignar', 'st-un'), pill(s.nd, 'sin conductor', 'st-nd'), pill(s.cf, 'con conflicto', 'st-cf'), pill(s.ok, 'completos', 'st-ok')),
-      pending ? h('button', { class: 'btn btn-small', type: 'button', onclick: importAllHints }, `Añadir equipos escritos en el calendario (${pending})`) : null),
-    h('p', { class: 'internal' }, 'Las asignaciones son planificación interna de Delaire 2000: no crean, cambian ni borran nada en el calendario de Outlook.'),
+      h('div', { class: 'acts' },
+        pending ? h('button', { class: 'btn btn-small', type: 'button', onclick: importAllHints }, `Añadir equipos escritos en el calendario (${pending})`) : null,
+        editable() && S.mcp ? (() => { const n = titleChanges().length; return h('button', { class: 'btn btn-small' + (n ? ' btn-primary' : ''), type: 'button', disabled: !n, title: n ? '' : 'Los títulos de Outlook ya coinciden con la planificación', onclick: openSync }, n ? `Enviar al calendario (${n})` : 'Calendario al día'); })() : null)),
+    h('p', { class: 'internal' }, 'Las asignaciones se guardan en el planificador. El calendario de Outlook solo cambia cuando pulsas «Enviar al calendario» y confirmas los títulos.'),
   ];
   if (!evs.length) out.push(h('div', { class: 'empty' }, S.day.loading ? 'Leyendo el calendario de info@…' : S.day.error ? 'Sin datos del calendario para este día.' : 'No hay trabajos en el calendario este día.'));
   const allDay = evs.filter((e) => e.allDay), timed = evs.filter((e) => !e.allDay);
@@ -1260,7 +1377,8 @@ function renderSettings() {
   fill(root,
     h('h1', {}, 'Ajustes'),
     h('section', { class: 'card' }, h('h2', {}, 'Calendario'),
-      h('p', {}, 'Se lee el calendario de ', h('b', {}, CAL_OWNER), ' a través del conector ', h('b', {}, SERVER), ' de cada persona que abre esta página. Solo se usan las funciones de lectura (buscar eventos y leer su detalle); la página no tiene acceso a ninguna función que cree, cambie o borre eventos.'),
+      h('p', {}, 'Se lee el calendario de ', h('b', {}, CAL_OWNER), ' a través del conector ', h('b', {}, SERVER), ' de cada persona que abre esta página.'),
+      h('p', {}, '«Enviar al calendario» solo cambia el título de los eventos (añade o sustituye el bloque «| TÉCNICOS | FURGONETA»), siempre con vista previa y confirmación. La página no puede crear, mover ni borrar eventos. Para escribir hace falta que Microsoft 365 esté conectado en claude.ai con la cuenta ', h('b', {}, CAL_OWNER), '.'),
       h('p', { class: 'small muted' }, `Se actualiza solo cada minuto mientras la página está abierta. Última lectura: ${S.day.syncedAt ? dfStamp.format(S.day.syncedAt) : 'sin datos'}.`)),
     h('section', { class: 'card' }, h('h2', {}, 'Perfiles de técnicos'), h('p', { class: 'small muted' }, 'Los colores tienen significado operativo.'),
       h('div', { class: 'tw' }, h('table', {}, h('thead', {}, h('tr', {}, h('th', {}, 'Vista'), h('th', {}, 'Perfil'), h('th', {}, 'Fondo'), h('th', {}, 'Texto'))), h('tbody', {}, colorRows('profiles'))))),
