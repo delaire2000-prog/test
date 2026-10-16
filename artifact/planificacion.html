@@ -302,6 +302,8 @@ legend { font-weight: 650; padding: 0 6px; font-size: 13px; text-transform: uppe
 .sx-new mark { background: color-mix(in srgb, var(--accent) 22%, transparent); color: inherit; border-radius: 3px; padding: 0 2px; }
 .sx-st { grid-column: 2; font-size: 12.5px; font-weight: 600; }
 .sx-st.ok { color: var(--ok); } .sx-st.bad { color: var(--bad); } .sx-st.busy { color: var(--muted); }
+.sx-copy { width: 100%; min-height: 34px; padding: 0 8px; border: 1px solid var(--accent); border-radius: 8px; background: var(--surface); font-size: 13px; }
+.sx-tools { grid-column: 2; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
 .sx-warn { font-size: 12.5px; color: var(--warn); grid-column: 2; }
 
 /* Ajustes */
@@ -984,6 +986,14 @@ const WRITE_ERR = {
   server_unavailable: 'Outlook no respondió a tiempo: el cambio puede haberse aplicado o no. Pulsa ⟳ para comprobarlo.',
   upstream_error: 'Outlook no respondió como se esperaba: el cambio puede haberse aplicado o no. Pulsa ⟳ para comprobarlo.',
 };
+async function copyText(text, btn) {
+  try { await navigator.clipboard.writeText(text); btn.textContent = '✓ Copiado'; }
+  catch {
+    // Si el navegador no deja copiar, se muestra el texto seleccionado para copiarlo a mano.
+    const inp = h('input', { type: 'text', value: text, readonly: true, class: 'sx-copy' });
+    btn.replaceWith(inp); inp.focus(); inp.select();
+  }
+}
 async function openSync() {
   if (!editable() || !S.mcp) return;
   toast('Comprobando los títulos actuales en Outlook…');
@@ -997,6 +1007,9 @@ async function openSync() {
     const st = h('span', { class: 'sx-st' });
     const row = h('label', { class: 'sx-row', for: 'sx-' + keyOf(e.id) }, cb,
       h('div', {}, h('div', { class: 'sx-meta' }, shortTime(e)), h('div', { class: 'sx-old' }, e.title), h('div', { class: 'sx-new' }, markNew(e.title, next))),
+      h('div', { class: 'sx-tools' },
+        h('button', { class: 'btn btn-small', type: 'button', onclick: (ev) => { ev.preventDefault(); copyText(next, ev.currentTarget); } }, 'Copiar título nuevo'),
+        e.link ? h('a', { class: 'btn btn-small', href: e.link, target: '_blank', rel: 'noopener noreferrer', onclick: (ev) => ev.stopPropagation() }, 'Abrir en Outlook') : null),
       next.length > 255 ? h('span', { class: 'sx-warn' }, `Demasiado largo para Outlook (${next.length} de 255 caracteres). Acorta el título en Outlook o desmarca este trabajo.`) : null, st);
     return { e, next, cb, st, row };
   });
@@ -1004,7 +1017,7 @@ async function openSync() {
   const cancel = h('button', { class: 'btn', type: 'button', onclick: () => d.close() }, 'Cancelar');
   fill(d, h('div', { class: 'dlg' },
     h('div', { class: 'dlg-top' }, h('h2', {}, 'Enviar al calendario'), h('button', { class: 'close', type: 'button', 'aria-label': 'Cerrar', onclick: () => d.close() }, '×')),
-    h('p', { class: 'muted' }, `Se cambiará solo el título de estos eventos de ${CAL_OWNER}. Lo resaltado es lo que se añade o sustituye; el resto del evento no se toca.`),
+    h('p', { class: 'muted' }, `Se cambiará solo el título de estos eventos de ${CAL_OWNER}. Lo resaltado es lo que se añade o sustituye; el resto del evento no se toca. Si «Escribir en Outlook» no tiene permiso, usa «Copiar título nuevo» y pégalo en el evento con «Abrir en Outlook».`),
     h('div', { class: 'sx' }, rows.map((r) => r.row)),
     h('div', { class: 'dlg-acts stick' }, cancel, go)));
   d.classList.remove('sm');
