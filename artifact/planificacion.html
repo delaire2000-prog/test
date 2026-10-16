@@ -302,6 +302,9 @@ legend { font-weight: 650; padding: 0 6px; font-size: 13px; text-transform: uppe
 .sx-new mark { background: color-mix(in srgb, var(--accent) 22%, transparent); color: inherit; border-radius: 3px; padding: 0 2px; }
 .sx-st { grid-column: 2; font-size: 12.5px; font-weight: 600; }
 .sx-st.ok { color: var(--ok); } .sx-st.bad { color: var(--bad); } .sx-st.busy { color: var(--muted); }
+.cont { display: grid; gap: 6px; padding: 10px 12px; border-radius: var(--r); background: var(--surface-2); border: 1px solid var(--accent); border-left-width: 3px; font-size: 13px; }
+.cont-h { font: 650 11px/1 var(--font-body); letter-spacing: .09em; text-transform: uppercase; color: var(--accent); }
+.cont-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 10px; }
 .sx-copy { width: 100%; min-height: 34px; padding: 0 8px; border: 1px solid var(--accent); border-radius: 8px; background: var(--surface); font-size: 13px; }
 .sx-tools { grid-column: 2; display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
 .sx-warn { font-size: 12.5px; color: var(--warn); grid-column: 2; }
@@ -752,6 +755,7 @@ async function loadDay(fresh = false) {
   }
   S.day.date = date;
   computeDay(); render();
+  if (!S.day.error) loadContinuity(date);
 }
 
 // ===== Planificación guardada (base de datos del artefacto) =====
@@ -1051,6 +1055,114 @@ async function openSync() {
   d.showModal();
 }
 
+// ===== Continuación de obra: sugerir el equipo con el que arrancó =====
+// Busca la misma obra en los días anteriores (mismo evento de varios días, mismo nº de pedido, misma dirección
+// o mismo cliente) y propone sus técnicos y furgonetas. Solo sugiere: hay que confirmarlo con el botón.
+const LOOKBACK_DAYS = 21;
+const CONT_RE = /\b(CONT\w*|OBRA|OBRAS)\b/;
+const BRAND_RE = /\b(DAIKIN|MITSUBISHI|GIATSU|FUJITSU|LG|SAMSUNG|PANASONIC|TOSHIBA|HAIER|HISENSE|GREE|CARRIER|SAUNIER|BAXI|VAILLANT|ARISTON)\b/;
+const GENERIC_SEG_RE = /\b(CONT\w*|OBRA|OBRAS|SPLIT|MULTI\w*|CONDUCTOS?|AEROTERMIA|SUELO RADIANTE|TERMINACION\w*|MANTENIMIENTO\w*|INSTALACION\w*|SAT)\b/;
+S.cont = {}; // date -> { eventId: { first, last } }
+const contCache = {}; // date -> promesa
+function pedidoOf(title, preview) {
+  const m = /PEDIDO\s*:?\s*(\d{5,7})/i.exec(preview || '') || /\b(?:PED\.?|PEDIDO)\s*:?\s*(\d{5,7})/i.exec(title || '') || /\b(2\d{5})\b/.exec(title || '');
+  return m ? m[1] : '';
+}
+const locKey = (l) => norm(l).replace(/[^A-Z0-9]/g, '');
+function clientSegs(title) {
+  return title.split('|').map((x) => norm(x).replace(/\*+.*$/, '').trim())
+    .filter((x) => x && !/\d/.test(x) && !BRAND_RE.test(x) && !GENERIC_SEG_RE.test(x) && !isTeamSeg(x) && x.split(' ').length >= 2);
+}
+function sameObra(a, b) {
+  if (a.id === b.id) return 100;
+  let sc = 0;
+  const pa = pedidoOf(a.title, a.preview), pb = pedidoOf(b.title, b.preview);
+  if (pa && pa === pb) sc += 80;
+  const la = locKey(a.location), lb = locKey(b.location);
+  if (la.length > 8 && lb.length > 8 && (la === lb || la.includes(lb) || lb.includes(la))) sc += 60;
+  const ca = clientSegs(a.title), cb = clientSegs(b.title);
+  if (ca.some((x) => cb.some((y) => x === y || (x.length > 8 && y.startsWith(x)) || (y.length > 8 && x.startsWith(y))))) sc += 55;
+  return sc;
+}
+async function fetchRange(from, to) {
+  const out = new Map(); let offset = 0;
+  for (let page = 0; page < 16; page++) {
+    const res = await S.mcp.callTool(SERVER, 'outlook_calendar_search', {
+      query: '*', calendarOwnerEmail: CAL_OWNER, afterDateTime: from + 'T00:00:00', beforeDateTime: to + 'T00:00:00', limit: 25, offset, order: 'oldest',
+    }, { cache: { staleTime: 300000, gcTime: 3600000 } });
+    let next = null, n = 0;
+    for (const o of collect(res)) {
+      if (o.nextOffset != null) next = o.nextOffset;
+      if (!o.id || !(o.subject !== undefined || o.start)) continue;
+      n++;
+      const st = wall(o.start); if (!st || o.isCancelled || o.isAllDay) continue;
+      out.set(String(o.id), { id: String(o.id), title: (o.subject || '').trim(), preview: o.summary || o.bodyPreview || '',
+        location: typeof o.location === 'string' ? o.location : (o.location?.displayName || ''), date: st.slice(0, 10) });
+    }
+    if (next == null || !n || next <= offset) break;
+    offset = next;
+  }
+  return [...out.values()];
+}
+const prevPlans = {};
+async function plansOfDay(d) {
+  if (!S.db) return {};
+  if (!prevPlans[d]) prevPlans[d] = Promise.resolve().then(() => S.db.collection(`days/${d}/jobs`).get()).then((snap) => {
+    const m = {};
+    for (const doc of snap.docs) { const x = doc.data() || {}; m[x.eventId || doc.id] = { techs: (x.techs || []).map(Number), vans: (x.vans || []).map(Number) }; }
+    return m;
+  }).catch(() => ({}));
+  return prevPlans[d];
+}
+async function loadContinuity(date) {
+  if (!S.mcp || !editable()) return;
+  const cands = S.day.events.filter((e) => !e.allDay && !/^\s*SAT\b/.test(norm(e.title)) && (CONT_RE.test(norm(e.title)) || e.cutStart || e.multiDay));
+  if (!cands.length) { S.cont[date] = {}; return; }
+  try {
+    contCache[date] ||= fetchRange(addDays(date, -LOOKBACK_DAYS), date);
+    const prior = (await contCache[date]).filter((p) => p.date < date && !/^\s*SAT\b/.test(norm(p.title)));
+    const result = {};
+    const activeTechs = S.res.techs.filter((t) => t.active !== false), activeVans = S.res.vans.filter((v) => v.active !== false);
+    for (const e of cands) {
+      const matches = prior.filter((p) => sameObra(e, p) >= 55);
+      if (e.startDate < date && !matches.some((m) => m.id === e.id)) matches.push({ id: e.id, title: e.title, date: e.startDate });
+      matches.sort((a, b) => a.date.localeCompare(b.date));
+      const withTeam = [];
+      for (const m of matches) {
+        const pl = (await plansOfDay(m.date))[m.id];
+        const team = pl && (pl.techs.length || pl.vans.length) ? { techs: pl.techs, vans: pl.vans, src: 'planificador' } : { ...titleHints(m.title, activeTechs, activeVans), src: 'calendario' };
+        if (team.techs.length || team.vans.length) withTeam.push({ date: m.date, title: m.title, ...team });
+      }
+      if (withTeam.length) result[e.id] = { first: withTeam[0], last: withTeam[withTeam.length - 1] };
+    }
+    S.cont[date] = result;
+    if (date === S.date) renderSoon();
+  } catch (err) {
+    delete contCache[date];
+  }
+}
+const dfShort = new Intl.DateTimeFormat('es-ES', { timeZone: 'UTC', weekday: 'short', day: 'numeric', month: 'numeric' });
+const shortDay = (d) => dfShort.format(dObj(d)).replace('.', '');
+const teamText = (t) => [t.techs.map((i) => tech(i)?.name.toUpperCase()).filter(Boolean).join(' + '), t.vans.map((i) => van(i) && vanLabel(van(i))).filter(Boolean).join(' + ')].filter(Boolean).join(' · ');
+function contBlock(e) {
+  const c = editable() && S.cont[S.date]?.[e.id];
+  if (!c) return null;
+  const p = planOf(e.id);
+  const differs = (t) => t.techs.some((i) => !p.techs.includes(i)) || t.vans.some((i) => !p.vans.includes(i)) || p.techs.some((i) => !t.techs.includes(i));
+  const opts = [c.first];
+  if (c.last.date !== c.first.date && teamText(c.last) !== teamText(c.first)) opts.push(c.last);
+  // Solo mientras el trabajo no tenga ya su equipo completo: si ya lo has organizado, no insiste.
+  if (p.techs.length && p.vans.length) return null;
+  const show = opts.filter(differs);
+  if (!show.length) return null;
+  return h('div', { class: 'cont' },
+    h('div', { class: 'cont-h' }, 'Continuación de obra'),
+    show.map((t) => h('div', { class: 'cont-row' },
+      h('span', {}, h('b', {}, t === c.first ? `Arrancó el ${shortDay(t.date)}` : `Último día (${shortDay(t.date)})`), ': ' + teamText(t),
+        t.src === 'calendario' ? h('span', { class: 'muted' }, ' (según el título del calendario)') : null),
+      h('button', { class: 'btn btn-small', type: 'button', onclick: () => setPlanChecked(e.id, [...t.techs], [...t.vans]) }, 'Usar este equipo'))));
+}
+
 function hintsFor(e) {
   const hs = titleHints(e.title, S.res.techs.filter((t) => t.active !== false), S.res.vans.filter((v) => v.active !== false));
   const p = planOf(e.id);
@@ -1234,6 +1346,7 @@ function jobCard(e, compact) {
       h('div', { class: 'chips' }, team.length ? team : h('span', { class: 'drop-hint' }, editable() ? 'Arrastra técnicos aquí' : 'Sin técnicos'))) : null,
     showSlots ? h('div', { class: 'slot' }, h('div', { class: 'slot-l' }, 'Furgoneta'),
       h('div', { class: 'chips' }, vans.length ? vans : h('span', { class: 'drop-hint' }, editable() ? 'Arrastra una furgoneta aquí' : 'Sin furgoneta'))) : null,
+    contBlock(e),
     (!compact || planned || hasMeta || S.openNotes[e.id]) ? fieldsBlock(e) : null,
     j.conflicts.length ? h('ul', { class: 'confl' }, j.conflicts.map((c) => {
       const n = c.type === 'tech' ? tech(c.id)?.name : van(c.id) && vanLabel(van(c.id));
